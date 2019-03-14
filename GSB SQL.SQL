@@ -1,13 +1,13 @@
 /*
  ----------------------------------------------------------------------------
-             Génération d'une base de données pour
+             GÃ©nÃ©ration d'une base de donnÃ©es pour
                         SQL Server 7.x
                        (8/3/2019 16:46:13)
  ----------------------------------------------------------------------------
      Nom de la base : gsb mlr
      Projet : Espace de travail
      Auteur : LMC
-     Date de dernière modification : 8/3/2019 16:45:53
+     Date de derniÃ¨re modification : 8/3/2019 16:45:53
  ----------------------------------------------------------------------------
 */
 
@@ -116,7 +116,7 @@ create table CAMPAGNE
      IDEMPLOYE int  not null  ,
      IDAGENCE int  null  ,
      IDAGENCE_ORGANISATEUR_ART int  null  ,
-     INTITULÉ varchar(30)  null  ,
+     INTITULE varchar(30)  null  ,
      OBJECTIF varchar(30)  null  ,
      PUBLIQUE varchar(30)  null  ,
      DATEDEBUT datetime  null  ,
@@ -139,7 +139,7 @@ go
 create table EMPLOYE
   (
      IDEMPLOYE int  not null  ,
-     PRÉNOM varchar(30)  null  ,
+     PRENOM varchar(30)  null  ,
      NOM varchar(30)  null  ,
      MAIL varchar(30)  null  ,
      TEL char(32)  null  ,
