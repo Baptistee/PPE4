@@ -77,13 +77,13 @@
             // consulterToolStripMenuItem
             // 
             this.consulterToolStripMenuItem.Name = "consulterToolStripMenuItem";
-            this.consulterToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consulterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consulterToolStripMenuItem.Text = "Consulter";
             // 
             // créerToolStripMenuItem
             // 
             this.créerToolStripMenuItem.Name = "créerToolStripMenuItem";
-            this.créerToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.créerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.créerToolStripMenuItem.Text = "Créer";
             // 
             // évenementToolStripMenuItem
@@ -99,7 +99,7 @@
             // consulterToolStripMenuItem1
             // 
             this.consulterToolStripMenuItem1.Name = "consulterToolStripMenuItem1";
-            this.consulterToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.consulterToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.consulterToolStripMenuItem1.Text = "Consulter";
             // 
             // créerToolStripMenuItem1
