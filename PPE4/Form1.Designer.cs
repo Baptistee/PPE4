@@ -120,14 +120,15 @@
             // consulterToolStripMenuItem2
             // 
             this.consulterToolStripMenuItem2.Name = "consulterToolStripMenuItem2";
-            this.consulterToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.consulterToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.consulterToolStripMenuItem2.Text = "Consulter";
             // 
             // créerToolStripMenuItem2
             // 
             this.créerToolStripMenuItem2.Name = "créerToolStripMenuItem2";
-            this.créerToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
+            this.créerToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.créerToolStripMenuItem2.Text = "Créer";
+            this.créerToolStripMenuItem2.Click += new System.EventHandler(this.créerToolStripMenuItem2_Click);
             // 
             // artisteToolStripMenuItem
             // 
@@ -183,13 +184,13 @@
             // consulterToolStripMenuItem5
             // 
             this.consulterToolStripMenuItem5.Name = "consulterToolStripMenuItem5";
-            this.consulterToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.consulterToolStripMenuItem5.Size = new System.Drawing.Size(125, 22);
             this.consulterToolStripMenuItem5.Text = "Consulter";
             // 
             // créerToolStripMenuItem5
             // 
             this.créerToolStripMenuItem5.Name = "créerToolStripMenuItem5";
-            this.créerToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.créerToolStripMenuItem5.Size = new System.Drawing.Size(125, 22);
             this.créerToolStripMenuItem5.Text = "Créer";
             this.créerToolStripMenuItem5.Click += new System.EventHandler(this.créerToolStripMenuItem5_Click);
             // 

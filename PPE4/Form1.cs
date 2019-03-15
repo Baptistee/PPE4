@@ -27,5 +27,12 @@ namespace PPE4
             frmMessage formMessage = new frmMessage();
             formMessage.ShowDialog();
         }
+
+        private void créerToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmAgence formAgence = new frmAgence();
+            formAgence.ShowDialog();
+        }
+
     }
 }
