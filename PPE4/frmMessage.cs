@@ -17,9 +17,30 @@ namespace PPE4
             InitializeComponent();
         }
 
+
+        internal LienBDD connexion;
+
+        private void frmMessage_Load(object sender, EventArgs e)
+        {
+            connexion = new LienBDD();
+        }
+
+        private DataTable dt = new DataTable();
+
         private void btn_Creer_Valider_Click(object sender, EventArgs e)
         {
+            connexion = new LienBDD();
+            string contenue = txbMessage.Text;
 
+            if (connexion.AjouterMessage(contenue))
+            {
+                lblVerification.Text = "Message ajouté à la BDD";
+            }
+            else
+            {
+                lblVerification.Text = "Message non ajouté";
+            }
         }
+
     }
 }

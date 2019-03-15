@@ -36,6 +36,7 @@
             this.btn_Creer_Annuler = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lbl_Creer_Titre = new System.Windows.Forms.Label();
+            this.lblVerification = new System.Windows.Forms.Label();
             this.tbcMessage.SuspendLayout();
             this.tbpConsulter.SuspendLayout();
             this.tbpCreer.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // tbpCreer
             // 
+            this.tbpCreer.Controls.Add(this.lblVerification);
             this.tbpCreer.Controls.Add(this.lbl_Creer_Titre);
             this.tbpCreer.Controls.Add(this.btn_Creer_Annuler);
             this.tbpCreer.Controls.Add(this.txbMessage);
@@ -121,6 +123,15 @@
             this.lbl_Creer_Titre.TabIndex = 3;
             this.lbl_Creer_Titre.Text = "Création d\'un message";
             // 
+            // lblVerification
+            // 
+            this.lblVerification.AutoSize = true;
+            this.lblVerification.Location = new System.Drawing.Point(419, 223);
+            this.lblVerification.Name = "lblVerification";
+            this.lblVerification.Size = new System.Drawing.Size(90, 13);
+            this.lblVerification.TabIndex = 4;
+            this.lblVerification.Text = "Valider pour créer";
+            // 
             // frmMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +140,7 @@
             this.Controls.Add(this.tbcMessage);
             this.Name = "frmMessage";
             this.Text = "frmMessage";
+            this.Load += new System.EventHandler(this.frmMessage_Load);
             this.tbcMessage.ResumeLayout(false);
             this.tbpConsulter.ResumeLayout(false);
             this.tbpCreer.ResumeLayout(false);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Button btn_Creer_Valider;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lbl_Creer_Titre;
+        private System.Windows.Forms.Label lblVerification;
     }
 }
