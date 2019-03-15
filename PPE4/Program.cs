@@ -17,6 +17,7 @@ namespace PPE4
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            LienBDD connexion = new LienBDD();
         }
     }
 }

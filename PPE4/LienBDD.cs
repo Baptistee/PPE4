@@ -44,11 +44,10 @@ namespace PPE4
 
 
         // Baptiste
-        public bool AjouterMessage(int p_id, string p_contenue)
+        public bool AjouterMessage(string p_contenue)
         {
-            string req = "insert into typemessage(idtypemessage, contenue) values (@id, @contenue)";
+            string req = "insert into typemessage(contenue) values (@contenue)";
             this.cde = new SqlCommand(req, cn);
-            this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
             this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
 
             try
