@@ -1,28 +1,15 @@
 /*
  ----------------------------------------------------------------------------
-             GÃ©nÃ©ration d'une base de donnÃ©es pour
+             Génération d'une base de données pour
                         SQL Server 7.x
                        (8/3/2019 16:46:13)
  ----------------------------------------------------------------------------
-     Nom de la base : gsb mlr
+     Nom de la base : GSB
      Projet : Espace de travail
      Auteur : LMC
-     Date de derniÃ¨re modification : 8/3/2019 16:45:53
+     Date de dernière modification : 8/3/2019 16:45:53
  ----------------------------------------------------------------------------
 */
-
-drop database gsb mlr
-go
-
-/* -----------------------------------------------------------------------------
-      OUVERTURE DE LA BASE gsb mlr
------------------------------------------------------------------------------ */
-
-create database gsb mlr
-go
-
-use gsb mlr
-go
 
 
 
