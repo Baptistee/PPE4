@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,8 +57,12 @@
     <Compile Include="FrmCampagne.Designer.cs">
       <DependentUpon>FrmCampagne.cs</DependentUpon>
     </Compile>
+    <Compile Include="LienBDD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCampagne.resx">
       <DependentUpon>FrmCampagne.cs</DependentUpon>
     </EmbeddedResource>
