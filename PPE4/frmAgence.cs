@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace PPE4
 {
-    public partial class Agence : Form
+    public partial class Agenzdzdce : Form
     {
-        public Agence()
+        LienBDD lien = new LienBDD();
+
+        public Agenzdzdce()
         {
             InitializeComponent();
         }
@@ -20,6 +22,26 @@ namespace PPE4
         private void créeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabPageCreerAgence_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCreeAgenceValider_Click(object sender, EventArgs e)
+        {
+            lien.createOneAgence(txtboxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text);
+        }
+
+        private void btnCreeAgenceAnnuler_Click(object sender, EventArgs e)
+        {
+            txtboxSpecialite.Text = string.Empty;
+            txtBoxNom.Text= string.Empty;
+            txtBoxSite.Text= string.Empty;
+            txtBoxMail.Text= string.Empty;
+            txtBoxTel.Text= string.Empty;
+            txtBoxAdresse.Text = string.Empty;
         }
     }
 }

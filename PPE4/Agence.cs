@@ -27,8 +27,6 @@ namespace PPE4
             this.adresse = padresse;
         }
 
-        //A faire: toString()
-
         public int getID()
         {
             return this.IDagence;
@@ -95,7 +93,7 @@ namespace PPE4
 
         public string getAllInfo()
         {
-            return "ID: " + this.IDagence + "\NSpecialité: " + this.specialite + "\NNom: " + this.nom + "\NSite: " + this.Site + "\NMail: " + this.mail + "\NTéléphone: " + this.tel + "\NAdresse: " + this.adresse;
+            return "ID: " + this.IDagence + "\nSpecialité: " + this.specialite + "\nNom: " + this.nom + "\nSite: " + this.site + "\nMail: " + this.mail + "\nTéléphone: " + this.tel + "\nAdresse: " + this.adresse;
         }
     }
 }
