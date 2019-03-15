@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agence.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,7 +57,6 @@
     <Compile Include="frmAgence.Designer.cs">
       <DependentUpon>frmAgence.cs</DependentUpon>
     </Compile>
-    <Compile Include="LienBDD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAgence.resx">
