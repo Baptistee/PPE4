@@ -38,15 +38,15 @@
             this.dateFin = new System.Windows.Forms.DateTimePicker();
             this.tabControlEvenement = new System.Windows.Forms.TabControl();
             this.Consulter = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCreerEvenement = new System.Windows.Forms.Button();
+            this.btnAnnulerEvenement = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.gridViewConsulter = new System.Windows.Forms.DataGridView();
+            this.dgvEvenement = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControlEvenement.SuspendLayout();
             this.Consulter.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewConsulter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEvenement)).BeginInit();
             this.SuspendLayout();
             // 
             // ville
@@ -129,8 +129,8 @@
             // 
             // Consulter
             // 
-            this.Consulter.Controls.Add(this.button2);
-            this.Consulter.Controls.Add(this.button1);
+            this.Consulter.Controls.Add(this.btnCreerEvenement);
+            this.Consulter.Controls.Add(this.btnAnnulerEvenement);
             this.Consulter.Controls.Add(this.dateDebut);
             this.Consulter.Controls.Add(this.theme);
             this.Consulter.Controls.Add(this.label4);
@@ -147,31 +147,31 @@
             this.Consulter.Text = "Créer";
             this.Consulter.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnCreerEvenement
             // 
-            this.button2.BackColor = System.Drawing.Color.YellowGreen;
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(215, 235);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 36);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Valider";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnCreerEvenement.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnCreerEvenement.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCreerEvenement.Location = new System.Drawing.Point(215, 235);
+            this.btnCreerEvenement.Name = "btnCreerEvenement";
+            this.btnCreerEvenement.Size = new System.Drawing.Size(122, 36);
+            this.btnCreerEvenement.TabIndex = 11;
+            this.btnCreerEvenement.Text = "Valider";
+            this.btnCreerEvenement.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnAnnulerEvenement
             // 
-            this.button1.BackColor = System.Drawing.Color.Firebrick;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(343, 235);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 36);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Annuler";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAnnulerEvenement.BackColor = System.Drawing.Color.Firebrick;
+            this.btnAnnulerEvenement.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAnnulerEvenement.Location = new System.Drawing.Point(343, 235);
+            this.btnAnnulerEvenement.Name = "btnAnnulerEvenement";
+            this.btnAnnulerEvenement.Size = new System.Drawing.Size(122, 36);
+            this.btnAnnulerEvenement.TabIndex = 10;
+            this.btnAnnulerEvenement.Text = "Annuler";
+            this.btnAnnulerEvenement.UseVisualStyleBackColor = false;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.gridViewConsulter);
+            this.tabPage2.Controls.Add(this.dgvEvenement);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -180,13 +180,13 @@
             this.tabPage2.Text = "Consulter";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // gridViewConsulter
+            // dgvEvenement
             // 
-            this.gridViewConsulter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridViewConsulter.Location = new System.Drawing.Point(15, 24);
-            this.gridViewConsulter.Name = "gridViewConsulter";
-            this.gridViewConsulter.Size = new System.Drawing.Size(479, 232);
-            this.gridViewConsulter.TabIndex = 0;
+            this.dgvEvenement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEvenement.Location = new System.Drawing.Point(15, 24);
+            this.dgvEvenement.Name = "dgvEvenement";
+            this.dgvEvenement.Size = new System.Drawing.Size(479, 232);
+            this.dgvEvenement.TabIndex = 0;
             // 
             // frmEvenement
             // 
@@ -200,7 +200,7 @@
             this.Consulter.ResumeLayout(false);
             this.Consulter.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewConsulter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEvenement)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,9 +218,9 @@
         private System.Windows.Forms.TabControl tabControlEvenement;
         private System.Windows.Forms.TabPage Consulter;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView gridViewConsulter;
+        private System.Windows.Forms.DataGridView dgvEvenement;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCreerEvenement;
+        private System.Windows.Forms.Button btnAnnulerEvenement;
     }
 }
