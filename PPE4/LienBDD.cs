@@ -42,6 +42,21 @@ namespace PPE4
             this.cn.Close();
         }
 
+        public DataTable getAllAgences()
+        {
+            string req = "SELECT * FROM Agence";
+            this.cde = new SqlCommand(req, cn);
+            da = new SqlDataAdapter();
+            da.SelectCommand = this.cde;
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public void createOneAgence(string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
+        {
+            string req = "INSERT INTO Agence(specialite, nom, site, mail, tel, adresse) VALUES ()";
+            this.cde = new SqlCommand(req, cn);
         public int NextID(string p_table)
         {
             string req = "SELECT MAX(idtypemessage)+1 FROM " + p_table;

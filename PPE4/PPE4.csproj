@@ -51,11 +51,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMessage.cs">
+    <Compile Include="frmAgence.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMessage.Designer.cs">
-      <DependentUpon>frmMessage.cs</DependentUpon>
+    <Compile Include="frmAgence.Designer.cs">
+      <DependentUpon>frmAgence.cs</DependentUpon>
     </Compile>
     <Compile Include="LienBDD.cs" />
     <Compile Include="frmEvenement.cs">
@@ -73,6 +73,10 @@
       <DependentUpon>frmMessage.cs</DependentUpon>
     <EmbeddedResource Include="frmEvenement.resx">
       <DependentUpon>frmEvenement.cs</DependentUpon>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAgence.resx">
+      <DependentUpon>frmAgence.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
