@@ -41,5 +41,25 @@ namespace PPE4
         {
             this.cn.Close();
         }
+
+
+        // Baptiste
+        public bool AjouterMessage(int p_id, string p_contenue)
+        {
+            string req = "insert into typemessage(idtypemessage, contenue) values (@id, @contenue)";
+            this.cde = new SqlCommand(req, cn);
+            this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+            this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
+
+            try
+            {
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
