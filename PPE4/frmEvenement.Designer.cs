@@ -41,12 +41,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridViewConsulter = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tabControlEvenement.SuspendLayout();
             this.Consulter.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewConsulter)).BeginInit();
             this.SuspendLayout();
             // 
             // ville
@@ -171,7 +171,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.gridViewConsulter);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -180,13 +180,13 @@
             this.tabPage2.Text = "Consulter";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // gridViewConsulter
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 26);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(479, 232);
-            this.dataGridView1.TabIndex = 0;
+            this.gridViewConsulter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewConsulter.Location = new System.Drawing.Point(15, 24);
+            this.gridViewConsulter.Name = "gridViewConsulter";
+            this.gridViewConsulter.Size = new System.Drawing.Size(479, 232);
+            this.gridViewConsulter.TabIndex = 0;
             // 
             // frmEvenement
             // 
@@ -200,7 +200,7 @@
             this.Consulter.ResumeLayout(false);
             this.Consulter.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewConsulter)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,7 +218,7 @@
         private System.Windows.Forms.TabControl tabControlEvenement;
         private System.Windows.Forms.TabPage Consulter;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridViewConsulter;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
