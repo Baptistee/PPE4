@@ -32,7 +32,7 @@ namespace PPE4
             }
             catch (SqlException)
             {
-                throw new Exception("Erreur à laconnexion");
+                throw new Exception("Erreur à la connexion");
             }
         }
 
@@ -42,11 +42,19 @@ namespace PPE4
             this.cn.Close();
         }
 
-        public int NextID(string p_table)
-        {
-            string req = "SELECT MAX(idtypemessage)+1 FROM " + p_table;
+        public int NextID(string p_table, string p_id)
+       {
+            int nb;
+            string req = "SELECT MAX(" + p_id + ")+1 FROM " + p_table;
             this.cde = new SqlCommand(req, cn);
-            int nb = (int) this.cde.ExecuteScalar();
+            if(this.cde.ExecuteScalar().ToString() == "")
+            {
+                nb = 1;
+            }
+            else
+            {
+                nb = (int)this.cde.ExecuteScalar();
+            }
             return nb;
         }
 
@@ -56,7 +64,7 @@ namespace PPE4
         {
             try
             {
-                int nb = NextID("typemessage");
+                int nb = NextID("typemessage", "idtypemessage");
                 string req = "insert into typemessage(idtypemessage, contenue) values (@id, @contenue)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
@@ -68,6 +76,27 @@ namespace PPE4
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+
+        public DataTable ConsulterMessage()
+        {
+            try
+            {
+                String req = "SELECT contenue FROM typemessage";
+                dt = new DataTable();
+                this.cde = new SqlCommand(req, cn);
+                da = new SqlDataAdapter();
+                da.SelectCommand = this.cde;
+                dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+
+            catch (Exception)
+            {
+                return null;
             }
         }
     }
