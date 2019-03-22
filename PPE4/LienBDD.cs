@@ -42,8 +42,11 @@ namespace PPE4
             this.cn.Close();
         }
 
+        //Les Agences
         public DataTable getAllAgences()
         {
+            try
+            {
             string req = "SELECT * FROM Agence";
             this.cde = new SqlCommand(req, cn);
             da = new SqlDataAdapter();
@@ -51,27 +54,51 @@ namespace PPE4
             dt = new DataTable();
             da.Fill(dt);
             return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public void createOneAgence(string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
+        public bool createOneAgence(string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
         {
-            string req = "INSERT INTO Agence(specialite, nom, site, mail, tel, adresse) VALUES ()";
-            this.cde = new SqlCommand(req, cn);
-        public int NextID(string p_table)
+            try
+            {
+                int id = NextID("Agence","IDAGENCE");
+                string req = "INSERT INTO Agence(idagence, specialite, nom, site, mail, tel, adresse) VALUES (@id, @Spe, @Nom, @Site, @Mail, @Tel, @Adresse)";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                this.cde.Parameters.Add("@Spe", SqlDbType.VarChar).Value = pSpe;
+                this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.Parameters.Add("@Site", SqlDbType.VarChar).Value = pSite;
+                this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
+                this.cde.Parameters.Add("@Tel", SqlDbType.VarChar).Value = pTel;
+                this.cde.Parameters.Add("@Adresse", SqlDbType.VarChar).Value = pAdresse;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
+
+        public int NextID(string p_table, string pid)
         {
-            string req = "SELECT MAX(idtypemessage)+1 FROM " + p_table;
+            string req = "SELECT MAX(" + pid + ")+1 FROM " + p_table;
             this.cde = new SqlCommand(req, cn);
             int nb = (int) this.cde.ExecuteScalar();
             return nb;
         }
-
 
         // Baptiste
         public bool AjouterMessage(string p_contenue)
         {
             try
             {
-                int nb = NextID("typemessage");
+                int nb = NextID("typemessage","idtypemessage");
                 string req = "insert into typemessage(idtypemessage, contenue) values (@id, @contenue)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;

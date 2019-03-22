@@ -1,6 +1,6 @@
 ﻿namespace PPE4
 {
-    partial class Agenzdzdce
+    partial class frmAgence
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,7 @@
             this.tabPageConsulterAgence = new System.Windows.Forms.TabPage();
             this.dgvAgence = new System.Windows.Forms.DataGridView();
             this.tabPageCreerAgence = new System.Windows.Forms.TabPage();
+            this.lblValid = new System.Windows.Forms.Label();
             this.btnCreeAgenceAnnuler = new System.Windows.Forms.Button();
             this.btnCreeAgenceValider = new System.Windows.Forms.Button();
             this.txtBoxAdresse = new System.Windows.Forms.TextBox();
@@ -54,12 +55,15 @@
             // 
             // tabControlAgence
             // 
+            this.tabControlAgence.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlAgence.Controls.Add(this.tabPageConsulterAgence);
             this.tabControlAgence.Controls.Add(this.tabPageCreerAgence);
-            this.tabControlAgence.Location = new System.Drawing.Point(12, 12);
+            this.tabControlAgence.Location = new System.Drawing.Point(1, 3);
             this.tabControlAgence.Name = "tabControlAgence";
             this.tabControlAgence.SelectedIndex = 0;
-            this.tabControlAgence.Size = new System.Drawing.Size(761, 417);
+            this.tabControlAgence.Size = new System.Drawing.Size(816, 458);
             this.tabControlAgence.TabIndex = 0;
             // 
             // tabPageConsulterAgence
@@ -68,21 +72,26 @@
             this.tabPageConsulterAgence.Location = new System.Drawing.Point(4, 22);
             this.tabPageConsulterAgence.Name = "tabPageConsulterAgence";
             this.tabPageConsulterAgence.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConsulterAgence.Size = new System.Drawing.Size(753, 391);
+            this.tabPageConsulterAgence.Size = new System.Drawing.Size(808, 432);
             this.tabPageConsulterAgence.TabIndex = 0;
             this.tabPageConsulterAgence.Text = "Consulter";
             this.tabPageConsulterAgence.UseVisualStyleBackColor = true;
+            this.tabPageConsulterAgence.Enter += new System.EventHandler(this.tabPageConsulterAgence_Enter);
             // 
             // dgvAgence
             // 
+            this.dgvAgence.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAgence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgence.Location = new System.Drawing.Point(3, 3);
             this.dgvAgence.Name = "dgvAgence";
-            this.dgvAgence.Size = new System.Drawing.Size(750, 388);
+            this.dgvAgence.Size = new System.Drawing.Size(805, 433);
             this.dgvAgence.TabIndex = 0;
             // 
             // tabPageCreerAgence
             // 
+            this.tabPageCreerAgence.Controls.Add(this.lblValid);
             this.tabPageCreerAgence.Controls.Add(this.btnCreeAgenceAnnuler);
             this.tabPageCreerAgence.Controls.Add(this.btnCreeAgenceValider);
             this.tabPageCreerAgence.Controls.Add(this.txtBoxAdresse);
@@ -105,6 +114,14 @@
             this.tabPageCreerAgence.Text = "Créer";
             this.tabPageCreerAgence.UseVisualStyleBackColor = true;
             this.tabPageCreerAgence.Click += new System.EventHandler(this.tabPageCreerAgence_Click);
+            // 
+            // lblValid
+            // 
+            this.lblValid.AutoSize = true;
+            this.lblValid.Location = new System.Drawing.Point(118, 331);
+            this.lblValid.Name = "lblValid";
+            this.lblValid.Size = new System.Drawing.Size(0, 13);
+            this.lblValid.TabIndex = 14;
             // 
             // btnCreeAgenceAnnuler
             // 
@@ -226,13 +243,13 @@
             this.lblSpe.TabIndex = 0;
             this.lblSpe.Text = "Spécialité:";
             // 
-            // Agenzdzdce
+            // frmAgence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 441);
+            this.ClientSize = new System.Drawing.Size(817, 462);
             this.Controls.Add(this.tabControlAgence);
-            this.Name = "Agenzdzdce";
+            this.Name = "frmAgence";
             this.Text = "Agence";
             this.tabControlAgence.ResumeLayout(false);
             this.tabPageConsulterAgence.ResumeLayout(false);
@@ -263,6 +280,7 @@
         private System.Windows.Forms.Label lblSpe;
         private System.Windows.Forms.Button btnCreeAgenceAnnuler;
         private System.Windows.Forms.Button btnCreeAgenceValider;
+        private System.Windows.Forms.Label lblValid;
 
     }
 }
