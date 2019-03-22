@@ -43,6 +43,8 @@ namespace PPE4
         }
 
         //Clement
+
+        //récupère le derniere de la table voulu et rajoute 1
         public int NextID(string p_table , string p_id)
         {
             string req = "SELECT MAX(" + p_id + ")+1 from " + p_table;
@@ -53,11 +55,15 @@ namespace PPE4
 
         public bool AjouterCampagne(string p_nom, string p_objectif, string p_publique, string p_dateDebut, string p_dateFin, string p_responsable, string p_agence1, string p_agence2)
         {
+            //récuperation de l'id
             int nb = NextID("CAMPAGNE","IDCAMPAGNE" );
             
+            //requete sql
             string req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,IDAGENCE,IDAGENCE_ORGANISATEUR_ART,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe, @Agence1 , @Agence2 , @nom, @objectif, @publique , @dateDebut, @dateFin)";
 
+
             this.cde = new SqlCommand(req, cn);
+            //association des variables a leur valeur
             this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb ;
             this.cde.Parameters.Add("@Employe", SqlDbType.Int).Value = int.Parse(p_responsable);
             this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
@@ -70,6 +76,7 @@ namespace PPE4
 
             try
             {
+                //execution de la requete
                 this.cde.ExecuteNonQuery();
                 return true;
             }
@@ -81,7 +88,7 @@ namespace PPE4
 
         public DataTable GetCampagne()
         {
-            string req = "Select INTITULE, OBJECTIF, PUBLIQUE, DATEDEBUT, DATEFIN from Campagne";
+            string req = "Select CAMP.INTITULE , CAMP.OBJECTIF , CAMP.PUBLIQUE , AG1.NOM Agence1 , AG2.NOM Agence2 , CAMP.DATEDEBUT , CAMP.DATEFIN , EMP.NOM , EMP.PRENOM  FROM CAMPAGNE CAMP  inner join AGENCE AG1 on AG1.IDAGENCE = CAMP.IDAGENCE    inner join AGENCE AG2 on AG2.IDAGENCE = CAMP.IDAGENCE_ORGANISATEUR_ART	inner join EMPLOYE EMP on EMP.IDEMPLOYE = CAMP.IDEMPLOYE";
             this.cde = new SqlCommand(req, cn);
             da = new SqlDataAdapter();
             da.SelectCommand = this.cde;

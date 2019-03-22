@@ -20,14 +20,17 @@ namespace PPE4
         internal LienBDD connexion;
         private DataTable dt;
 
+        //initialisation du lien avec la bdd
         private void FrmCampagne_Load(object sender, EventArgs e)
         {
             connexion = new LienBDD() ;
         }
 
+        //Ajout de campagne
         private void fCamp_TpSet_BtValider_Click(object sender, EventArgs e)
         {
-            connexion = new LienBDD() ;        
+            connexion = new LienBDD() ; 
+            //recuperation du formulaire
             string nom = fCamp_TpSet_tbNom.Text;
             string objectif = fCamp_TpSet_tbObjectif.Text;
             string publique = fCamp_TpSet_tbPublique.Text;
