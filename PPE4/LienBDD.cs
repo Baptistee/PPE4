@@ -43,9 +43,9 @@ namespace PPE4
         }
 
         //Clement
-        public int NextID()
+        public int NextID(string p_table , string p_id)
         {
-            string req = "SELECT MAX(IDcampagne)+1 from CAMPAGNE";
+            string req = "SELECT MAX(" + p_id + ")+1 from " + p_table;
             this.cde = new SqlCommand(req, cn);
             int nb = (int)this.cde.ExecuteScalar();
             return nb;
@@ -53,7 +53,7 @@ namespace PPE4
 
         public bool AjouterCampagne(string p_nom, string p_objectif, string p_publique, string p_dateDebut, string p_dateFin, string p_responsable, string p_agence1, string p_agence2)
         {
-            int nb = NextID();
+            int nb = NextID("CAMPAGNE","IDCAMPAGNE" );
             
             string req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,IDAGENCE,IDAGENCE_ORGANISATEUR_ART,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe, @Agence1 , @Agence2 , @nom, @objectif, @publique , @dateDebut, @dateFin)";
 
@@ -77,6 +77,18 @@ namespace PPE4
             {
                 return false;
             }
+        }
+
+        public DataTable GetCampagne()
+        {
+            string req = "Select INTITULE, OBJECTIF, PUBLIQUE, DATEDEBUT, DATEFIN from Campagne";
+            this.cde = new SqlCommand(req, cn);
+            da = new SqlDataAdapter();
+            da.SelectCommand = this.cde;
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+
         }
     }
 }

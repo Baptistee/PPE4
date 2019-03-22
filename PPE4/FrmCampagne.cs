@@ -18,6 +18,7 @@ namespace PPE4
         }
 
         internal LienBDD connexion;
+        private DataTable dt;
 
         private void FrmCampagne_Load(object sender, EventArgs e)
         {
@@ -26,7 +27,6 @@ namespace PPE4
 
         private void fCamp_TpSet_BtValider_Click(object sender, EventArgs e)
         {
-            fCamp_TpSet_lblReponse.Text = "Réussi";
             connexion = new LienBDD() ;        
             string nom = fCamp_TpSet_tbNom.Text;
             string objectif = fCamp_TpSet_tbObjectif.Text;
@@ -49,6 +49,34 @@ namespace PPE4
 
         }
 
+        private void fCamp_TpGet_Enter(object sender, EventArgs e)
+        {     
+            try
+            {
+                dt = connexion.GetCampagne();
+                this.fCamp_TpGet_DgCampagne.DataSource = dt;
+                this.fCamp_TpGet_DgCampagne.DataMember = dt.TableName;
+                this.fCamp_TpGet_DgCampagne.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void fCamp_TpSet_BtAnnuler_Click(object sender, EventArgs e)
+        {
+            fCamp_TpSet_tbNom.ResetText();
+            fCamp_TpSet_tbObjectif.ResetText();
+            fCamp_TpSet_tbPublique.ResetText();
+            fCamp_TpSet_dtDateDebut.ResetText();
+            fCamp_TpSet_dtDateFin.ResetText();
+            fCamp_TpSet_cbAgence1.ResetText();
+            fCamp_TpSet_cbAgence2.ResetText();
+            fCamp_TpSet_cbResponsable.ResetText();
+        }
+
+        
 
         
     }
