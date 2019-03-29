@@ -15,6 +15,7 @@ namespace PPE4
         // Members
         internal LienBDD connexion;
         private DataTable dt = new DataTable();
+        private int selectedRow = 0;
 
 
         public frmMessage()
@@ -51,10 +52,12 @@ namespace PPE4
             refreshTable();
         }
 
+
         private void btn_Creer_Annuler_Click(object sender, EventArgs e)
         {
             txbMessage.ResetText();
         }
+
 
         private void btn_Message_Creer_Click(object sender, EventArgs e)
         {
@@ -62,7 +65,7 @@ namespace PPE4
 
             if (connexion.AjouterMessage(contenue))
             {
-                lblVerification.Text = "Message ajouté à la BDD";
+                lblVerification.Text = "Message ajouté avec succés!";
                 refreshTable();
                 txbMessage.ResetText();
             }
@@ -72,14 +75,14 @@ namespace PPE4
             }
         }
 
+
         private void btn_Message_Supprimer_Click(object sender, EventArgs e)
         {
-            int id = 0;
-
-            if (connexion.SupprimerMessage(id))
+            if (connexion.SupprimerMessage(selectedRow))
             {
-                lblVerification.Text = "Message supprimé de la BDD";
+                lblVerification.Text = "Message supprimé avec succés!";
                 refreshTable();
+                txbMessage.ResetText();
             }
             else
             {
@@ -87,9 +90,26 @@ namespace PPE4
             }
         }
 
+
         private void dgMessageConsulter_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txbMessage.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString();
+            selectedRow = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString());
+            txbMessage.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[1].Value.ToString();
+        }
+
+
+        private void btn_Message_Modifier_Click(object sender, EventArgs e)
+        {
+            if (connexion.ModifierMessage(selectedRow, txbMessage.Text))
+            {
+                lblVerification.Text = "Message modifié avec succés!";
+                refreshTable();
+                txbMessage.ResetText();
+            }
+            else
+            {
+                lblVerification.Text = "Échec de la modification du message";
+            }
         }
 
     }

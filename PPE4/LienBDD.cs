@@ -84,7 +84,7 @@ namespace PPE4
         {
             try
             {
-                String req = "SELECT contenue FROM typemessage";
+                String req = "SELECT idtypemessage, contenue FROM typemessage";
                 dt = new DataTable();
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
@@ -108,6 +108,25 @@ namespace PPE4
                 string req = "DELETE typemessage WHERE idtypemessage = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        public bool ModifierMessage(int p_id, string p_contenue)
+        {
+            try
+            {
+                string req = "UPDATE typemessage SET contenue = @contenue WHERE idtypemessage = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
