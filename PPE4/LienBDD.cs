@@ -59,11 +59,19 @@ namespace PPE4
             this.cde = new SqlCommand(req, cn);
         }
 
-        public int NextID(string p_table)
+        public int NextID(string p_table, string p_id)
         {
-            string req = "SELECT MAX(idtypemessage)+1 FROM " + p_table;
+            int nb;
+            string req = "SELECT MAX(" + p_id + ")+1 FROM " + p_table;
             this.cde = new SqlCommand(req, cn);
-            int nb = (int) this.cde.ExecuteScalar();
+            if (this.cde.ExecuteScalar().ToString() == "")
+            {
+                nb = 1;
+            }
+            else
+            {
+                nb = (int)this.cde.ExecuteScalar();
+            }
             return nb;
         }
 
@@ -73,7 +81,7 @@ namespace PPE4
         {
             try
             {
-                int nb = NextID("typemessage");
+                int nb = NextID("typemessage","1");
                 string req = "insert into typemessage(idtypemessage, contenue) values (@id, @contenue)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
@@ -90,29 +98,60 @@ namespace PPE4
 
         // Said
 
-            public bool creerEvenement(int idcampagne,DateTime dateDebut, DateTime dateFin, string ville, string theme)
+        public bool creerEvenement(int idcampagne,DateTime dateDebut, DateTime dateFin, string ville, string theme)
         {
             try
             {
-                int nb = NextID("evenement");
+                int nb = NextID("evenement", "idevenement");
                 string req = "insert into evenement(idevenement, idcampagne,datedebut,datefin,ville,theme) values (@idevenement, @idcampagne, @datedebut,@datefin, @ville, @theme)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@idevenement", SqlDbType.Int).Value = nb;
                 this.cde.Parameters.Add("@idcampagne", SqlDbType.Int).Value = idcampagne;
-                this.cde.Parameters.Add("@datedebut", SqlDbType.DateTime).Value = dateDebut;
-                this.cde.Parameters.Add("@datefin", SqlDbType.DateTime).Value = dateFin;
+                this.cde.Parameters.Add("@datedebut", SqlDbType.Date).Value = dateDebut;
+                this.cde.Parameters.Add("@datefin", SqlDbType.Date).Value = dateFin;
                 this.cde.Parameters.Add("@ville", SqlDbType.VarChar).Value = ville;
-                this.cde.Parameters.Add("@ville", SqlDbType.VarChar).Value = ville;
+                this.cde.Parameters.Add("@theme", SqlDbType.VarChar).Value = theme;
 
                 this.cde.ExecuteNonQuery();
                 return true;
               
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 return false;
             }
         }
+
+        public DataTable getAllEvenement()
+        {
+            string req = "SELECT * FROM evenement";
+            this.cde = new SqlCommand(req, cn);
+            da = new SqlDataAdapter();
+            da.SelectCommand = this.cde;
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public bool deleteEvenement(int id)
+        {
+            try
+            {
+                string req = "DELETE FROM evenement WHERE idevenement = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
     }
 }

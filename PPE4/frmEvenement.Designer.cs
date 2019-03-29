@@ -36,17 +36,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dateDebut = new System.Windows.Forms.DateTimePicker();
             this.dateFin = new System.Windows.Forms.DateTimePicker();
-            this.tabControlEvenement = new System.Windows.Forms.TabControl();
+            this.tabEvenementConsulter = new System.Windows.Forms.TabControl();
             this.Consulter = new System.Windows.Forms.TabPage();
+            this.lblRequete = new System.Windows.Forms.Label();
             this.btnValider = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSupprimer = new System.Windows.Forms.Button();
+            this.btnInserer = new System.Windows.Forms.Button();
+            this.btnModifier = new System.Windows.Forms.Button();
+            this.dgvEvenement = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.tabControlEvenement.SuspendLayout();
+            this.tabEvenementConsulter.SuspendLayout();
             this.Consulter.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEvenement)).BeginInit();
             this.SuspendLayout();
             // 
             // ville
@@ -117,18 +121,22 @@
             this.dateFin.Size = new System.Drawing.Size(200, 20);
             this.dateFin.TabIndex = 9;
             // 
-            // tabControlEvenement
+            // tabEvenementConsulter
             // 
-            this.tabControlEvenement.Controls.Add(this.Consulter);
-            this.tabControlEvenement.Controls.Add(this.tabPage2);
-            this.tabControlEvenement.Location = new System.Drawing.Point(12, 12);
-            this.tabControlEvenement.Name = "tabControlEvenement";
-            this.tabControlEvenement.SelectedIndex = 0;
-            this.tabControlEvenement.Size = new System.Drawing.Size(556, 303);
-            this.tabControlEvenement.TabIndex = 10;
+            this.tabEvenementConsulter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabEvenementConsulter.Controls.Add(this.Consulter);
+            this.tabEvenementConsulter.Controls.Add(this.tabPage2);
+            this.tabEvenementConsulter.Location = new System.Drawing.Point(3, 2);
+            this.tabEvenementConsulter.Name = "tabEvenementConsulter";
+            this.tabEvenementConsulter.SelectedIndex = 0;
+            this.tabEvenementConsulter.Size = new System.Drawing.Size(990, 524);
+            this.tabEvenementConsulter.TabIndex = 10;
             // 
             // Consulter
             // 
+            this.Consulter.Controls.Add(this.lblRequete);
             this.Consulter.Controls.Add(this.btnValider);
             this.Consulter.Controls.Add(this.btnAnnuler);
             this.Consulter.Controls.Add(this.dateDebut);
@@ -142,10 +150,18 @@
             this.Consulter.Location = new System.Drawing.Point(4, 22);
             this.Consulter.Name = "Consulter";
             this.Consulter.Padding = new System.Windows.Forms.Padding(3);
-            this.Consulter.Size = new System.Drawing.Size(548, 277);
+            this.Consulter.Size = new System.Drawing.Size(982, 498);
             this.Consulter.TabIndex = 0;
             this.Consulter.Text = "Créer";
             this.Consulter.UseVisualStyleBackColor = true;
+            // 
+            // lblRequete
+            // 
+            this.lblRequete.AutoSize = true;
+            this.lblRequete.Location = new System.Drawing.Point(16, 247);
+            this.lblRequete.Name = "lblRequete";
+            this.lblRequete.Size = new System.Drawing.Size(0, 13);
+            this.lblRequete.TabIndex = 12;
             // 
             // btnValider
             // 
@@ -172,36 +188,70 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.btnSupprimer);
+            this.tabPage2.Controls.Add(this.btnInserer);
+            this.tabPage2.Controls.Add(this.btnModifier);
+            this.tabPage2.Controls.Add(this.dgvEvenement);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(548, 277);
+            this.tabPage2.Size = new System.Drawing.Size(982, 498);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Consulter";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
-            // dataGridView1
+            // btnSupprimer
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 26);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(479, 232);
-            this.dataGridView1.TabIndex = 0;
+            this.btnSupprimer.Location = new System.Drawing.Point(822, 405);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(121, 36);
+            this.btnSupprimer.TabIndex = 3;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
+            // 
+            // btnInserer
+            // 
+            this.btnInserer.Location = new System.Drawing.Point(822, 330);
+            this.btnInserer.Name = "btnInserer";
+            this.btnInserer.Size = new System.Drawing.Size(121, 36);
+            this.btnInserer.TabIndex = 2;
+            this.btnInserer.Text = "Insérer";
+            this.btnInserer.UseVisualStyleBackColor = true;
+            // 
+            // btnModifier
+            // 
+            this.btnModifier.Location = new System.Drawing.Point(822, 257);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(121, 36);
+            this.btnModifier.TabIndex = 1;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.UseVisualStyleBackColor = true;
+            // 
+            // dgvEvenement
+            // 
+            this.dgvEvenement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEvenement.Location = new System.Drawing.Point(6, 208);
+            this.dgvEvenement.Name = "dgvEvenement";
+            this.dgvEvenement.Size = new System.Drawing.Size(777, 284);
+            this.dgvEvenement.TabIndex = 0;
+          
+            this.dgvEvenement.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEvenement_RowEnter);
             // 
             // frmEvenement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 356);
-            this.Controls.Add(this.tabControlEvenement);
+            this.ClientSize = new System.Drawing.Size(1005, 528);
+            this.Controls.Add(this.tabEvenementConsulter);
             this.Name = "frmEvenement";
             this.Text = "Evenement";
-            this.tabControlEvenement.ResumeLayout(false);
+            this.tabEvenementConsulter.ResumeLayout(false);
             this.Consulter.ResumeLayout(false);
             this.Consulter.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEvenement)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,12 +266,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateDebut;
         private System.Windows.Forms.DateTimePicker dateFin;
-        private System.Windows.Forms.TabControl tabControlEvenement;
+        private System.Windows.Forms.TabControl tabEvenementConsulter;
         private System.Windows.Forms.TabPage Consulter;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvEvenement;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Label lblRequete;
+        private System.Windows.Forms.Button btnModifier;
+        private System.Windows.Forms.Button btnSupprimer;
+        private System.Windows.Forms.Button btnInserer;
     }
 }

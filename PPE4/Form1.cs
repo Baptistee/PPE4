@@ -21,5 +21,17 @@ namespace PPE4
         {
 
         }
+
+        private void créerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmEvenement formEvenement = new frmEvenement();
+            formEvenement.ShowDialog();
+        }
+
+        private void consulterToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmEvenement formEvenement = new frmEvenement();
+            formEvenement.ShowDialog();
+        }
     }
 }
