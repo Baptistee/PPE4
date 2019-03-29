@@ -65,6 +65,7 @@
             this.fCamp_DgCampagne.Name = "fCamp_DgCampagne";
             this.fCamp_DgCampagne.Size = new System.Drawing.Size(1066, 335);
             this.fCamp_DgCampagne.TabIndex = 40;
+            this.fCamp_DgCampagne.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.fCamp_DgCampagne_RowHeaderMouseClick);
             // 
             // fCamp_GrpBox
             // 
@@ -97,12 +98,13 @@
             // 
             // fCamp_BtSupprimer
             // 
-            this.fCamp_BtSupprimer.Location = new System.Drawing.Point(444, 148);
+            this.fCamp_BtSupprimer.Location = new System.Drawing.Point(446, 148);
             this.fCamp_BtSupprimer.Name = "fCamp_BtSupprimer";
             this.fCamp_BtSupprimer.Size = new System.Drawing.Size(96, 34);
             this.fCamp_BtSupprimer.TabIndex = 64;
             this.fCamp_BtSupprimer.Text = "Supprimer";
             this.fCamp_BtSupprimer.UseVisualStyleBackColor = true;
+            this.fCamp_BtSupprimer.Click += new System.EventHandler(this.fCamp_BtSupprimer_Click);
             // 
             // fCamp_BtModifier
             // 
@@ -116,7 +118,7 @@
             // fCamp_TpSet_lblReponse
             // 
             this.fCamp_TpSet_lblReponse.AutoSize = true;
-            this.fCamp_TpSet_lblReponse.Location = new System.Drawing.Point(621, 148);
+            this.fCamp_TpSet_lblReponse.Location = new System.Drawing.Point(516, 84);
             this.fCamp_TpSet_lblReponse.Name = "fCamp_TpSet_lblReponse";
             this.fCamp_TpSet_lblReponse.Size = new System.Drawing.Size(0, 13);
             this.fCamp_TpSet_lblReponse.TabIndex = 62;

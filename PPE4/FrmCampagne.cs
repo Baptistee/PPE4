@@ -20,6 +20,7 @@ namespace PPE4
         internal LienBDD connexion;
         private DataTable dt;
         private DataTable dt2;
+        private int selectedRow = 0;
 
 
         //initialisation du lien avec la bdd
@@ -27,7 +28,7 @@ namespace PPE4
         {
             connexion = new LienBDD() ;
 
-            this.ActualiserTableaux();
+            this.ActualiserTableaux(this.connexion.GetCampagne());
 
             dt = this.connexion.GetAgence();
             dt2 = this.connexion.GetAgence();
@@ -41,17 +42,16 @@ namespace PPE4
             dt = this.connexion.GetResponsable();
             this.fCamp_cbResponsable.DataSource = dt;
             this.fCamp_cbResponsable.DisplayMember = "Responsable";
-            this.fCamp_cbResponsable.ValueMember = "IDAGENCE";
+            this.fCamp_cbResponsable.ValueMember = "IDEMPLOYE";
 
             
         }
 
         //methode normal
-        private void ActualiserTableaux()
+        private void ActualiserTableaux(DataTable dt)
         {
             try
             {
-                dt = connexion.GetCampagne();
                 this.fCamp_DgCampagne.DataSource = dt;
                 this.fCamp_DgCampagne.DataMember = dt.TableName;
                 this.fCamp_DgCampagne.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -110,9 +110,9 @@ namespace PPE4
             string publique = fCamp_tbPublique.Text;
             string datedebut = fCamp_dtDateDebut.Text;
             string datefin = fCamp_dtDateFin.Text;
-            string agence1 = fCamp_cbAgence1.Text;
-            string agence2 = fCamp_cbAgence2.Text;
-            string responsable = fCamp_cbResponsable.Text;
+            string agence1 = fCamp_cbAgence1.SelectedValue.ToString();
+            string agence2 = fCamp_cbAgence2.SelectedValue.ToString();
+            string responsable = fCamp_cbResponsable.SelectedValue.ToString();
 
             if (connexion.AjouterCampagne(nom, objectif, publique, datedebut, datefin, responsable, agence1, agence2))
             {
@@ -123,8 +123,29 @@ namespace PPE4
                 fCamp_TpSet_lblReponse.Text = "Echec !";
             }
 
-            this.ActualiserTableaux();
+            this.ActualiserTableaux(this.connexion.GetCampagne());
         }
+
+        private void fCamp_BtSupprimer_Click(object sender, EventArgs e)
+        {            
+            if (connexion.DeleteCampagne(selectedRow))
+            {
+                fCamp_TpSet_lblReponse.Text = "Message supprimé avec succés!";
+                this.ActualiserTableaux(this.connexion.GetCampagne());
+                this.ReinitialiserGroupBox(this.fCamp_GrpBox);
+            }
+            else
+            {
+                fCamp_TpSet_lblReponse.Text = "Échec de la suppréssion du message";    
+        }
+        }
+
+        private void fCamp_DgCampagne_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            selectedRow = Convert.ToInt32(fCamp_DgCampagne.Rows[e.RowIndex].Cells[0].Value.ToString());
+        }
+
+
 
 
 
