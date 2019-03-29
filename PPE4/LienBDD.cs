@@ -85,6 +85,22 @@ namespace PPE4
             
         }
 
+        public bool deleteAgence(int pid)
+        {
+            try
+            {
+                string req = "DELETE Agence WHERE IDAGENCE = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = pid;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public int NextID(string p_table, string pid)
         {
             string req = "SELECT MAX(" + pid + ")+1 FROM " + p_table;
