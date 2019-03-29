@@ -44,35 +44,42 @@ namespace PPE4
         private void frmMessage_Load(object sender, EventArgs e)
         {
             connexion = new LienBDD();
-        }
-
-
-        private void tbpConsulter_Enter(object sender, EventArgs e)
-        {
             refreshTable();
         }
 
 
         private void btn_Creer_Annuler_Click(object sender, EventArgs e)
         {
-            txbMessage.ResetText();
+            txbMessageAction.ResetText();
+            txbMessageCreer.ResetText();
         }
 
 
         private void btn_Message_Creer_Click(object sender, EventArgs e)
         {
-            string contenue = txbMessage.Text;
+            string contenue = txbMessageCreer.Text;
 
-            if (connexion.AjouterMessage(contenue))
+            if (contenue.Count() > 4)
             {
-                lblVerification.Text = "Message ajouté avec succés!";
-                refreshTable();
-                txbMessage.ResetText();
+
+                if (connexion.AjouterMessage(contenue))
+                {
+                    txbHelp.Text = "Message ajouté avec succés!";
+                    refreshTable();
+                    txbMessageCreer.ResetText();
+                }
+
+                else
+                {
+                    txbHelp.Text = "Message non ajouté";
+                }
             }
+
             else
             {
-                lblVerification.Text = "Message non ajouté";
+                txbHelp.Text = "Entrez un message";
             }
+            
         }
 
 
@@ -80,13 +87,13 @@ namespace PPE4
         {
             if (connexion.SupprimerMessage(selectedRow))
             {
-                lblVerification.Text = "Message supprimé avec succés!";
+                txbHelp.Text = "Message supprimé avec succés!";
                 refreshTable();
-                txbMessage.ResetText();
+                txbMessageAction.ResetText();
             }
             else
             {
-                lblVerification.Text = "Échec de la suppréssion du message";
+                txbHelp.Text = "Échec de la suppréssion du message";
             }
         }
 
@@ -94,21 +101,21 @@ namespace PPE4
         private void dgMessageConsulter_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             selectedRow = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txbMessage.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txbMessageAction.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
 
 
         private void btn_Message_Modifier_Click(object sender, EventArgs e)
         {
-            if (connexion.ModifierMessage(selectedRow, txbMessage.Text))
+            if (connexion.ModifierMessage(selectedRow, txbMessageAction.Text))
             {
-                lblVerification.Text = "Message modifié avec succés!";
+                txbHelp.Text = "Message modifié avec succés!";
                 refreshTable();
-                txbMessage.ResetText();
+                txbMessageAction.ResetText();
             }
             else
             {
-                lblVerification.Text = "Échec de la modification du message";
+                txbHelp.Text = "Échec de la modification du message";
             }
         }
 

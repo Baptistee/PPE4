@@ -22,16 +22,16 @@ namespace PPE4
 
         }
 
-        private void créerToolStripMenuItem5_Click(object sender, EventArgs e)
+        private void messageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMessage formMessage = new frmMessage();
             formMessage.ShowDialog();
         }
 
-        private void consulterToolStripMenuItem5_Click(object sender, EventArgs e)
+        private void vIPToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMessage formMessage = new frmMessage();
-            formMessage.ShowDialog();
+            frmVIP formVIP = new frmVIP();
+            formVIP.ShowDialog();
         }
     }
 }
