@@ -19,47 +19,42 @@ namespace PPE4
 
         internal LienBDD connexion;
         private DataTable dt;
+        private DataTable dt2;
+
 
         //initialisation du lien avec la bdd
         private void FrmCampagne_Load(object sender, EventArgs e)
         {
             connexion = new LienBDD() ;
+
+            this.ActualiserTableaux();
+
+            dt = this.connexion.GetAgence();
+            dt2 = this.connexion.GetAgence();
+            this.fCamp_cbAgence1.DataSource = dt;
+            this.fCamp_cbAgence2.DataSource = dt2;
+            this.fCamp_cbAgence1.DisplayMember = "NOM";
+            this.fCamp_cbAgence2.DisplayMember = "NOM";
+            this.fCamp_cbAgence1.ValueMember = "IDAGENCE";
+            this.fCamp_cbAgence2.ValueMember = "IDAGENCE";
+
+            dt = this.connexion.GetResponsable();
+            this.fCamp_cbResponsable.DataSource = dt;
+            this.fCamp_cbResponsable.DisplayMember = "Responsable";
+            this.fCamp_cbResponsable.ValueMember = "IDAGENCE";
+
+            
         }
 
-        //Ajout de campagne
-        private void fCamp_TpSet_BtValider_Click(object sender, EventArgs e)
+        //methode normal
+        private void ActualiserTableaux()
         {
-            connexion = new LienBDD() ; 
-            //recuperation du formulaire
-            string nom = fCamp_TpSet_tbNom.Text;
-            string objectif = fCamp_TpSet_tbObjectif.Text;
-            string publique = fCamp_TpSet_tbPublique.Text;
-            string datedebut = fCamp_TpSet_dtDateDebut.Text;
-            string datefin = fCamp_TpSet_dtDateFin.Text;
-            string agence1 = fCamp_TpSet_cbAgence1.Text;
-            string agence2 = fCamp_TpSet_cbAgence2.Text;
-            string responsable = fCamp_TpSet_cbResponsable.Text;
- 
-            if(connexion.AjouterCampagne(nom, objectif, publique, datedebut,datefin,responsable,agence1, agence2))
-            {
-                fCamp_TpSet_lblReponse.Text = "Réussi";
-            }
-            else 
-            {
-                fCamp_TpSet_lblReponse.Text = "Echec !";
-            }
-
-
-        }
-
-        private void fCamp_TpGet_Enter(object sender, EventArgs e)
-        {     
             try
             {
                 dt = connexion.GetCampagne();
-                this.fCamp_TpGet_DgCampagne.DataSource = dt;
-                this.fCamp_TpGet_DgCampagne.DataMember = dt.TableName;
-                this.fCamp_TpGet_DgCampagne.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                this.fCamp_DgCampagne.DataSource = dt;
+                this.fCamp_DgCampagne.DataMember = dt.TableName;
+                this.fCamp_DgCampagne.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
             {
@@ -67,17 +62,73 @@ namespace PPE4
             }
         }
 
-        private void fCamp_TpSet_BtAnnuler_Click(object sender, EventArgs e)
+        private void ReinitialiserGroupBox(GroupBox grBox)
         {
-            fCamp_TpSet_tbNom.ResetText();
-            fCamp_TpSet_tbObjectif.ResetText();
-            fCamp_TpSet_tbPublique.ResetText();
-            fCamp_TpSet_dtDateDebut.ResetText();
-            fCamp_TpSet_dtDateFin.ResetText();
-            fCamp_TpSet_cbAgence1.ResetText();
-            fCamp_TpSet_cbAgence2.ResetText();
-            fCamp_TpSet_cbResponsable.ResetText();
+            foreach (Control ctrl in grBox.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+
+                    TextBox textBox = (TextBox)ctrl;
+
+                    textBox.ResetText();
+
+                }
+
+                if (ctrl is ComboBox)
+                {
+
+                    ComboBox comboBox = (ComboBox)ctrl;
+
+                    comboBox.ResetText();
+
+                }
+
+                if (ctrl is DateTimePicker)
+                {
+                    DateTimePicker dateTime = (DateTimePicker)ctrl;
+
+                    dateTime.ResetText();
+                }
+            }
         }
+
+        //methode bouton
+
+        //Ajout de campagne
+        private void fCamp_BtAnnuler_Click(object sender, EventArgs e)
+        {
+            this.ReinitialiserGroupBox(this.fCamp_GrpBox);
+        }
+
+        private void fCamp_BtValider_Click(object sender, EventArgs e)
+        {
+            connexion = new LienBDD();
+            //recuperation du formulaire
+            string nom = fCamp_tbNom.Text;
+            string objectif = fCamp_tbObjectif.Text;
+            string publique = fCamp_tbPublique.Text;
+            string datedebut = fCamp_dtDateDebut.Text;
+            string datefin = fCamp_dtDateFin.Text;
+            string agence1 = fCamp_cbAgence1.Text;
+            string agence2 = fCamp_cbAgence2.Text;
+            string responsable = fCamp_cbResponsable.Text;
+
+            if (connexion.AjouterCampagne(nom, objectif, publique, datedebut, datefin, responsable, agence1, agence2))
+            {
+                fCamp_TpSet_lblReponse.Text = "Réussi";
+            }
+            else
+            {
+                fCamp_TpSet_lblReponse.Text = "Echec !";
+            }
+
+            this.ActualiserTableaux();
+        }
+
+
+
+        
 
         
 
