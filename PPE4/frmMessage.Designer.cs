@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.tbcMessage = new System.Windows.Forms.TabControl();
             this.tbpConsulter = new System.Windows.Forms.TabPage();
             this.dgMessageConsulter = new System.Windows.Forms.DataGridView();
             this.txbMessage = new System.Windows.Forms.TextBox();
@@ -35,13 +36,21 @@
             this.btn_Message_Creer = new System.Windows.Forms.Button();
             this.btn_Creer_Annuler = new System.Windows.Forms.Button();
             this.lblVerification = new System.Windows.Forms.Label();
-            this.tbcMessage = new System.Windows.Forms.TabControl();
             this.btn_Message_Modifier = new System.Windows.Forms.Button();
             this.btn_Message_Supprimer = new System.Windows.Forms.Button();
+            this.tbcMessage.SuspendLayout();
             this.tbpConsulter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).BeginInit();
-            this.tbcMessage.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tbcMessage
+            // 
+            this.tbcMessage.Controls.Add(this.tbpConsulter);
+            this.tbcMessage.Location = new System.Drawing.Point(12, 2);
+            this.tbcMessage.Name = "tbcMessage";
+            this.tbcMessage.SelectedIndex = 0;
+            this.tbcMessage.Size = new System.Drawing.Size(911, 593);
+            this.tbcMessage.TabIndex = 0;
             // 
             // tbpConsulter
             // 
@@ -65,10 +74,14 @@
             // dgMessageConsulter
             // 
             this.dgMessageConsulter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMessageConsulter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dgMessageConsulter.Location = new System.Drawing.Point(6, 307);
+            this.dgMessageConsulter.MultiSelect = false;
             this.dgMessageConsulter.Name = "dgMessageConsulter";
+            this.dgMessageConsulter.ReadOnly = true;
             this.dgMessageConsulter.Size = new System.Drawing.Size(891, 254);
             this.dgMessageConsulter.TabIndex = 0;
+            this.dgMessageConsulter.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgMessageConsulter_RowHeaderMouseClick);
             // 
             // txbMessage
             // 
@@ -116,15 +129,6 @@
             this.lblVerification.TabIndex = 7;
             this.lblVerification.Text = "Valider pour créer";
             // 
-            // tbcMessage
-            // 
-            this.tbcMessage.Controls.Add(this.tbpConsulter);
-            this.tbcMessage.Location = new System.Drawing.Point(12, 2);
-            this.tbcMessage.Name = "tbcMessage";
-            this.tbcMessage.SelectedIndex = 0;
-            this.tbcMessage.Size = new System.Drawing.Size(911, 593);
-            this.tbcMessage.TabIndex = 0;
-            // 
             // btn_Message_Modifier
             // 
             this.btn_Message_Modifier.Location = new System.Drawing.Point(539, 116);
@@ -142,6 +146,7 @@
             this.btn_Message_Supprimer.TabIndex = 9;
             this.btn_Message_Supprimer.Text = "Supprimer";
             this.btn_Message_Supprimer.UseVisualStyleBackColor = true;
+            this.btn_Message_Supprimer.Click += new System.EventHandler(this.btn_Message_Supprimer_Click);
             // 
             // frmMessage
             // 
@@ -152,16 +157,17 @@
             this.Name = "frmMessage";
             this.Text = "frmMessage";
             this.Load += new System.EventHandler(this.frmMessage_Load);
+            this.tbcMessage.ResumeLayout(false);
             this.tbpConsulter.ResumeLayout(false);
             this.tbpConsulter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).EndInit();
-            this.tbcMessage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TabControl tbcMessage;
         private System.Windows.Forms.TabPage tbpConsulter;
         private System.Windows.Forms.Button btn_Message_Supprimer;
         private System.Windows.Forms.Button btn_Message_Modifier;
@@ -171,7 +177,8 @@
         private System.Windows.Forms.Label lbl_Creer_Titre;
         private System.Windows.Forms.TextBox txbMessage;
         private System.Windows.Forms.DataGridView dgMessageConsulter;
-        private System.Windows.Forms.TabControl tbcMessage;
+
+
 
     }
 }

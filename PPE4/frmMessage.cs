@@ -25,18 +25,11 @@ namespace PPE4
 
         // Methods
 
-        private void frmMessage_Load(object sender, EventArgs e)
-        {
-            connexion = new LienBDD();
-        }
-
-
-        private void tbpConsulter_Enter(object sender, EventArgs e)
+        private void refreshTable()
         {
             try
             {
-                // remplissage de la data grid view
-                dt = connexion.ConsulterMessage();  // on appelle la méthode ConsulterMessage de la classe LienBdd
+                dt = connexion.ConsulterMessage();
                 this.dgMessageConsulter.DataSource = dt;
                 this.dgMessageConsulter.DataMember = dt.TableName;
                 this.dgMessageConsulter.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -45,6 +38,17 @@ namespace PPE4
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void frmMessage_Load(object sender, EventArgs e)
+        {
+            connexion = new LienBDD();
+        }
+
+
+        private void tbpConsulter_Enter(object sender, EventArgs e)
+        {
+            refreshTable();
         }
 
         private void btn_Creer_Annuler_Click(object sender, EventArgs e)
@@ -59,11 +63,33 @@ namespace PPE4
             if (connexion.AjouterMessage(contenue))
             {
                 lblVerification.Text = "Message ajouté à la BDD";
+                refreshTable();
+                txbMessage.ResetText();
             }
             else
             {
                 lblVerification.Text = "Message non ajouté";
             }
+        }
+
+        private void btn_Message_Supprimer_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            if (connexion.SupprimerMessage(id))
+            {
+                lblVerification.Text = "Message supprimé de la BDD";
+                refreshTable();
+            }
+            else
+            {
+                lblVerification.Text = "Échec de la suppréssion du message";
+            }
+        }
+
+        private void dgMessageConsulter_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            txbMessage.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
 
     }

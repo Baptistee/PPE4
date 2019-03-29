@@ -43,7 +43,7 @@ namespace PPE4
         }
 
         public int NextID(string p_table, string p_id)
-       {
+        {
             int nb;
             string req = "SELECT MAX(" + p_id + ")+1 FROM " + p_table;
             this.cde = new SqlCommand(req, cn);
@@ -97,6 +97,24 @@ namespace PPE4
             catch (Exception)
             {
                 return null;
+            }
+        }
+
+
+        public bool SupprimerMessage(int p_id)
+        {
+            try
+            {
+                string req = "DELETE typemessage WHERE idtypemessage = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
