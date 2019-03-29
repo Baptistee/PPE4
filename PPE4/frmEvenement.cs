@@ -20,19 +20,7 @@ namespace PPE4
             InitializeComponent();
         }
 
-        private void btnValider_Click(object sender, EventArgs e)
-        {
-            if (lien.creerEvenement(1, dateDebut.Value, dateFin.Value, ville.Text, theme.Text))
-            {
-                lblRequete.Text ="Requete réussie";
-                lblRequete.ForeColor =  Color.Green;
-                ville.Text = "";
-                theme.Text = "";
-            }else{
-                   lblRequete.Text ="Probleme avec la requete";
-                   lblRequete.ForeColor = Color.Red;
-            }
-        }
+    
 
         private void reloadDataGridView()
         {
@@ -49,18 +37,31 @@ namespace PPE4
             }
         }
 
-        private void tabPage2_Enter(object sender, EventArgs e)
+
+       
+
+        private void btnValider_Click_1(object sender, EventArgs e)
         {
-            reloadDataGridView();
+            if (lien.creerEvenement(1, dateDebut.Value, dateFin.Value, ville.Text, theme.Text))
+            {
+                lblRequete.Text = "Requete réussie";
+                lblRequete.ForeColor = Color.Green;
+                ville.Text = "";
+                theme.Text = "";
+                reloadDataGridView();
+            }
+            else
+            {
+                lblRequete.Text = "Probleme avec la requete";
+                lblRequete.ForeColor = Color.Red;
+            }
         }
 
-     
-
-        private void btnSupprimer_Click(object sender, EventArgs e)
+        private void btnSupprimer_Click_1(object sender, EventArgs e)
         {
             if (lien.deleteEvenement(idevenement))
             {
-                reloadDataGridView();    
+                reloadDataGridView();
             }
             else
             {
@@ -69,14 +70,22 @@ namespace PPE4
            
         }
 
-        private void dgvEvenement_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void dgvEvenement_RowEnter_1(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
             DataGridViewRow selectedRow = dgvEvenement.Rows[index];
-           if(index>0)
-            idevenement = int.Parse(selectedRow.Cells[0].Value.ToString());
+            if (index >= 0  )
+                idevenement = int.Parse(selectedRow.Cells[0].Value.ToString());
            
         }
+
+        private void frmEvenement_Load(object sender, EventArgs e)
+        {
+            reloadDataGridView();
+        }
+ 
+
+       
  
 
       
