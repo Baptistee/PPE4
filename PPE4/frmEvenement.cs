@@ -12,10 +12,18 @@ namespace PPE4
 {
     public partial class frmEvenement : Form
     {
+        LienBDD bdd = new LienBDD();
         public frmEvenement()
         {
             InitializeComponent();
         }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+
+        }
+
+  
 
 
   

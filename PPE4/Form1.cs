@@ -21,11 +21,5 @@ namespace PPE4
         {
 
         }
-
-        private void créerToolStripMenuItem5_Click(object sender, EventArgs e)
-        {
-            frmMessage formMessage = new frmMessage();
-            formMessage.ShowDialog();
-        }
     }
 }

@@ -57,6 +57,8 @@ namespace PPE4
         {
             string req = "INSERT INTO Agence(specialite, nom, site, mail, tel, adresse) VALUES ()";
             this.cde = new SqlCommand(req, cn);
+        }
+
         public int NextID(string p_table)
         {
             string req = "SELECT MAX(idtypemessage)+1 FROM " + p_table;
@@ -78,6 +80,33 @@ namespace PPE4
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
                 this.cde.ExecuteNonQuery();
                 return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        // Said
+
+            public bool creerEvenement(int idcampagne,DateTime dateDebut, DateTime dateFin, string ville, string theme)
+        {
+            try
+            {
+                int nb = NextID("evenement");
+                string req = "insert into evenement(idevenement, idcampagne,datedebut,datefin,ville,theme) values (@idevenement, @idcampagne, @datedebut,@datefin, @ville, @theme)";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@idevenement", SqlDbType.Int).Value = nb;
+                this.cde.Parameters.Add("@idcampagne", SqlDbType.Int).Value = idcampagne;
+                this.cde.Parameters.Add("@datedebut", SqlDbType.DateTime).Value = dateDebut;
+                this.cde.Parameters.Add("@datefin", SqlDbType.DateTime).Value = dateFin;
+                this.cde.Parameters.Add("@ville", SqlDbType.VarChar).Value = ville;
+                this.cde.Parameters.Add("@ville", SqlDbType.VarChar).Value = ville;
+
+                this.cde.ExecuteNonQuery();
+                return true;
+              
             }
 
             catch (Exception)
