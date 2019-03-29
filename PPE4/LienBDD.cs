@@ -59,7 +59,6 @@ namespace PPE4
         }
 
 
-        // Baptiste
         public bool AjouterMessage(string p_contenue)
         {
             try
@@ -127,6 +126,29 @@ namespace PPE4
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        public bool AjouterVIP(int p_idcategorie, string p_nom, string p_adresse, string p_mail)
+        {
+            try
+            {
+                int nb = NextID("vip", "idvip");
+                string req = "insert into vip values (@id, @idcategorie, @nom, @adresse, @mail)";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
+                this.cde.Parameters.Add("@idcategorie", SqlDbType.VarChar).Value = p_idcategorie;
+                this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
+                this.cde.Parameters.Add("@adresse", SqlDbType.VarChar).Value = p_adresse;
+                this.cde.Parameters.Add("@mail", SqlDbType.VarChar).Value = p_mail;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
