@@ -114,9 +114,20 @@ namespace PPE4
             return dt;
         }
 
-        public DataTable GetAgence()
+        public DataTable GetAgenceArtistique()
         {
-            string req = " SELECT IDAGENCE ,NOM FROM AGENCE ";
+            string req = " SELECT IDAGENCE ,NOM FROM AGENCE WHERE SPECIALITE = 'Artistique' ";
+            this.cde = new SqlCommand(req, cn);
+            da = new SqlDataAdapter();
+            da.SelectCommand = this.cde;
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetAgenceCommunication()
+        {
+            string req = " SELECT IDAGENCE ,NOM FROM AGENCE WHERE SPECIALITE = 'Communication' ";
             this.cde = new SqlCommand(req, cn);
             da = new SqlDataAdapter();
             da.SelectCommand = this.cde;

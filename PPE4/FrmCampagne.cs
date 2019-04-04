@@ -30,8 +30,8 @@ namespace PPE4
 
             this.ActualiserTableaux(this.connexion.GetCampagne());
 
-            dt = this.connexion.GetAgence();
-            dt2 = this.connexion.GetAgence();
+            dt = this.connexion.GetAgenceCommunication();
+            dt2 = this.connexion.GetAgenceArtistique();
             this.fCamp_cbAgence1.DataSource = dt;
             this.fCamp_cbAgence2.DataSource = dt2;
             this.fCamp_cbAgence1.DisplayMember = "NOM";
@@ -108,35 +108,51 @@ namespace PPE4
             string nom = fCamp_tbNom.Text;
             string objectif = fCamp_tbObjectif.Text;
             string publique = fCamp_tbPublique.Text;
-            string datedebut = fCamp_dtDateDebut.Text;
-            string datefin = fCamp_dtDateFin.Text;
+            DateTime datedebut = fCamp_dtDateDebut.Value;
+            DateTime datefin = fCamp_dtDateFin.Value;
             string agence1 = fCamp_cbAgence1.SelectedValue.ToString();
             string agence2 = fCamp_cbAgence2.SelectedValue.ToString();
             string responsable = fCamp_cbResponsable.SelectedValue.ToString();
 
-            if (connexion.AjouterCampagne(nom, objectif, publique, datedebut, datefin, responsable, agence1, agence2))
+            if (nom == "" || objectif == "" || responsable == "" || publique == "")
             {
-                fCamp_TpSet_lblReponse.Text = "Réussi";
+                System.Windows.Forms.MessageBox.Show("Veuillez remplir tout les champs !");
             }
             else
             {
-                fCamp_TpSet_lblReponse.Text = "Echec !";
-            }
+                if (DateTime.Compare(datedebut, datefin) <= 0)
+                {
 
-            this.ActualiserTableaux(this.connexion.GetCampagne());
+                    if (connexion.AjouterCampagne(nom, objectif, publique, datedebut.ToString(), datefin.ToString(), responsable, agence1, agence2))
+                    {
+                        fCamp_TpSet_lblReponse.Text = "Réussi";
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Echec !");
+                    }
+
+                    this.ActualiserTableaux(this.connexion.GetCampagne());
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Date de debut superieur à celle de fin !");
+                }
+            }
         }
 
+        //suppression d'une campagne
         private void fCamp_BtSupprimer_Click(object sender, EventArgs e)
         {            
             if (connexion.DeleteCampagne(selectedRow))
             {
-                fCamp_TpSet_lblReponse.Text = "Message supprimé avec succés!";
+                System.Windows.Forms.MessageBox.Show("Message supprimé avec succés!");
                 this.ActualiserTableaux(this.connexion.GetCampagne());
                 this.ReinitialiserGroupBox(this.fCamp_GrpBox);
             }
             else
             {
-                fCamp_TpSet_lblReponse.Text = "Échec de la suppréssion du message";    
+                System.Windows.Forms.MessageBox.Show("Échec de la suppréssion du message");    
         }
         }
 
