@@ -31,7 +31,7 @@ namespace PPE4
         {
             try
             {
-                dt = connexion.ConsulterMessage();
+                dt = connexion.ConsulterVIP();
                 this.dgVIP.DataSource = dt;
                 this.dgVIP.DataMember = dt.TableName;
                 this.dgVIP.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -51,7 +51,7 @@ namespace PPE4
 
         private void btnCréer_Click(object sender, EventArgs e)
         {
-            int idcategorie = cbAjouterCategorie.Text; //convertir en entier
+            int idcategorie = Int32.Parse(cbAjouterCategorie.Text);
             string nom = txbAjouterNom.Text;
             string adresse = txbAjouterAdresse.Text;
             string mail = txbAjouterMail.Text;

@@ -158,5 +158,47 @@ namespace PPE4
                 return false;
             }
         }
+
+
+        public DataTable ConsulterVIP()
+        {
+            try
+            {
+                String req = "SELECT idvip, idcategorie, nom, adresse, email FROM vip";
+                dt = new DataTable();
+                this.cde = new SqlCommand(req, cn);
+                da = new SqlDataAdapter();
+                da.SelectCommand = this.cde;
+                dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+                 
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public bool AjouterCategorie(int p_idtypemessage, string p_libelle)
+        {
+            try
+            {
+                int nb = NextID("categorie", "idcategorie");
+                string req = "insert into vip values (@id, @idtypemessage, @libelle)";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
+                this.cde.Parameters.Add("@idtypemessage", SqlDbType.Int).Value = p_idtypemessage;
+                this.cde.Parameters.Add("@libelle", SqlDbType.VarChar).Value = p_libelle;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

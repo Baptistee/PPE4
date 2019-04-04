@@ -59,14 +59,18 @@ namespace PPE4
         {
             string contenue = txbMessageCreer.Text;
 
-            if (contenue.Count() > 4)
+            if (contenue.Count() > 4) // Message doit être de taille supérieur à 4.
             {
 
-                if (connexion.AjouterMessage(contenue))
+                if (connexion.AjouterMessage(contenue)) // Exécuter la requête ajouter message.
                 {
-                    txbHelp.Text = "Message ajouté avec succés!";
-                    refreshTable();
-                    txbMessageCreer.ResetText();
+                    if (connexion.AjouterCategorie("récup le id créé automatiquement", txbCategorieCreer.Text)) // Exécuter la requête ajouter categorie.
+                    {
+                        txbHelp.Text = "Message ajouté avec succés!";
+                        refreshTable();
+                        txbMessageCreer.ResetText();
+                    }
+                    
                 }
 
                 else

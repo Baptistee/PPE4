@@ -35,9 +35,10 @@
             this.txbMessageAction = new System.Windows.Forms.TextBox();
             this.dgMessageConsulter = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txbMessageCreer = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txbHelp = new System.Windows.Forms.TextBox();
+            this.txbCategorieCreer = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,6 +107,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txbCategorieCreer);
             this.groupBox1.Controls.Add(this.txbMessageCreer);
             this.groupBox1.Controls.Add(this.btn_Message_Creer);
             this.groupBox1.Controls.Add(this.btn_Message_Annuler);
@@ -115,6 +117,15 @@
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Créer un type de message";
+            // 
+            // txbMessageCreer
+            // 
+            this.txbMessageCreer.Location = new System.Drawing.Point(25, 36);
+            this.txbMessageCreer.Multiline = true;
+            this.txbMessageCreer.Name = "txbMessageCreer";
+            this.txbMessageCreer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txbMessageCreer.Size = new System.Drawing.Size(235, 132);
+            this.txbMessageCreer.TabIndex = 14;
             // 
             // groupBox2
             // 
@@ -128,26 +139,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Actions sur un type de message";
             // 
-            // txbMessageCreer
-            // 
-            this.txbMessageCreer.Location = new System.Drawing.Point(25, 50);
-            this.txbMessageCreer.Multiline = true;
-            this.txbMessageCreer.Name = "txbMessageCreer";
-            this.txbMessageCreer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbMessageCreer.Size = new System.Drawing.Size(235, 132);
-            this.txbMessageCreer.TabIndex = 14;
-            // 
             // txbHelp
             // 
             this.txbHelp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txbHelp.Enabled = false;
-            this.txbHelp.Location = new System.Drawing.Point(387, 125);
+            this.txbHelp.Location = new System.Drawing.Point(390, 135);
             this.txbHelp.Name = "txbHelp";
             this.txbHelp.ReadOnly = true;
             this.txbHelp.Size = new System.Drawing.Size(163, 20);
             this.txbHelp.TabIndex = 20;
             this.txbHelp.Text = "En attente d\'actions";
             this.txbHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txbCategorieCreer
+            // 
+            this.txbCategorieCreer.Location = new System.Drawing.Point(25, 175);
+            this.txbCategorieCreer.Name = "txbCategorieCreer";
+            this.txbCategorieCreer.Size = new System.Drawing.Size(235, 20);
+            this.txbCategorieCreer.TabIndex = 15;
             // 
             // frmMessage
             // 
@@ -183,6 +192,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txbMessageCreer;
         private System.Windows.Forms.TextBox txbHelp;
+        private System.Windows.Forms.TextBox txbCategorieCreer;
 
 
 
