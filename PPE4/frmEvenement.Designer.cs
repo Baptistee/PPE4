@@ -52,6 +52,7 @@
             this.lblRequete.Name = "lblRequete";
             this.lblRequete.Size = new System.Drawing.Size(0, 13);
             this.lblRequete.TabIndex = 36;
+            this.lblRequete.Click += new System.EventHandler(this.lblRequete_Click);
             // 
             // btnValider
             // 
@@ -159,6 +160,7 @@
             this.btnModifier.TabIndex = 25;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = false;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // dgvEvenement
             // 

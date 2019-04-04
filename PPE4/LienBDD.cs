@@ -123,6 +123,25 @@ namespace PPE4
                 return false;
             }
         }
+        public bool updateEvenement(int idcampagne, DateTime dateDebut, DateTime dateFin, string ville, string theme)
+        {
+            try
+            {
+                int nb = NextID("evenement", "idevenement");
+                string req = "UPDATE evenement SET  idcampagne = @idcampagne, datedebut = @datedebut, datefin=@datefin, ville=@ville, theme= @theme WHERE idevenement =@idevenement";
+                this.cde = new SqlCommand(req, cn);
+
+                this.cde.ExecuteNonQuery();
+                return true;
+
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
 
         public DataTable getAllEvenement()
         {
