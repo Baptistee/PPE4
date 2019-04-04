@@ -68,7 +68,9 @@ namespace PPE4
 
         private void btnAgenceModif_Click(object sender, EventArgs e)
         {
-
+            int index = e.RowIndex;
+            DataGridViewRow selectedRow = dgvAgence.Rows[index];
+            int id = 
         }
 
         private void btnAgenceCree_Click(object sender, EventArgs e)
@@ -105,6 +107,16 @@ namespace PPE4
             if (index > 0 || index == 0 ){
                 IdAgence = int.Parse(selectedRow.Cells[0].Value.ToString());
             }
+        }
+
+        private void btnAgenceAnnuler_Click(object sender, EventArgs e)
+        {
+            txtBoxAdresse.Text = String.Empty;
+            txtBoxMail.Text = String.Empty;
+            txtBoxNom.Text = String.Empty;
+            txtBoxSite.Text = String.Empty;
+            txtBoxSpecialite.Text = String.Empty;
+            txtBoxTel.Text = String.Empty;
         }
 
     }

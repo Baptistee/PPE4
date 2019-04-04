@@ -85,6 +85,29 @@ namespace PPE4
             
         }
 
+        public bool updateOneAgence(int id, string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
+        {
+            try
+            {
+                string req = "UPDATE Agence SET specialite = @Spe, nom = @Nom, site= @Site, mail = @Mail, tel = @Tel, adresse = @Adresse WHERE IDAGENCE = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                this.cde.Parameters.Add("@Spe", SqlDbType.VarChar).Value = pSpe;
+                this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.Parameters.Add("@Site", SqlDbType.VarChar).Value = pSite;
+                this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
+                this.cde.Parameters.Add("@Tel", SqlDbType.VarChar).Value = pTel;
+                this.cde.Parameters.Add("@Adresse", SqlDbType.VarChar).Value = pAdresse;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
         public bool deleteAgence(int pid)
         {
             try
