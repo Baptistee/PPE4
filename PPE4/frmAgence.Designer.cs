@@ -54,9 +54,8 @@
             this.lbl_Agence_Info.AutoSize = true;
             this.lbl_Agence_Info.Location = new System.Drawing.Point(69, 77);
             this.lbl_Agence_Info.Name = "lbl_Agence_Info";
-            this.lbl_Agence_Info.Size = new System.Drawing.Size(18, 13);
+            this.lbl_Agence_Info.Size = new System.Drawing.Size(0, 13);
             this.lbl_Agence_Info.TabIndex = 45;
-            this.lbl_Agence_Info.Text = "";
             // 
             // btnAgenceCree
             // 
@@ -200,7 +199,7 @@
             this.dgvAgence.Name = "dgvAgence";
             this.dgvAgence.Size = new System.Drawing.Size(792, 354);
             this.dgvAgence.TabIndex = 29;
-            this.dgvAgence.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgence_RowEnter_1);
+            this.dgvAgence.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgence_RowEnter);
             // 
             // btnAgenceAnnuler
             // 

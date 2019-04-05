@@ -28,167 +28,138 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_Message_Supprimer = new System.Windows.Forms.Button();
-            this.btn_Message_Modifier = new System.Windows.Forms.Button();
-            this.btn_Message_Annuler = new System.Windows.Forms.Button();
-            this.btn_Message_Creer = new System.Windows.Forms.Button();
-            this.txbMessageAction = new System.Windows.Forms.TextBox();
-            this.dgMessageConsulter = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txbMessageCreer = new System.Windows.Forms.TextBox();
-            this.txbHelp = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.tbcMessage = new System.Windows.Forms.TabControl();
+            this.tbpConsulter = new System.Windows.Forms.TabPage();
+            this.tbpCreer = new System.Windows.Forms.TabPage();
+            this.btn_Creer_Valider = new System.Windows.Forms.Button();
+            this.txbMessage = new System.Windows.Forms.TextBox();
+            this.btn_Creer_Annuler = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbl_Creer_Titre = new System.Windows.Forms.Label();
+            this.lblVerification = new System.Windows.Forms.Label();
+            this.tbcMessage.SuspendLayout();
+            this.tbpConsulter.SuspendLayout();
+            this.tbpCreer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btn_Message_Supprimer
+            // tbcMessage
             // 
-            this.btn_Message_Supprimer.Location = new System.Drawing.Point(164, 217);
-            this.btn_Message_Supprimer.Name = "btn_Message_Supprimer";
-            this.btn_Message_Supprimer.Size = new System.Drawing.Size(102, 39);
-            this.btn_Message_Supprimer.TabIndex = 17;
-            this.btn_Message_Supprimer.Text = "Supprimer";
-            this.btn_Message_Supprimer.UseVisualStyleBackColor = true;
-            this.btn_Message_Supprimer.Click += new System.EventHandler(this.btn_Message_Supprimer_Click);
+            this.tbcMessage.Controls.Add(this.tbpConsulter);
+            this.tbcMessage.Controls.Add(this.tbpCreer);
+            this.tbcMessage.Location = new System.Drawing.Point(12, 2);
+            this.tbcMessage.Name = "tbcMessage";
+            this.tbcMessage.SelectedIndex = 0;
+            this.tbcMessage.Size = new System.Drawing.Size(548, 292);
+            this.tbcMessage.TabIndex = 0;
             // 
-            // btn_Message_Modifier
+            // tbpConsulter
             // 
-            this.btn_Message_Modifier.Location = new System.Drawing.Point(28, 217);
-            this.btn_Message_Modifier.Name = "btn_Message_Modifier";
-            this.btn_Message_Modifier.Size = new System.Drawing.Size(102, 39);
-            this.btn_Message_Modifier.TabIndex = 16;
-            this.btn_Message_Modifier.Text = "Modifier";
-            this.btn_Message_Modifier.UseVisualStyleBackColor = true;
-            this.btn_Message_Modifier.Click += new System.EventHandler(this.btn_Message_Modifier_Click);
+            this.tbpConsulter.Controls.Add(this.dataGridView1);
+            this.tbpConsulter.Location = new System.Drawing.Point(4, 22);
+            this.tbpConsulter.Name = "tbpConsulter";
+            this.tbpConsulter.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpConsulter.Size = new System.Drawing.Size(540, 266);
+            this.tbpConsulter.TabIndex = 0;
+            this.tbpConsulter.Text = "Consulter";
+            this.tbpConsulter.UseVisualStyleBackColor = true;
             // 
-            // btn_Message_Annuler
+            // tbpCreer
             // 
-            this.btn_Message_Annuler.Location = new System.Drawing.Point(172, 217);
-            this.btn_Message_Annuler.Name = "btn_Message_Annuler";
-            this.btn_Message_Annuler.Size = new System.Drawing.Size(88, 39);
-            this.btn_Message_Annuler.TabIndex = 14;
-            this.btn_Message_Annuler.Text = "Annuler";
-            this.btn_Message_Annuler.UseVisualStyleBackColor = true;
-            this.btn_Message_Annuler.Click += new System.EventHandler(this.btn_Creer_Annuler_Click);
+            this.tbpCreer.Controls.Add(this.lblVerification);
+            this.tbpCreer.Controls.Add(this.lbl_Creer_Titre);
+            this.tbpCreer.Controls.Add(this.btn_Creer_Annuler);
+            this.tbpCreer.Controls.Add(this.txbMessage);
+            this.tbpCreer.Controls.Add(this.btn_Creer_Valider);
+            this.tbpCreer.Location = new System.Drawing.Point(4, 22);
+            this.tbpCreer.Name = "tbpCreer";
+            this.tbpCreer.Padding = new System.Windows.Forms.Padding(3);
+            this.tbpCreer.Size = new System.Drawing.Size(540, 266);
+            this.tbpCreer.TabIndex = 1;
+            this.tbpCreer.Text = "Créer";
+            this.tbpCreer.UseVisualStyleBackColor = true;
             // 
-            // btn_Message_Creer
+            // btn_Creer_Valider
             // 
-            this.btn_Message_Creer.Location = new System.Drawing.Point(25, 217);
-            this.btn_Message_Creer.Name = "btn_Message_Creer";
-            this.btn_Message_Creer.Size = new System.Drawing.Size(93, 39);
-            this.btn_Message_Creer.TabIndex = 13;
-            this.btn_Message_Creer.Text = "Créer";
-            this.btn_Message_Creer.UseVisualStyleBackColor = true;
-            this.btn_Message_Creer.Click += new System.EventHandler(this.btn_Message_Creer_Click);
+            this.btn_Creer_Valider.Location = new System.Drawing.Point(153, 210);
+            this.btn_Creer_Valider.Name = "btn_Creer_Valider";
+            this.btn_Creer_Valider.Size = new System.Drawing.Size(119, 39);
+            this.btn_Creer_Valider.TabIndex = 0;
+            this.btn_Creer_Valider.Text = "Valider";
+            this.btn_Creer_Valider.UseVisualStyleBackColor = true;
+            this.btn_Creer_Valider.Click += new System.EventHandler(this.btn_Creer_Valider_Click);
             // 
-            // txbMessageAction
+            // txbMessage
             // 
-            this.txbMessageAction.Location = new System.Drawing.Point(28, 50);
-            this.txbMessageAction.Multiline = true;
-            this.txbMessageAction.Name = "txbMessageAction";
-            this.txbMessageAction.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbMessageAction.Size = new System.Drawing.Size(238, 132);
-            this.txbMessageAction.TabIndex = 11;
+            this.txbMessage.Location = new System.Drawing.Point(153, 65);
+            this.txbMessage.Multiline = true;
+            this.txbMessage.Name = "txbMessage";
+            this.txbMessage.Size = new System.Drawing.Size(238, 139);
+            this.txbMessage.TabIndex = 1;
             // 
-            // dgMessageConsulter
+            // btn_Creer_Annuler
             // 
-            this.dgMessageConsulter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgMessageConsulter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgMessageConsulter.Location = new System.Drawing.Point(22, 329);
-            this.dgMessageConsulter.MultiSelect = false;
-            this.dgMessageConsulter.Name = "dgMessageConsulter";
-            this.dgMessageConsulter.ReadOnly = true;
-            this.dgMessageConsulter.Size = new System.Drawing.Size(891, 254);
-            this.dgMessageConsulter.TabIndex = 10;
-            this.dgMessageConsulter.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgMessageConsulter_RowHeaderMouseClick);
+            this.btn_Creer_Annuler.Location = new System.Drawing.Point(297, 210);
+            this.btn_Creer_Annuler.Name = "btn_Creer_Annuler";
+            this.btn_Creer_Annuler.Size = new System.Drawing.Size(94, 39);
+            this.btn_Creer_Annuler.TabIndex = 2;
+            this.btn_Creer_Annuler.Text = "Annuler";
+            this.btn_Creer_Annuler.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // dataGridView1
             // 
-            this.groupBox1.Controls.Add(this.txbMessageCreer);
-            this.groupBox1.Controls.Add(this.btn_Message_Creer);
-            this.groupBox1.Controls.Add(this.btn_Message_Annuler);
-            this.groupBox1.Location = new System.Drawing.Point(22, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(283, 300);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Créer un type de message";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(528, 254);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // groupBox2
+            // lbl_Creer_Titre
             // 
-            this.groupBox2.Controls.Add(this.txbMessageAction);
-            this.groupBox2.Controls.Add(this.btn_Message_Modifier);
-            this.groupBox2.Controls.Add(this.btn_Message_Supprimer);
-            this.groupBox2.Location = new System.Drawing.Point(628, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(285, 300);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Actions sur un type de message";
+            this.lbl_Creer_Titre.AutoSize = true;
+            this.lbl_Creer_Titre.Location = new System.Drawing.Point(212, 26);
+            this.lbl_Creer_Titre.Name = "lbl_Creer_Titre";
+            this.lbl_Creer_Titre.Size = new System.Drawing.Size(114, 13);
+            this.lbl_Creer_Titre.TabIndex = 3;
+            this.lbl_Creer_Titre.Text = "Création d\'un message";
             // 
-            // txbMessageCreer
+            // lblVerification
             // 
-            this.txbMessageCreer.Location = new System.Drawing.Point(25, 50);
-            this.txbMessageCreer.Multiline = true;
-            this.txbMessageCreer.Name = "txbMessageCreer";
-            this.txbMessageCreer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbMessageCreer.Size = new System.Drawing.Size(235, 132);
-            this.txbMessageCreer.TabIndex = 14;
-            // 
-            // txbHelp
-            // 
-            this.txbHelp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txbHelp.Enabled = false;
-            this.txbHelp.Location = new System.Drawing.Point(387, 125);
-            this.txbHelp.Name = "txbHelp";
-            this.txbHelp.ReadOnly = true;
-            this.txbHelp.Size = new System.Drawing.Size(163, 20);
-            this.txbHelp.TabIndex = 20;
-            this.txbHelp.Text = "En attente d\'actions";
-            this.txbHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lblVerification.AutoSize = true;
+            this.lblVerification.Location = new System.Drawing.Point(419, 223);
+            this.lblVerification.Name = "lblVerification";
+            this.lblVerification.Size = new System.Drawing.Size(90, 13);
+            this.lblVerification.TabIndex = 4;
+            this.lblVerification.Text = "Valider pour créer";
             // 
             // frmMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 607);
-            this.Controls.Add(this.txbHelp);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dgMessageConsulter);
+            this.ClientSize = new System.Drawing.Size(572, 316);
+            this.Controls.Add(this.tbcMessage);
             this.Name = "frmMessage";
-            this.Text = "Type Message";
+            this.Text = "frmMessage";
             this.Load += new System.EventHandler(this.frmMessage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.tbcMessage.ResumeLayout(false);
+            this.tbpConsulter.ResumeLayout(false);
+            this.tbpCreer.ResumeLayout(false);
+            this.tbpCreer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btn_Message_Supprimer;
-        private System.Windows.Forms.Button btn_Message_Modifier;
-        private System.Windows.Forms.Button btn_Message_Annuler;
-        private System.Windows.Forms.Button btn_Message_Creer;
-        private System.Windows.Forms.TextBox txbMessageAction;
-        private System.Windows.Forms.DataGridView dgMessageConsulter;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txbMessageCreer;
-        private System.Windows.Forms.TextBox txbHelp;
-
-
-
-
-
-
-
+        private System.Windows.Forms.TabControl tbcMessage;
+        private System.Windows.Forms.TabPage tbpConsulter;
+        private System.Windows.Forms.TabPage tbpCreer;
+        private System.Windows.Forms.Button btn_Creer_Annuler;
+        private System.Windows.Forms.TextBox txbMessage;
+        private System.Windows.Forms.Button btn_Creer_Valider;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lbl_Creer_Titre;
+        private System.Windows.Forms.Label lblVerification;
     }
 }

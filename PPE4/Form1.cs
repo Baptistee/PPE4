@@ -29,10 +29,5 @@ namespace PPE4
 
         }
 
-        private void vIPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmVIP formVIP = new frmVIP();
-            formVIP.ShowDialog();
-        }
     }
 }

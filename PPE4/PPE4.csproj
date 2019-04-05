@@ -52,17 +52,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMessage.cs">
+    <Compile Include="frmAgence.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMessage.Designer.cs">
-      <DependentUpon>frmMessage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmVIPcs.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmVIPcs.Designer.cs">
-      <DependentUpon>frmVIPcs.cs</DependentUpon>
+    <Compile Include="frmAgence.Designer.cs">
+      <DependentUpon>frmAgence.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMessage.cs">
       <SubType>Form</SubType>
@@ -75,12 +69,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMessage.resx">
-      <DependentUpon>frmMessage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmVIPcs.resx">
-      <DependentUpon>frmVIPcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgence.resx">
       <DependentUpon>frmAgence.cs</DependentUpon>

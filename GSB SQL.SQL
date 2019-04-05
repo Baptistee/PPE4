@@ -1,13 +1,13 @@
 /*
  ----------------------------------------------------------------------------
-             GÃ©nÃ©ration d'une base de donnÃ©es pour
+             Génération d'une base de données pour
                         SQL Server 7.x
                        (8/3/2019 16:46:13)
  ----------------------------------------------------------------------------
      Nom de la base : GSB
      Projet : Espace de travail
      Auteur : LMC
-     Date de derniÃ¨re modification : 8/3/2019 16:45:53
+     Date de dernière modification : 8/3/2019 16:45:53
  ----------------------------------------------------------------------------
 */
 
@@ -168,7 +168,6 @@ go
 create table TYPEMESSAGE
   (
      IDTYPEMESSAGE int  not null  ,
-	 IDEVENEMENT int not null  ,
      CONTENUE varchar(128)  null  
      ,
      constraint PK_TYPEMESSAGE primary key (IDTYPEMESSAGE)
@@ -242,14 +241,6 @@ go
 alter table CATEGORIE 
      add constraint FK_CATEGORIE_TYPEMESSAGE foreign key (IDTYPEMESSAGE) 
                references TYPEMESSAGE (IDTYPEMESSAGE)
-go
-
-
-
-
-alter table TYPEMESSAGE
-	add constraint FK_TYPEMESSAGE_EVENEMENT foreign key (IDEVENEMENT)
-               references EVENEMENT (IDEVENEMENT)
 go
 
 
