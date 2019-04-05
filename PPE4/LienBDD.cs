@@ -32,7 +32,7 @@ namespace PPE4
             }
             catch (SqlException)
             {
-                throw new Exception("Erreur à la connexion");
+                throw new Exception("Erreur à laconnexion");
             }
         }
 
@@ -64,68 +64,10 @@ namespace PPE4
         {
             try
             {
-                int nb = NextID("typemessage", "idtypemessage");
+                int nb = NextID("typemessage","idtypemessage");
                 string req = "insert into typemessage(idtypemessage, contenue) values (@id, @contenue)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
-                this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
-                this.cde.ExecuteNonQuery();
-                return true;
-            }
-
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-
-        public DataTable ConsulterMessage()
-        {
-            try
-            {
-                String req = "SELECT idtypemessage, contenue FROM typemessage";
-                dt = new DataTable();
-                this.cde = new SqlCommand(req, cn);
-                da = new SqlDataAdapter();
-                da.SelectCommand = this.cde;
-                dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-
-        public bool SupprimerMessage(int p_id)
-        {
-            try
-            {
-                string req = "DELETE typemessage WHERE idtypemessage = @id";
-                this.cde = new SqlCommand(req, cn);
-                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
-                this.cde.ExecuteNonQuery();
-                return true;
-            }
-
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-
-        public bool ModifierMessage(int p_id, string p_contenue)
-        {
-            try
-            {
-                string req = "UPDATE typemessage SET contenue = @contenue WHERE idtypemessage = @id";
-                this.cde = new SqlCommand(req, cn);
-                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
                 this.cde.ExecuteNonQuery();
                 return true;

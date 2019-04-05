@@ -42,7 +42,11 @@
             this.consulterToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.créerToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.vIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consulterToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.créerToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.messageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consulterToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.créerToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,13 +152,30 @@
             // 
             // vIPToolStripMenuItem
             // 
+            this.vIPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consulterToolStripMenuItem4,
+            this.créerToolStripMenuItem4});
             this.vIPToolStripMenuItem.Name = "vIPToolStripMenuItem";
             this.vIPToolStripMenuItem.Size = new System.Drawing.Size(36, 20);
             this.vIPToolStripMenuItem.Text = "VIP";
-            this.vIPToolStripMenuItem.Click += new System.EventHandler(this.vIPToolStripMenuItem_Click);
+            // 
+            // consulterToolStripMenuItem4
+            // 
+            this.consulterToolStripMenuItem4.Name = "consulterToolStripMenuItem4";
+            this.consulterToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
+            this.consulterToolStripMenuItem4.Text = "Consulter";
+            // 
+            // créerToolStripMenuItem4
+            // 
+            this.créerToolStripMenuItem4.Name = "créerToolStripMenuItem4";
+            this.créerToolStripMenuItem4.Size = new System.Drawing.Size(125, 22);
+            this.créerToolStripMenuItem4.Text = "Créer";
             // 
             // messageToolStripMenuItem
             // 
+            this.messageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consulterToolStripMenuItem5,
+            this.créerToolStripMenuItem5});
             this.messageToolStripMenuItem.Name = "messageToolStripMenuItem";
             this.messageToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.messageToolStripMenuItem.Text = "Message";
@@ -193,6 +214,10 @@
         private System.Windows.Forms.ToolStripMenuItem créerToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem consulterToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem créerToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem consulterToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem créerToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem consulterToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem créerToolStripMenuItem5;
     }
 }
 
