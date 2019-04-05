@@ -42,6 +42,24 @@ namespace PPE4
             this.cn.Close();
         }
 
+
+        public int RecupEvenement(int p_id)
+        {
+            try
+            {
+                String req = "SELECT idevenement FROM evenement WHERE idevenement = @idevenement";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@idevenement", SqlDbType.Int).Value = p_id;
+                return (int)this.cde.ExecuteScalar();
+            }
+
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+
         public int NextID(string p_table, string p_id)
         {
             int nb;
@@ -49,24 +67,40 @@ namespace PPE4
             this.cde = new SqlCommand(req, cn);
             if(this.cde.ExecuteScalar().ToString() == "")
             {
-                nb = 1;
+                return nb = 1;
             }
             else
             {
-                nb = (int)this.cde.ExecuteScalar();
+                return nb = (int)this.cde.ExecuteScalar();
             }
-            return nb;
         }
 
 
-        public bool AjouterMessage(string p_contenue)
+        public int LastID(string p_table, string p_id)
+        {
+            int nb;
+            string req = "SELECT MAX(" + p_id + ") FROM " + p_table;
+            this.cde = new SqlCommand(req, cn);
+            if(this.cde.ExecuteScalar().ToString() == "")
+            {
+                return nb = 0;
+            }
+            else
+            {
+                return nb = (int)this.cde.ExecuteScalar();
+            }
+        }
+
+
+        public bool AjouterMessage(int p_idevenement, string p_contenue)
         {
             try
             {
                 int nb = NextID("typemessage", "idtypemessage");
-                string req = "insert into typemessage(idtypemessage, contenue) values (@id, @contenue)";
+                string req = "insert into typemessage(idtypemessage, idevenement, contenue) values (@id, @idevenement, @contenue)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
+                this.cde.Parameters.Add("@idevenement", SqlDbType.Int).Value = p_idevenement;
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
                 this.cde.ExecuteNonQuery();
                 return true;
@@ -79,11 +113,32 @@ namespace PPE4
         }
 
 
+        public DataTable ConsulterEvenement()
+        {
+            try
+            {
+                String req = "SELECT * FROM evenement";
+                dt = new DataTable();
+                this.cde = new SqlCommand(req, cn);
+                da = new SqlDataAdapter();
+                da.SelectCommand = this.cde;
+                dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
         public DataTable ConsulterMessage()
         {
             try
             {
-                String req = "SELECT idtypemessage, contenue FROM typemessage";
+                String req = "SELECT * FROM typemessage";
                 dt = new DataTable();
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
@@ -137,15 +192,15 @@ namespace PPE4
         }
 
 
-        public bool AjouterVIP(int p_idcategorie, string p_nom, string p_adresse, string p_mail)
+        public bool AjouterVIP(int p_idtypemessage, string p_nom, string p_adresse, string p_mail)
         {
             try
             {
                 int nb = NextID("vip", "idvip");
-                string req = "insert into vip values (@id, @idcategorie, @nom, @adresse, @mail)";
+                string req = "insert into vip values (@id, @idtypemessage, @nom, @adresse, @mail)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
-                this.cde.Parameters.Add("@idcategorie", SqlDbType.VarChar).Value = p_idcategorie;
+                this.cde.Parameters.Add("@idtypemessage", SqlDbType.VarChar).Value = p_idtypemessage;
                 this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
                 this.cde.Parameters.Add("@adresse", SqlDbType.VarChar).Value = p_adresse;
                 this.cde.Parameters.Add("@mail", SqlDbType.VarChar).Value = p_mail;
@@ -164,7 +219,7 @@ namespace PPE4
         {
             try
             {
-                String req = "SELECT idvip, idcategorie, nom, adresse, email FROM vip";
+                String req = "SELECT * FROM vip";
                 dt = new DataTable();
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
@@ -177,27 +232,6 @@ namespace PPE4
             catch (Exception)
             {
                 return null;
-            }
-        }
-
-
-        public bool AjouterCategorie(int p_idtypemessage, string p_libelle)
-        {
-            try
-            {
-                int nb = NextID("categorie", "idcategorie");
-                string req = "insert into vip values (@id, @idtypemessage, @libelle)";
-                this.cde = new SqlCommand(req, cn);
-                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
-                this.cde.Parameters.Add("@idtypemessage", SqlDbType.Int).Value = p_idtypemessage;
-                this.cde.Parameters.Add("@libelle", SqlDbType.VarChar).Value = p_libelle;
-                this.cde.ExecuteNonQuery();
-                return true;
-            }
-
-            catch (Exception)
-            {
-                return false;
             }
         }
     }

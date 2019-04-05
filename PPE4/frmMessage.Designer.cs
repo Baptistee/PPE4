@@ -34,14 +34,15 @@
             this.btn_Message_Creer = new System.Windows.Forms.Button();
             this.txbMessageAction = new System.Windows.Forms.TextBox();
             this.dgMessageConsulter = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpb_Message_Ajouter = new System.Windows.Forms.GroupBox();
             this.txbMessageCreer = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gpb_Message_Action = new System.Windows.Forms.GroupBox();
             this.txbHelp = new System.Windows.Forms.TextBox();
-            this.txbCategorieCreer = new System.Windows.Forms.TextBox();
+            this.cbb_Message_Evenement_Ajouter = new System.Windows.Forms.ComboBox();
+            this.cbb_Message_Evenement_Action = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gpb_Message_Ajouter.SuspendLayout();
+            this.gpb_Message_Action.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_Message_Supprimer
@@ -86,7 +87,7 @@
             // 
             // txbMessageAction
             // 
-            this.txbMessageAction.Location = new System.Drawing.Point(28, 50);
+            this.txbMessageAction.Location = new System.Drawing.Point(28, 36);
             this.txbMessageAction.Multiline = true;
             this.txbMessageAction.Name = "txbMessageAction";
             this.txbMessageAction.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -97,7 +98,7 @@
             // 
             this.dgMessageConsulter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMessageConsulter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dgMessageConsulter.Location = new System.Drawing.Point(22, 329);
+            this.dgMessageConsulter.Location = new System.Drawing.Point(22, 318);
             this.dgMessageConsulter.MultiSelect = false;
             this.dgMessageConsulter.Name = "dgMessageConsulter";
             this.dgMessageConsulter.ReadOnly = true;
@@ -105,18 +106,18 @@
             this.dgMessageConsulter.TabIndex = 10;
             this.dgMessageConsulter.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgMessageConsulter_RowHeaderMouseClick);
             // 
-            // groupBox1
+            // gpb_Message_Ajouter
             // 
-            this.groupBox1.Controls.Add(this.txbCategorieCreer);
-            this.groupBox1.Controls.Add(this.txbMessageCreer);
-            this.groupBox1.Controls.Add(this.btn_Message_Creer);
-            this.groupBox1.Controls.Add(this.btn_Message_Annuler);
-            this.groupBox1.Location = new System.Drawing.Point(22, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(283, 300);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Créer un type de message";
+            this.gpb_Message_Ajouter.Controls.Add(this.cbb_Message_Evenement_Ajouter);
+            this.gpb_Message_Ajouter.Controls.Add(this.txbMessageCreer);
+            this.gpb_Message_Ajouter.Controls.Add(this.btn_Message_Creer);
+            this.gpb_Message_Ajouter.Controls.Add(this.btn_Message_Annuler);
+            this.gpb_Message_Ajouter.Location = new System.Drawing.Point(22, 12);
+            this.gpb_Message_Ajouter.Name = "gpb_Message_Ajouter";
+            this.gpb_Message_Ajouter.Size = new System.Drawing.Size(283, 300);
+            this.gpb_Message_Ajouter.TabIndex = 18;
+            this.gpb_Message_Ajouter.TabStop = false;
+            this.gpb_Message_Ajouter.Text = "Créer un type de message";
             // 
             // txbMessageCreer
             // 
@@ -127,23 +128,24 @@
             this.txbMessageCreer.Size = new System.Drawing.Size(235, 132);
             this.txbMessageCreer.TabIndex = 14;
             // 
-            // groupBox2
+            // gpb_Message_Action
             // 
-            this.groupBox2.Controls.Add(this.txbMessageAction);
-            this.groupBox2.Controls.Add(this.btn_Message_Modifier);
-            this.groupBox2.Controls.Add(this.btn_Message_Supprimer);
-            this.groupBox2.Location = new System.Drawing.Point(628, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(285, 300);
-            this.groupBox2.TabIndex = 19;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Actions sur un type de message";
+            this.gpb_Message_Action.Controls.Add(this.cbb_Message_Evenement_Action);
+            this.gpb_Message_Action.Controls.Add(this.txbMessageAction);
+            this.gpb_Message_Action.Controls.Add(this.btn_Message_Modifier);
+            this.gpb_Message_Action.Controls.Add(this.btn_Message_Supprimer);
+            this.gpb_Message_Action.Location = new System.Drawing.Point(628, 12);
+            this.gpb_Message_Action.Name = "gpb_Message_Action";
+            this.gpb_Message_Action.Size = new System.Drawing.Size(285, 300);
+            this.gpb_Message_Action.TabIndex = 19;
+            this.gpb_Message_Action.TabStop = false;
+            this.gpb_Message_Action.Text = "Actions sur un type de message";
             // 
             // txbHelp
             // 
             this.txbHelp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txbHelp.Enabled = false;
-            this.txbHelp.Location = new System.Drawing.Point(390, 135);
+            this.txbHelp.Location = new System.Drawing.Point(22, 578);
             this.txbHelp.Name = "txbHelp";
             this.txbHelp.ReadOnly = true;
             this.txbHelp.Size = new System.Drawing.Size(163, 20);
@@ -151,12 +153,21 @@
             this.txbHelp.Text = "En attente d\'actions";
             this.txbHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txbCategorieCreer
+            // cbb_Message_Evenement_Ajouter
             // 
-            this.txbCategorieCreer.Location = new System.Drawing.Point(25, 175);
-            this.txbCategorieCreer.Name = "txbCategorieCreer";
-            this.txbCategorieCreer.Size = new System.Drawing.Size(235, 20);
-            this.txbCategorieCreer.TabIndex = 15;
+            this.cbb_Message_Evenement_Ajouter.FormattingEnabled = true;
+            this.cbb_Message_Evenement_Ajouter.Location = new System.Drawing.Point(25, 175);
+            this.cbb_Message_Evenement_Ajouter.Name = "cbb_Message_Evenement_Ajouter";
+            this.cbb_Message_Evenement_Ajouter.Size = new System.Drawing.Size(235, 21);
+            this.cbb_Message_Evenement_Ajouter.TabIndex = 15;
+            // 
+            // cbb_Message_Evenement_Action
+            // 
+            this.cbb_Message_Evenement_Action.FormattingEnabled = true;
+            this.cbb_Message_Evenement_Action.Location = new System.Drawing.Point(28, 175);
+            this.cbb_Message_Evenement_Action.Name = "cbb_Message_Evenement_Action";
+            this.cbb_Message_Evenement_Action.Size = new System.Drawing.Size(238, 21);
+            this.cbb_Message_Evenement_Action.TabIndex = 18;
             // 
             // frmMessage
             // 
@@ -164,17 +175,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 607);
             this.Controls.Add(this.txbHelp);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpb_Message_Action);
+            this.Controls.Add(this.gpb_Message_Ajouter);
             this.Controls.Add(this.dgMessageConsulter);
             this.Name = "frmMessage";
             this.Text = "Type Message";
             this.Load += new System.EventHandler(this.frmMessage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.gpb_Message_Ajouter.ResumeLayout(false);
+            this.gpb_Message_Ajouter.PerformLayout();
+            this.gpb_Message_Action.ResumeLayout(false);
+            this.gpb_Message_Action.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,11 +199,12 @@
         private System.Windows.Forms.Button btn_Message_Creer;
         private System.Windows.Forms.TextBox txbMessageAction;
         private System.Windows.Forms.DataGridView dgMessageConsulter;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpb_Message_Ajouter;
+        private System.Windows.Forms.GroupBox gpb_Message_Action;
         private System.Windows.Forms.TextBox txbMessageCreer;
         private System.Windows.Forms.TextBox txbHelp;
-        private System.Windows.Forms.TextBox txbCategorieCreer;
+        private System.Windows.Forms.ComboBox cbb_Message_Evenement_Ajouter;
+        private System.Windows.Forms.ComboBox cbb_Message_Evenement_Action;
 
 
 

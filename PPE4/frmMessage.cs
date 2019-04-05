@@ -41,10 +41,22 @@ namespace PPE4
             }
         }
 
+
+        // Parser la combobox avec les événements.
+        private void refreshEvenementCbb()
+        {
+            dt = this.connexion.ConsulterEvenement();
+            this.cbb_Message_Evenement_Ajouter.DataSource = dt;
+            this.cbb_Message_Evenement_Ajouter.DisplayMember = "theme";
+            this.cbb_Message_Evenement_Ajouter.ValueMember = "idevenement";
+        }
+
+
         private void frmMessage_Load(object sender, EventArgs e)
         {
             connexion = new LienBDD();
             refreshTable();
+            refreshEvenementCbb();
         }
 
 
@@ -57,31 +69,19 @@ namespace PPE4
 
         private void btn_Message_Creer_Click(object sender, EventArgs e)
         {
+            int idevenement = connexion.RecupEvenement(Int32.Parse(cbb_Message_Evenement_Ajouter.SelectedValue.ToString()));
             string contenue = txbMessageCreer.Text;
 
-            if (contenue.Count() > 4) // Message doit être de taille supérieur à 4.
+            if (connexion.AjouterMessage(idevenement, contenue)) // Exécuter la requête ajouter message.
             {
-
-                if (connexion.AjouterMessage(contenue)) // Exécuter la requête ajouter message.
-                {
-                    if (connexion.AjouterCategorie("récup le id créé automatiquement", txbCategorieCreer.Text)) // Exécuter la requête ajouter categorie.
-                    {
-                        txbHelp.Text = "Message ajouté avec succés!";
-                        refreshTable();
-                        txbMessageCreer.ResetText();
-                    }
-                    
-                }
-
-                else
-                {
-                    txbHelp.Text = "Message non ajouté";
-                }
+                txbHelp.Text = "Message ajouté avec succés!";
+                refreshTable();
+                txbMessageCreer.ResetText();
             }
 
             else
             {
-                txbHelp.Text = "Entrez un message";
+                txbHelp.Text = "Message non ajouté";
             }
             
         }
@@ -94,6 +94,7 @@ namespace PPE4
                 txbHelp.Text = "Message supprimé avec succés!";
                 refreshTable();
                 txbMessageAction.ResetText();
+                
             }
             else
             {
@@ -121,6 +122,12 @@ namespace PPE4
             {
                 txbHelp.Text = "Échec de la modification du message";
             }
+        }
+
+
+        private void btn_Categorie_Creer_Click(object sender, EventArgs e)
+        {
+            
         }
 
     }
