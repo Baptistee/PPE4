@@ -42,22 +42,95 @@ namespace PPE4
             this.cn.Close();
         }
 
-        public int NextID(string p_table, string p_id)
+        //Les Agences
+        public DataTable getAllAgences()
         {
-            int nb;
-            string req = "SELECT MAX(" + p_id + ")+1 FROM " + p_table;
+            try
+            {
+            string req = "SELECT * FROM Agence";
             this.cde = new SqlCommand(req, cn);
-            if(this.cde.ExecuteScalar().ToString() == "")
-            {
-                nb = 1;
+            da = new SqlDataAdapter();
+            da.SelectCommand = this.cde;
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
             }
-            else
+            catch (Exception ex)
             {
-                nb = (int)this.cde.ExecuteScalar();
+                throw ex;
             }
-            return nb;
         }
 
+        public bool createOneAgence(string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
+        {
+            try
+            {
+                int id = NextID("Agence","IDAGENCE");
+                string req = "INSERT INTO Agence(idagence, specialite, nom, site, mail, tel, adresse) VALUES (@id, @Spe, @Nom, @Site, @Mail, @Tel, @Adresse)";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                this.cde.Parameters.Add("@Spe", SqlDbType.VarChar).Value = pSpe;
+                this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.Parameters.Add("@Site", SqlDbType.VarChar).Value = pSite;
+                this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
+                this.cde.Parameters.Add("@Tel", SqlDbType.VarChar).Value = pTel;
+                this.cde.Parameters.Add("@Adresse", SqlDbType.VarChar).Value = pAdresse;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
+
+        public bool updateOneAgence(int id, string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
+        {
+            try
+            {
+                string req = "UPDATE Agence SET specialite = @Spe, nom = @Nom, site= @Site, mail = @Mail, tel = @Tel, adresse = @Adresse WHERE IDAGENCE = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                this.cde.Parameters.Add("@Spe", SqlDbType.VarChar).Value = pSpe;
+                this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.Parameters.Add("@Site", SqlDbType.VarChar).Value = pSite;
+                this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
+                this.cde.Parameters.Add("@Tel", SqlDbType.VarChar).Value = pTel;
+                this.cde.Parameters.Add("@Adresse", SqlDbType.VarChar).Value = pAdresse;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        public bool deleteAgence(int pid)
+        {
+            try
+            {
+                string req = "DELETE Agence WHERE IDAGENCE = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = pid;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public int NextID(string p_table, string pid)
+        {
+            string req = "SELECT MAX(" + pid + ")+1 FROM " + p_table;
+            this.cde = new SqlCommand(req, cn);
+            int nb = (int) this.cde.ExecuteScalar();
+            return nb;
+        }
 
         // Baptiste
         public bool AjouterMessage(string p_contenue)
