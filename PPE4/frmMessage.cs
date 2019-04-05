@@ -106,7 +106,8 @@ namespace PPE4
         private void dgMessageConsulter_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             selectedRow = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString());
-            txbMessageAction.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txbMessageAction.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[2].Value.ToString();
+            //cbb_Message_Evenement_Action.Text = ajouter la valeur de la combo box.
         }
 
 
@@ -122,12 +123,6 @@ namespace PPE4
             {
                 txbHelp.Text = "Échec de la modification du message";
             }
-        }
-
-
-        private void btn_Categorie_Creer_Click(object sender, EventArgs e)
-        {
-            
         }
 
     }
