@@ -153,6 +153,59 @@ namespace PPE4
             }
         }
 
+        public bool ModifierCampagne(int p_id, string p_nom, string p_objectif, string p_publique, string p_dateDebut, string p_dateFin, string p_responsable, string p_agence1, string p_agence2)
+        {
+            try
+            {
+                //requete sql
+                string req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 , IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id)";
+
+
+                this.cde = new SqlCommand(req, cn);
+                //association des variables a leur valeur
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.Parameters.Add("@Employe", SqlDbType.Int).Value = int.Parse(p_responsable);
+                this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
+                this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
+                this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
+                this.cde.Parameters.Add("@objectif", SqlDbType.VarChar).Value = p_objectif;
+                this.cde.Parameters.Add("@publique", SqlDbType.VarChar).Value = p_publique;
+                this.cde.Parameters.Add("@dateDebut", SqlDbType.Date).Value = DateTime.Parse(p_dateDebut);
+                this.cde.Parameters.Add("@dateFin", SqlDbType.Date).Value = DateTime.Parse(p_dateFin);
+
+                //execution de la requete
+                this.cde.ExecuteNonQuery();
+                
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+        }
+
+        public string GetAgenceId(string p_nom)
+        {
+            
+                //requete sql
+                string req = "SELECT IDAGENCE FROM AGENCE WHERE NOM = @nom";
+
+                this.cde = new SqlCommand(req, cn);
+                //association des variables a leur valeur
+                this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
+                
+
+                //execution de la requete
+                string result = this.cde.ExecuteScalar().ToString();
+                
+
+                
+                return result;
+
+                
+            
+        }
+
 
     }
 }

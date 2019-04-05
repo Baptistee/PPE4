@@ -158,7 +158,33 @@ namespace PPE4
 
         private void fCamp_DgCampagne_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            selectedRow = Convert.ToInt32(fCamp_DgCampagne.Rows[e.RowIndex].Cells[0].Value.ToString());
+            try
+            {
+                selectedRow = Convert.ToInt32(fCamp_DgCampagne.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                fCamp_tbNom.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[1].Value.ToString();
+                fCamp_tbObjectif.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[2].Value.ToString();
+                fCamp_tbPublique.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[3].Value.ToString();
+                fCamp_dtDateDebut.Value = DateTime.Parse(fCamp_DgCampagne.Rows[e.RowIndex].Cells[6].Value.ToString());
+                fCamp_dtDateFin.Value = DateTime.Parse(fCamp_DgCampagne.Rows[e.RowIndex].Cells[7].Value.ToString());
+
+                fCamp_cbAgence2.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString();
+                fCamp_cbAgence1.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString();
+                fCamp_cbResponsable.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[8].Value.ToString();
+                                
+                fCamp_cbAgence1.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString());
+                fCamp_cbAgence2.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString());
+                
+
+                
+            }
+            catch (Exception)
+            {
+
+            }
+             
+
+
         }
 
 
