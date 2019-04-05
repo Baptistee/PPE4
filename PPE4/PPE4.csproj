@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="frmVIPcs.Designer.cs">
       <DependentUpon>frmVIPcs.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +81,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVIPcs.resx">
       <DependentUpon>frmVIPcs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAgence.resx">
       <DependentUpon>frmAgence.cs</DependentUpon>
     </EmbeddedResource>
