@@ -1,325 +1,318 @@
-USE [master]
-GO
-/****** Object:  Database [GSB]    Script Date: 05/04/2019 10:52:37 ******/
-CREATE DATABASE [GSB]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'GSB', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL11.SQLEXPRESS\MSSQL\DATA\GSB.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
- LOG ON 
-( NAME = N'GSB_log', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL11.SQLEXPRESS\MSSQL\DATA\GSB_log.ldf' , SIZE = 2048KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
-GO
-ALTER DATABASE [GSB] SET COMPATIBILITY_LEVEL = 110
-GO
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [GSB].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-ALTER DATABASE [GSB] SET ANSI_NULL_DEFAULT OFF 
-GO
-ALTER DATABASE [GSB] SET ANSI_NULLS OFF 
-GO
-ALTER DATABASE [GSB] SET ANSI_PADDING OFF 
-GO
-ALTER DATABASE [GSB] SET ANSI_WARNINGS OFF 
-GO
-ALTER DATABASE [GSB] SET ARITHABORT OFF 
-GO
-ALTER DATABASE [GSB] SET AUTO_CLOSE OFF 
-GO
-ALTER DATABASE [GSB] SET AUTO_CREATE_STATISTICS ON 
-GO
-ALTER DATABASE [GSB] SET AUTO_SHRINK OFF 
-GO
-ALTER DATABASE [GSB] SET AUTO_UPDATE_STATISTICS ON 
-GO
-ALTER DATABASE [GSB] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-ALTER DATABASE [GSB] SET CURSOR_DEFAULT  GLOBAL 
-GO
-ALTER DATABASE [GSB] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-ALTER DATABASE [GSB] SET NUMERIC_ROUNDABORT OFF 
-GO
-ALTER DATABASE [GSB] SET QUOTED_IDENTIFIER OFF 
-GO
-ALTER DATABASE [GSB] SET RECURSIVE_TRIGGERS OFF 
-GO
-ALTER DATABASE [GSB] SET  DISABLE_BROKER 
-GO
-ALTER DATABASE [GSB] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-ALTER DATABASE [GSB] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-ALTER DATABASE [GSB] SET TRUSTWORTHY OFF 
-GO
-ALTER DATABASE [GSB] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-ALTER DATABASE [GSB] SET PARAMETERIZATION SIMPLE 
-GO
-ALTER DATABASE [GSB] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-ALTER DATABASE [GSB] SET HONOR_BROKER_PRIORITY OFF 
-GO
-ALTER DATABASE [GSB] SET RECOVERY SIMPLE 
-GO
-ALTER DATABASE [GSB] SET  MULTI_USER 
-GO
-ALTER DATABASE [GSB] SET PAGE_VERIFY CHECKSUM  
-GO
-ALTER DATABASE [GSB] SET DB_CHAINING OFF 
-GO
-ALTER DATABASE [GSB] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-ALTER DATABASE [GSB] SET TARGET_RECOVERY_TIME = 0 SECONDS 
-GO
-USE [GSB]
-GO
-/****** Object:  Table [dbo].[AGENCE]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[AGENCE](
-	[IDAGENCE] [int] NOT NULL,
-	[SPECIALITE] [varchar](30) NULL,
-	[NOM] [varchar](30) NULL,
-	[SITE] [varchar](30) NULL,
-	[MAIL] [varchar](30) NULL,
-	[TEL] [varchar](10) NULL,
-	[ADRESSE] [varchar](30) NULL,
- CONSTRAINT [PK_AGENCE] PRIMARY KEY CLUSTERED 
-(
-	[IDAGENCE] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+/*
+ ----------------------------------------------------------------------------
+             Génération d'une base de données pour
+                        SQL Server 7.x
+                       (8/3/2019 16:46:13)
+ ----------------------------------------------------------------------------
+     Nom de la base : GSB
+     Projet : Espace de travail
+     Auteur : LMC
+     Date de dernière modification : 8/3/2019 16:45:53
+ ----------------------------------------------------------------------------
+*/
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[ARTISTE]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[ARTISTE](
-	[IDARTISTE] [int] NOT NULL,
-	[NOM] [varchar](30) NULL,
- CONSTRAINT [PK_ARTISTE] PRIMARY KEY CLUSTERED 
-(
-	[IDARTISTE] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[CAMPAGNE]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[CAMPAGNE](
-	[IDCAMPAGNE] [int] NOT NULL,
-	[IDEMPLOYE] [int] NOT NULL,
-	[IDAGENCE] [int] NULL,
-	[IDAGENCE_ORGANISATEUR_ART] [int] NULL,
-	[INTITULE] [varchar](30) NULL,
-	[OBJECTIF] [varchar](30) NULL,
-	[PUBLIQUE] [varchar](30) NULL,
-	[DATEDEBUT] [datetime] NULL,
-	[DATEFIN] [datetime] NULL,
- CONSTRAINT [PK_CAMPAGNE] PRIMARY KEY CLUSTERED 
-(
-	[IDCAMPAGNE] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[CONVIER]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[CONVIER](
-	[IDVIP] [int] NOT NULL,
-	[IDEVENEMENT] [int] NOT NULL,
-	[DATECONVIER] [datetime] NULL,
- CONSTRAINT [PK_CONVIER] PRIMARY KEY CLUSTERED 
-(
-	[IDVIP] ASC,
-	[IDEVENEMENT] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+/* -----------------------------------------------------------------------------
+      TABLE : ARTISTE
+----------------------------------------------------------------------------- */
 
-GO
-/****** Object:  Table [dbo].[EMPLOYE]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[EMPLOYE](
-	[IDEMPLOYE] [int] NOT NULL,
-	[PRENOM] [varchar](30) NULL,
-	[NOM] [varchar](30) NULL,
-	[MAIL] [varchar](30) NULL,
-	[TEL] [char](32) NULL,
-	[GENRE] [varchar](1) NULL,
-	[GRADE] [char](32) NULL,
-	[LOGIN] [varchar](30) NULL,
-	[MDP] [varchar](70) NULL,
- CONSTRAINT [PK_EMPLOYE] PRIMARY KEY CLUSTERED 
-(
-	[IDEMPLOYE] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+create table ARTISTE
+  (
+     IDARTISTE int  not null  ,
+     NOM varchar(30)  null  
+     ,
+     constraint PK_ARTISTE primary key (IDARTISTE)
+  ) 
+go
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[EVENEMENT]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[EVENEMENT](
-	[IDEVENEMENT] [int] NOT NULL,
-	[IDCAMPAGNE] [int] NOT NULL,
-	[DATEDEBUT] [datetime] NULL,
-	[DATEFIN] [datetime] NULL,
-	[VILLE] [varchar](30) NULL,
-	[THEME] [varchar](30) NULL,
- CONSTRAINT [PK_EVENEMENT] PRIMARY KEY CLUSTERED 
-(
-	[IDEVENEMENT] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[INVITER]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[INVITER](
-	[IDEVENEMENT] [int] NOT NULL,
-	[IDARTISTE] [int] NOT NULL,
-	[CACHET] [int] NULL,
- CONSTRAINT [PK_INVITER] PRIMARY KEY CLUSTERED 
-(
-	[IDEVENEMENT] ASC,
-	[IDARTISTE] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
 
-GO
-/****** Object:  Table [dbo].[TYPEMESSAGE]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[TYPEMESSAGE](
-	[IDTYPEMESSAGE] [int] NOT NULL,
-	[IDEVENEMENT] [int] NOT NULL,
-	[CONTENUE] [varchar](128) NULL,
- CONSTRAINT [PK_TYPEMESSAGE] PRIMARY KEY CLUSTERED 
-(
-	[IDTYPEMESSAGE] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+/* -----------------------------------------------------------------------------
+      TABLE : EVENEMENT
+----------------------------------------------------------------------------- */
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[VIP]    Script Date: 05/04/2019 10:52:37 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[VIP](
-	[IDVIP] [int] NOT NULL,
-	[IDTYPEMESSAGE] [int] NOT NULL,
-	[NOM] [varchar](30) NULL,
-	[ADRESSE] [varchar](30) NULL,
-	[EMAIL] [varchar](30) NULL,
- CONSTRAINT [PK_VIP] PRIMARY KEY CLUSTERED 
-(
-	[IDVIP] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+create table EVENEMENT
+  (
+     IDEVENEMENT int  not null  ,
+     IDCAMPAGNE int  not null  ,
+     DATEDEBUT datetime  null  ,
+     DATEFIN datetime  null  ,
+     VILLE varchar(30)  null  ,
+     THEME varchar(30)  null  
+     ,
+     constraint PK_EVENEMENT primary key (IDEVENEMENT)
+  ) 
+go
 
-GO
-SET ANSI_PADDING OFF
-GO
-ALTER TABLE [dbo].[CAMPAGNE]  WITH CHECK ADD  CONSTRAINT [FK_CAMPAGNE_AGENCE] FOREIGN KEY([IDAGENCE])
-REFERENCES [dbo].[AGENCE] ([IDAGENCE])
-GO
-ALTER TABLE [dbo].[CAMPAGNE] CHECK CONSTRAINT [FK_CAMPAGNE_AGENCE]
-GO
-ALTER TABLE [dbo].[CAMPAGNE]  WITH CHECK ADD  CONSTRAINT [FK_CAMPAGNE_AGENCE1] FOREIGN KEY([IDAGENCE_ORGANISATEUR_ART])
-REFERENCES [dbo].[AGENCE] ([IDAGENCE])
-GO
-ALTER TABLE [dbo].[CAMPAGNE] CHECK CONSTRAINT [FK_CAMPAGNE_AGENCE1]
-GO
-ALTER TABLE [dbo].[CAMPAGNE]  WITH CHECK ADD  CONSTRAINT [FK_CAMPAGNE_EMPLOYE] FOREIGN KEY([IDEMPLOYE])
-REFERENCES [dbo].[EMPLOYE] ([IDEMPLOYE])
-GO
-ALTER TABLE [dbo].[CAMPAGNE] CHECK CONSTRAINT [FK_CAMPAGNE_EMPLOYE]
-GO
-ALTER TABLE [dbo].[CONVIER]  WITH CHECK ADD  CONSTRAINT [FK_CONVIER_EVENEMENT] FOREIGN KEY([IDEVENEMENT])
-REFERENCES [dbo].[EVENEMENT] ([IDEVENEMENT])
-GO
-ALTER TABLE [dbo].[CONVIER] CHECK CONSTRAINT [FK_CONVIER_EVENEMENT]
-GO
-ALTER TABLE [dbo].[CONVIER]  WITH CHECK ADD  CONSTRAINT [FK_CONVIER_VIP] FOREIGN KEY([IDVIP])
-REFERENCES [dbo].[VIP] ([IDVIP])
-GO
-ALTER TABLE [dbo].[CONVIER] CHECK CONSTRAINT [FK_CONVIER_VIP]
-GO
-ALTER TABLE [dbo].[EVENEMENT]  WITH CHECK ADD  CONSTRAINT [FK_EVENEMENT_CAMPAGNE] FOREIGN KEY([IDCAMPAGNE])
-REFERENCES [dbo].[CAMPAGNE] ([IDCAMPAGNE])
-GO
-ALTER TABLE [dbo].[EVENEMENT] CHECK CONSTRAINT [FK_EVENEMENT_CAMPAGNE]
-GO
-ALTER TABLE [dbo].[INVITER]  WITH CHECK ADD  CONSTRAINT [FK_INVITER_ARTISTE] FOREIGN KEY([IDARTISTE])
-REFERENCES [dbo].[ARTISTE] ([IDARTISTE])
-GO
-ALTER TABLE [dbo].[INVITER] CHECK CONSTRAINT [FK_INVITER_ARTISTE]
-GO
-ALTER TABLE [dbo].[INVITER]  WITH CHECK ADD  CONSTRAINT [FK_INVITER_EVENEMENT] FOREIGN KEY([IDEVENEMENT])
-REFERENCES [dbo].[EVENEMENT] ([IDEVENEMENT])
-GO
-ALTER TABLE [dbo].[INVITER] CHECK CONSTRAINT [FK_INVITER_EVENEMENT]
-GO
-ALTER TABLE [dbo].[TYPEMESSAGE]  WITH CHECK ADD  CONSTRAINT [FK_TYPEMESSAGE_EVENEMENT] FOREIGN KEY([IDEVENEMENT])
-REFERENCES [dbo].[EVENEMENT] ([IDEVENEMENT])
-GO
-ALTER TABLE [dbo].[TYPEMESSAGE] CHECK CONSTRAINT [FK_TYPEMESSAGE_EVENEMENT]
-GO
-ALTER TABLE [dbo].[VIP]  WITH CHECK ADD  CONSTRAINT [FK_VIP_TYPEMESSAGE] FOREIGN KEY([IDTYPEMESSAGE])
-REFERENCES [dbo].[TYPEMESSAGE] ([IDTYPEMESSAGE])
-GO
-ALTER TABLE [dbo].[VIP] CHECK CONSTRAINT [FK_VIP_TYPEMESSAGE]
-GO
-USE [master]
-GO
-ALTER DATABASE [GSB] SET  READ_WRITE 
-GO
+
+
+/*      INDEX DE EVENEMENT      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : VIP
+----------------------------------------------------------------------------- */
+
+create table VIP
+  (
+     IDVIP int  not null  ,
+     IDCATEGORIE int  not null  ,
+     NOM varchar(30)  null  ,
+     ADRESSE varchar(30)  null  ,
+     EMAIL varchar(30)  null  
+     ,
+     constraint PK_VIP primary key (IDVIP)
+  ) 
+go
+
+
+
+/*      INDEX DE VIP      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : CATEGORIE
+----------------------------------------------------------------------------- */
+
+create table CATEGORIE
+  (
+     IDCATEGORIE int  not null  ,
+     IDTYPEMESSAGE int  not null  ,
+     LIBELLE varchar(30)  null  
+     ,
+     constraint PK_CATEGORIE primary key (IDCATEGORIE)
+  ) 
+go
+
+
+
+/*      INDEX DE CATEGORIE      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : CAMPAGNE
+----------------------------------------------------------------------------- */
+
+create table CAMPAGNE
+  (
+     IDCAMPAGNE int  not null  ,
+     IDEMPLOYE int  not null  ,
+     IDAGENCE int  null  ,
+     IDAGENCE_ORGANISATEUR_ART int  null  ,
+     INTITULE varchar(30)  null  ,
+     OBJECTIF varchar(30)  null  ,
+     PUBLIQUE varchar(30)  null  ,
+     DATEDEBUT datetime  null  ,
+     DATEFIN datetime  null  
+     ,
+     constraint PK_CAMPAGNE primary key (IDCAMPAGNE)
+  ) 
+go
+
+
+
+/*      INDEX DE CAMPAGNE      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : EMPLOYE
+----------------------------------------------------------------------------- */
+
+create table EMPLOYE
+  (
+     IDEMPLOYE int  not null  ,
+     PRENOM varchar(30)  null  ,
+     NOM varchar(30)  null  ,
+     MAIL varchar(30)  null  ,
+     TEL char(32)  null  ,
+     GENRE varchar(1)  null  ,
+     GRADE char(32)  null  ,
+     LOGIN varchar(30)  null  ,
+     MDP varchar(70)  null  
+     ,
+     constraint PK_EMPLOYE primary key (IDEMPLOYE)
+  ) 
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : AGENCE
+----------------------------------------------------------------------------- */
+
+create table AGENCE
+  (
+     IDAGENCE int  not null  ,
+     SPECIALITE varchar(30)  null  ,
+     NOM varchar(30)  null  ,
+     SITE varchar(30)  null  ,
+     MAIL varchar(30)  null  ,
+     TEL varchar(10)  null  ,
+     ADRESSE varchar(30)  null  
+     ,
+     constraint PK_AGENCE primary key (IDAGENCE)
+  ) 
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : TYPEMESSAGE
+----------------------------------------------------------------------------- */
+
+create table TYPEMESSAGE
+  (
+     IDTYPEMESSAGE int  not null  ,
+	 IDEVENEMENT int not null  ,
+     CONTENUE varchar(128)  null  
+     ,
+     constraint PK_TYPEMESSAGE primary key (IDTYPEMESSAGE)
+  ) 
+go
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : INVITER
+----------------------------------------------------------------------------- */
+
+create table INVITER
+  (
+     IDEVENEMENT int  not null  ,
+     IDARTISTE int  not null  ,
+     CACHET int  null  
+     ,
+     constraint PK_INVITER primary key (IDEVENEMENT, IDARTISTE)
+  ) 
+go
+
+
+
+/*      INDEX DE INVITER      */
+
+
+
+/* -----------------------------------------------------------------------------
+      TABLE : CONVIER
+----------------------------------------------------------------------------- */
+
+create table CONVIER
+  (
+     IDVIP int  not null  ,
+     IDEVENEMENT int  not null  ,
+     DATECONVIER datetime  null  
+     ,
+     constraint PK_CONVIER primary key (IDVIP, IDEVENEMENT)
+  ) 
+go
+
+
+
+/*      INDEX DE CONVIER      */
+
+
+
+/* -----------------------------------------------------------------------------
+      REFERENCES SUR LES TABLES
+----------------------------------------------------------------------------- */
+
+
+
+alter table EVENEMENT 
+     add constraint FK_EVENEMENT_CAMPAGNE foreign key (IDCAMPAGNE) 
+               references CAMPAGNE (IDCAMPAGNE)
+go
+
+
+
+
+alter table VIP 
+     add constraint FK_VIP_CATEGORIE foreign key (IDCATEGORIE) 
+               references CATEGORIE (IDCATEGORIE)
+go
+
+
+
+
+alter table CATEGORIE 
+     add constraint FK_CATEGORIE_TYPEMESSAGE foreign key (IDTYPEMESSAGE) 
+               references TYPEMESSAGE (IDTYPEMESSAGE)
+go
+
+
+
+
+alter table TYPEMESSAGE
+	add constraint FK_TYPEMESSAGE_EVENEMENT foreign key (IDEVENEMENT)
+               references EVENEMENT (IDEVENEMENT)
+go
+
+
+
+
+alter table CAMPAGNE 
+     add constraint FK_CAMPAGNE_EMPLOYE foreign key (IDEMPLOYE) 
+               references EMPLOYE (IDEMPLOYE)
+go
+
+
+
+
+alter table CAMPAGNE 
+     add constraint FK_CAMPAGNE_AGENCE foreign key (IDAGENCE) 
+               references AGENCE (IDAGENCE)
+go
+
+
+
+
+alter table CAMPAGNE 
+     add constraint FK_CAMPAGNE_AGENCE1 foreign key (IDAGENCE_ORGANISATEUR_ART) 
+               references AGENCE (IDAGENCE)
+go
+
+
+
+
+alter table INVITER 
+     add constraint FK_INVITER_EVENEMENT foreign key (IDEVENEMENT) 
+               references EVENEMENT (IDEVENEMENT)
+go
+
+
+
+
+alter table INVITER 
+     add constraint FK_INVITER_ARTISTE foreign key (IDARTISTE) 
+               references ARTISTE (IDARTISTE)
+go
+
+
+
+
+alter table CONVIER 
+     add constraint FK_CONVIER_VIP foreign key (IDVIP) 
+               references VIP (IDVIP)
+go
+
+
+
+
+alter table CONVIER 
+     add constraint FK_CONVIER_EVENEMENT foreign key (IDEVENEMENT) 
+               references EVENEMENT (IDEVENEMENT)
+go
+
+
+
+
+/*
+ -----------------------------------------------------------------------------
+               FIN DE GENERATION
+ -----------------------------------------------------------------------------
+*/
