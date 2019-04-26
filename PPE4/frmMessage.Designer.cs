@@ -35,11 +35,11 @@
             this.txbMessageAction = new System.Windows.Forms.TextBox();
             this.dgMessageConsulter = new System.Windows.Forms.DataGridView();
             this.gpb_Message_Ajouter = new System.Windows.Forms.GroupBox();
+            this.cbb_Message_Evenement_Ajouter = new System.Windows.Forms.ComboBox();
             this.txbMessageCreer = new System.Windows.Forms.TextBox();
             this.gpb_Message_Action = new System.Windows.Forms.GroupBox();
-            this.txbHelp = new System.Windows.Forms.TextBox();
-            this.cbb_Message_Evenement_Ajouter = new System.Windows.Forms.ComboBox();
             this.cbb_Message_Evenement_Action = new System.Windows.Forms.ComboBox();
+            this.txbHelp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).BeginInit();
             this.gpb_Message_Ajouter.SuspendLayout();
             this.gpb_Message_Action.SuspendLayout();
@@ -119,6 +119,14 @@
             this.gpb_Message_Ajouter.TabStop = false;
             this.gpb_Message_Ajouter.Text = "Créer un type de message";
             // 
+            // cbb_Message_Evenement_Ajouter
+            // 
+            this.cbb_Message_Evenement_Ajouter.FormattingEnabled = true;
+            this.cbb_Message_Evenement_Ajouter.Location = new System.Drawing.Point(25, 175);
+            this.cbb_Message_Evenement_Ajouter.Name = "cbb_Message_Evenement_Ajouter";
+            this.cbb_Message_Evenement_Ajouter.Size = new System.Drawing.Size(235, 21);
+            this.cbb_Message_Evenement_Ajouter.TabIndex = 15;
+            // 
             // txbMessageCreer
             // 
             this.txbMessageCreer.Location = new System.Drawing.Point(25, 36);
@@ -134,12 +142,21 @@
             this.gpb_Message_Action.Controls.Add(this.txbMessageAction);
             this.gpb_Message_Action.Controls.Add(this.btn_Message_Modifier);
             this.gpb_Message_Action.Controls.Add(this.btn_Message_Supprimer);
+            this.gpb_Message_Action.Enabled = false;
             this.gpb_Message_Action.Location = new System.Drawing.Point(628, 12);
             this.gpb_Message_Action.Name = "gpb_Message_Action";
             this.gpb_Message_Action.Size = new System.Drawing.Size(285, 300);
             this.gpb_Message_Action.TabIndex = 19;
             this.gpb_Message_Action.TabStop = false;
             this.gpb_Message_Action.Text = "Actions sur un type de message";
+            // 
+            // cbb_Message_Evenement_Action
+            // 
+            this.cbb_Message_Evenement_Action.FormattingEnabled = true;
+            this.cbb_Message_Evenement_Action.Location = new System.Drawing.Point(28, 175);
+            this.cbb_Message_Evenement_Action.Name = "cbb_Message_Evenement_Action";
+            this.cbb_Message_Evenement_Action.Size = new System.Drawing.Size(238, 21);
+            this.cbb_Message_Evenement_Action.TabIndex = 18;
             // 
             // txbHelp
             // 
@@ -152,22 +169,6 @@
             this.txbHelp.TabIndex = 20;
             this.txbHelp.Text = "En attente d\'actions";
             this.txbHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cbb_Message_Evenement_Ajouter
-            // 
-            this.cbb_Message_Evenement_Ajouter.FormattingEnabled = true;
-            this.cbb_Message_Evenement_Ajouter.Location = new System.Drawing.Point(25, 175);
-            this.cbb_Message_Evenement_Ajouter.Name = "cbb_Message_Evenement_Ajouter";
-            this.cbb_Message_Evenement_Ajouter.Size = new System.Drawing.Size(235, 21);
-            this.cbb_Message_Evenement_Ajouter.TabIndex = 15;
-            // 
-            // cbb_Message_Evenement_Action
-            // 
-            this.cbb_Message_Evenement_Action.FormattingEnabled = true;
-            this.cbb_Message_Evenement_Action.Location = new System.Drawing.Point(28, 175);
-            this.cbb_Message_Evenement_Action.Name = "cbb_Message_Evenement_Action";
-            this.cbb_Message_Evenement_Action.Size = new System.Drawing.Size(238, 21);
-            this.cbb_Message_Evenement_Action.TabIndex = 18;
             // 
             // frmMessage
             // 

@@ -15,7 +15,7 @@ namespace PPE4
         // Members
         internal LienBDD connexion;
         private DataTable dt = new DataTable();
-        private int selectedRow = 0;
+        private int[] selectedRow = new int [4];
 
 
         public frmMessage()
@@ -43,7 +43,7 @@ namespace PPE4
 
 
         // Parser la combobox avec les événements.
-        private void refreshEvenementCbb()
+        private void refreshEvenementCbbAjouter()
         {
             dt = this.connexion.ConsulterEvenement();
             this.cbb_Message_Evenement_Ajouter.DataSource = dt;
@@ -52,11 +52,21 @@ namespace PPE4
         }
 
 
+        private void refreshEvenementCbbAction(int idevenement)
+        {
+            dt = this.connexion.ConsulterEvenement();
+            this.cbb_Message_Evenement_Action.DataSource = dt;
+            this.cbb_Message_Evenement_Action.DisplayMember = "theme";
+            this.cbb_Message_Evenement_Action.ValueMember = "idevenement";
+            this.cbb_Message_Evenement_Action.SelectedValue = idevenement;
+        }
+
+
         private void frmMessage_Load(object sender, EventArgs e)
         {
             connexion = new LienBDD();
             refreshTable();
-            refreshEvenementCbb();
+            refreshEvenementCbbAjouter();
         }
 
 
@@ -89,7 +99,7 @@ namespace PPE4
 
         private void btn_Message_Supprimer_Click(object sender, EventArgs e)
         {
-            if (connexion.SupprimerMessage(selectedRow))
+            if (connexion.SupprimerMessage(selectedRow[0]))
             {
                 txbHelp.Text = "Message supprimé avec succés!";
                 refreshTable();
@@ -105,24 +115,33 @@ namespace PPE4
 
         private void dgMessageConsulter_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            selectedRow = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString());
+            gpb_Message_Ajouter.Enabled = false;
+            gpb_Message_Action.Enabled = true;
+            selectedRow[0] = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString());
             txbMessageAction.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[2].Value.ToString();
-            //cbb_Message_Evenement_Action.Text = ajouter la valeur de la combo box.
+            selectedRow[1] = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[1].Value.ToString());
+            refreshEvenementCbbAction(selectedRow[1]);
         }
 
 
         private void btn_Message_Modifier_Click(object sender, EventArgs e)
         {
-            if (connexion.ModifierMessage(selectedRow, txbMessageAction.Text))
+
+            int idevenement = Int32.Parse(cbb_Message_Evenement_Action.SelectedValue.ToString());
+
+            if (connexion.ModifierMessage(selectedRow[0], idevenement, txbMessageAction.Text))
             {
                 txbHelp.Text = "Message modifié avec succés!";
                 refreshTable();
                 txbMessageAction.ResetText();
+                cbb_Message_Evenement_Action.ResetText();
             }
             else
             {
                 txbHelp.Text = "Échec de la modification du message";
             }
+            gpb_Message_Ajouter.Enabled = true;
+            gpb_Message_Action.Enabled = false;
         }
 
     }

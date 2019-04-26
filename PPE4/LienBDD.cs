@@ -173,13 +173,14 @@ namespace PPE4
         }
 
 
-        public bool ModifierMessage(int p_id, string p_contenue)
+        public bool ModifierMessage(int p_id, int p_idevenement, string p_contenue)
         {
             try
             {
-                string req = "UPDATE typemessage SET contenue = @contenue WHERE idtypemessage = @id";
+                string req = "UPDATE typemessage SET contenue = @contenue, idevenement = @idevenement WHERE idtypemessage = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.Parameters.Add("@idevenement", SqlDbType.Int).Value = p_idevenement;
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
                 this.cde.ExecuteNonQuery();
                 return true;
