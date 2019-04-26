@@ -14,7 +14,6 @@ namespace PPE4
     {
         LienBDD lien = new LienBDD();
         int IdAgence;
-
         DataTable dt;
 
         public frmAgence()

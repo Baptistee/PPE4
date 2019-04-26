@@ -42,7 +42,86 @@ namespace PPE4
             this.cn.Close();
         }
 
-        //Les Agences
+
+        //Les Artistes
+        
+        //Insert un artiste dans la bdd à partir des donénes du form
+        public bool createOneArtiste(string pNom)
+        {
+            try
+            {
+                int id = NextID("Artiste", "IDARTISTE");
+                string req = "INSERT INTO Artiste(idartiste, nom)";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        //Select tout les artistes de la bdd
+        public DataTable getAllArtistes()
+        {
+            try
+            {
+                string req = "SELECT * FROM Artiste";
+                this.cde = new SqlCommand(req, cn);
+                da = new SqlDataAdapter();
+                da.SelectCommand = this.cde;
+                dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //UPDATE un artiste avec les nouvelles valeurs du formulaire où l'id est le même
+        public bool updateOneArtiste(int id, string pNom)
+        {
+            try
+            {
+                string req = "UPDATE Artiste SET nom = @Nom WHERE IDAGENCE = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        //supprime la ligne de la table artiste qui a pour id celui rentré
+        public bool deleteArtiste(int pid)
+        {
+            try
+            {
+                string req = "DELETE Artiste WHERE IDARTISTE = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = pid;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        //Fin Artistes
+
+        //Début Les Agences
         public DataTable getAllAgences()
         {
             try
@@ -123,6 +202,8 @@ namespace PPE4
                 return false;
             }
         }
+
+        //Fin des Agences
 
         public int NextID(string p_table, string pid)
         {

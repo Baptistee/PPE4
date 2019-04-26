@@ -29,5 +29,11 @@ namespace PPE4
 
         }
 
+        private void artisteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmArtiste formArtiste = new frmArtiste();
+            formArtiste.ShowDialog();
+        }
+
     }
 }
