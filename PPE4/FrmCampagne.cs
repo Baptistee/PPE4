@@ -54,6 +54,7 @@ namespace PPE4
             {
                 this.fCamp_DgCampagne.DataSource = dt;
                 this.fCamp_DgCampagne.DataMember = dt.TableName;
+                this.fCamp_DgCampagne.Columns[0].Visible = false;
                 this.fCamp_DgCampagne.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)

@@ -93,7 +93,7 @@ namespace PPE4
 
         public DataTable GetCampagne()
         {
-            string req = "Select CAMP.IDCAMPAGNE , CAMP.INTITULE , CAMP.OBJECTIF , CAMP.PUBLIQUE , AG1.NOM Agence1 , AG2.NOM Agence2 , CAMP.DATEDEBUT , CAMP.DATEFIN , EMP.NOM + ' ' +  EMP.PRENOM as Responsable FROM CAMPAGNE CAMP  inner join AGENCE AG1 on AG1.IDAGENCE = CAMP.IDAGENCE    inner join AGENCE AG2 on AG2.IDAGENCE = CAMP.IDAGENCE_ORGANISATEUR_ART	inner join EMPLOYE EMP on EMP.IDEMPLOYE = CAMP.IDEMPLOYE";
+            string req = "Select CAMP.IDCAMPAGNE , CAMP.INTITULE , CAMP.OBJECTIF , CAMP.PUBLIQUE , AG1.NOM Agence_Communication , AG2.NOM Agence_Artistique , CAMP.DATEDEBUT , CAMP.DATEFIN , EMP.NOM + ' ' +  EMP.PRENOM as Responsable FROM CAMPAGNE CAMP  inner join AGENCE AG1 on AG1.IDAGENCE = CAMP.IDAGENCE    inner join AGENCE AG2 on AG2.IDAGENCE = CAMP.IDAGENCE_ORGANISATEUR_ART	inner join EMPLOYE EMP on EMP.IDEMPLOYE = CAMP.IDEMPLOYE";
             this.cde = new SqlCommand(req, cn);
             da = new SqlDataAdapter();
             da.SelectCommand = this.cde;
