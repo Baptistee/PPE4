@@ -158,12 +158,11 @@ namespace PPE4
             try
             {
                 //requete sql
-                string req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 , IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id)";
+                string req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 , IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
 
 
                 this.cde = new SqlCommand(req, cn);
                 //association des variables a leur valeur
-                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
                 this.cde.Parameters.Add("@Employe", SqlDbType.Int).Value = int.Parse(p_responsable);
                 this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
                 this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
@@ -172,6 +171,7 @@ namespace PPE4
                 this.cde.Parameters.Add("@publique", SqlDbType.VarChar).Value = p_publique;
                 this.cde.Parameters.Add("@dateDebut", SqlDbType.Date).Value = DateTime.Parse(p_dateDebut);
                 this.cde.Parameters.Add("@dateFin", SqlDbType.Date).Value = DateTime.Parse(p_dateFin);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
 
                 //execution de la requete
                 this.cde.ExecuteNonQuery();

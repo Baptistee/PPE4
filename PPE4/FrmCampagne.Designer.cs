@@ -52,10 +52,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fCamp_DgCampagne)).BeginInit();
             this.fCamp_GrpBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,6 +120,7 @@
             this.fCamp_BtModifier.TabIndex = 63;
             this.fCamp_BtModifier.Text = "Modifier";
             this.fCamp_BtModifier.UseVisualStyleBackColor = true;
+            this.fCamp_BtModifier.Click += new System.EventHandler(this.fCamp_BtModifier_Click);
             // 
             // fCamp_TpSet_lblReponse
             // 
@@ -145,21 +146,21 @@
             // 
             // fCamp_tbPublique
             // 
-            this.fCamp_tbPublique.Location = new System.Drawing.Point(76, 73);
+            this.fCamp_tbPublique.Location = new System.Drawing.Point(76, 78);
             this.fCamp_tbPublique.Name = "fCamp_tbPublique";
             this.fCamp_tbPublique.Size = new System.Drawing.Size(100, 20);
             this.fCamp_tbPublique.TabIndex = 59;
             // 
             // fCamp_dtDateFin
             // 
-            this.fCamp_dtDateFin.Location = new System.Drawing.Point(267, 51);
+            this.fCamp_dtDateFin.Location = new System.Drawing.Point(342, 50);
             this.fCamp_dtDateFin.Name = "fCamp_dtDateFin";
             this.fCamp_dtDateFin.Size = new System.Drawing.Size(200, 20);
             this.fCamp_dtDateFin.TabIndex = 58;
             // 
             // fCamp_dtDateDebut
             // 
-            this.fCamp_dtDateDebut.Location = new System.Drawing.Point(280, 19);
+            this.fCamp_dtDateDebut.Location = new System.Drawing.Point(342, 19);
             this.fCamp_dtDateDebut.Name = "fCamp_dtDateDebut";
             this.fCamp_dtDateDebut.Size = new System.Drawing.Size(200, 20);
             this.fCamp_dtDateDebut.TabIndex = 57;
@@ -167,7 +168,7 @@
             // fCamp_cbAgence2
             // 
             this.fCamp_cbAgence2.FormattingEnabled = true;
-            this.fCamp_cbAgence2.Location = new System.Drawing.Point(359, 103);
+            this.fCamp_cbAgence2.Location = new System.Drawing.Point(421, 112);
             this.fCamp_cbAgence2.Name = "fCamp_cbAgence2";
             this.fCamp_cbAgence2.Size = new System.Drawing.Size(121, 21);
             this.fCamp_cbAgence2.TabIndex = 56;
@@ -175,7 +176,7 @@
             // fCamp_cbAgence1
             // 
             this.fCamp_cbAgence1.FormattingEnabled = true;
-            this.fCamp_cbAgence1.Location = new System.Drawing.Point(114, 103);
+            this.fCamp_cbAgence1.Location = new System.Drawing.Point(160, 109);
             this.fCamp_cbAgence1.Name = "fCamp_cbAgence1";
             this.fCamp_cbAgence1.Size = new System.Drawing.Size(121, 21);
             this.fCamp_cbAgence1.TabIndex = 55;
@@ -183,7 +184,7 @@
             // fCamp_cbResponsable
             // 
             this.fCamp_cbResponsable.FormattingEnabled = true;
-            this.fCamp_cbResponsable.Location = new System.Drawing.Point(280, 76);
+            this.fCamp_cbResponsable.Location = new System.Drawing.Point(421, 81);
             this.fCamp_cbResponsable.Name = "fCamp_cbResponsable";
             this.fCamp_cbResponsable.Size = new System.Drawing.Size(121, 21);
             this.fCamp_cbResponsable.TabIndex = 54;
@@ -211,25 +212,25 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(253, 103);
+            this.label8.Location = new System.Drawing.Point(320, 115);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.Size = new System.Drawing.Size(95, 13);
             this.label8.TabIndex = 50;
-            this.label8.Text = "Deuxième agence :\r\n";
+            this.label8.Text = "Agence artistique :\r\n";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 103);
+            this.label7.Location = new System.Drawing.Point(15, 112);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 13);
+            this.label7.Size = new System.Drawing.Size(139, 13);
             this.label7.TabIndex = 49;
-            this.label7.Text = "Première agence :";
+            this.label7.Text = "Agence de communication :";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(198, 76);
+            this.label6.Location = new System.Drawing.Point(339, 81);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 13);
             this.label6.TabIndex = 48;
@@ -238,7 +239,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(195, 51);
+            this.label5.Location = new System.Drawing.Point(271, 54);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 47;
@@ -247,7 +248,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(193, 25);
+            this.label4.Location = new System.Drawing.Point(255, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 46;
@@ -256,7 +257,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 76);
+            this.label3.Location = new System.Drawing.Point(16, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 45;
@@ -291,13 +292,14 @@
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             // 
-            // comboBox1
+            // button1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(22, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.button1.Location = new System.Drawing.Point(60, 143);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 39);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Rechercher";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -306,14 +308,13 @@
             this.textBox1.Size = new System.Drawing.Size(291, 20);
             this.textBox1.TabIndex = 1;
             // 
-            // button1
+            // comboBox1
             // 
-            this.button1.Location = new System.Drawing.Point(114, 134);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 39);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(22, 42);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
             // 
             // FrmCampagne
             // 

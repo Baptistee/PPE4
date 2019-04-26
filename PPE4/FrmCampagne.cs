@@ -103,7 +103,7 @@ namespace PPE4
 
         private void fCamp_BtValider_Click(object sender, EventArgs e)
         {
-            connexion = new LienBDD();
+            
             //recuperation du formulaire
             string nom = fCamp_tbNom.Text;
             string objectif = fCamp_tbObjectif.Text;
@@ -125,7 +125,7 @@ namespace PPE4
 
                     if (connexion.AjouterCampagne(nom, objectif, publique, datedebut.ToString(), datefin.ToString(), responsable, agence1, agence2))
                     {
-                        fCamp_TpSet_lblReponse.Text = "Réussi";
+                        System.Windows.Forms.MessageBox.Show("Ajout réussi !");
                     }
                     else
                     {
@@ -185,6 +185,48 @@ namespace PPE4
              
 
 
+        }
+
+        private void fCamp_BtModifier_Click(object sender, EventArgs e)
+        {
+            
+
+            //recuperation du formulaire
+            string nom = fCamp_tbNom.Text;
+            string objectif = fCamp_tbObjectif.Text;
+            string publique = fCamp_tbPublique.Text;
+            DateTime datedebut = fCamp_dtDateDebut.Value;
+            DateTime datefin = fCamp_dtDateFin.Value;
+            string agence1 = fCamp_cbAgence1.SelectedValue.ToString();
+            string agence2 = fCamp_cbAgence2.SelectedValue.ToString();
+            string responsable = fCamp_cbResponsable.SelectedValue.ToString();
+            int id = selectedRow;
+
+            if (nom == "" || objectif == "" || responsable == "" || publique == "")
+            {
+                System.Windows.Forms.MessageBox.Show("Veuillez remplir tout les champs !");
+            }
+            else
+            {
+                if (DateTime.Compare(datedebut, datefin) <= 0)
+                {
+
+                    if (connexion.ModifierCampagne(id, nom, objectif, publique, datedebut.ToString(), datefin.ToString(), responsable, agence1, agence2))
+                    { 
+                        System.Windows.Forms.MessageBox.Show("Modification réussi !");
+                    }
+                    else
+                    {
+                        System.Windows.Forms.MessageBox.Show("Echec !");
+                    }
+
+                    this.ActualiserTableaux(this.connexion.GetCampagne());
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Date de debut superieur à celle de fin !");
+                }
+            }
         }
 
 
