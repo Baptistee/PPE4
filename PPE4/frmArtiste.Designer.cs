@@ -36,6 +36,12 @@
             this.btnArtisteModif = new System.Windows.Forms.Button();
             this.btnArtisteSup = new System.Windows.Forms.Button();
             this.lbl_Artiste_Info = new System.Windows.Forms.Label();
+            this.lbl_Artiste_prenom = new System.Windows.Forms.Label();
+            this.lbl_Artiste_mail = new System.Windows.Forms.Label();
+            this.lbl_Artiste_num = new System.Windows.Forms.Label();
+            this.txtBoxArtistePrenom = new System.Windows.Forms.TextBox();
+            this.txtBoxArtisteMail = new System.Windows.Forms.TextBox();
+            this.txtBoxArtisteTel = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtiste)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +65,7 @@
             // 
             // txtBoxArtisteNom
             // 
-            this.txtBoxArtisteNom.Location = new System.Drawing.Point(50, 6);
+            this.txtBoxArtisteNom.Location = new System.Drawing.Point(64, 6);
             this.txtBoxArtisteNom.Name = "txtBoxArtisteNom";
             this.txtBoxArtisteNom.Size = new System.Drawing.Size(100, 20);
             this.txtBoxArtisteNom.TabIndex = 2;
@@ -120,11 +126,65 @@
             this.lbl_Artiste_Info.Size = new System.Drawing.Size(0, 13);
             this.lbl_Artiste_Info.TabIndex = 50;
             // 
+            // lbl_Artiste_prenom
+            // 
+            this.lbl_Artiste_prenom.AutoSize = true;
+            this.lbl_Artiste_prenom.Location = new System.Drawing.Point(12, 48);
+            this.lbl_Artiste_prenom.Name = "lbl_Artiste_prenom";
+            this.lbl_Artiste_prenom.Size = new System.Drawing.Size(46, 13);
+            this.lbl_Artiste_prenom.TabIndex = 51;
+            this.lbl_Artiste_prenom.Text = "Prenom:";
+            // 
+            // lbl_Artiste_mail
+            // 
+            this.lbl_Artiste_mail.AutoSize = true;
+            this.lbl_Artiste_mail.Location = new System.Drawing.Point(187, 9);
+            this.lbl_Artiste_mail.Name = "lbl_Artiste_mail";
+            this.lbl_Artiste_mail.Size = new System.Drawing.Size(29, 13);
+            this.lbl_Artiste_mail.TabIndex = 52;
+            this.lbl_Artiste_mail.Text = "Mail:";
+            // 
+            // lbl_Artiste_num
+            // 
+            this.lbl_Artiste_num.AutoSize = true;
+            this.lbl_Artiste_num.Location = new System.Drawing.Point(187, 48);
+            this.lbl_Artiste_num.Name = "lbl_Artiste_num";
+            this.lbl_Artiste_num.Size = new System.Drawing.Size(61, 13);
+            this.lbl_Artiste_num.TabIndex = 53;
+            this.lbl_Artiste_num.Text = "Téléphone:";
+            // 
+            // txtBoxArtistePrenom
+            // 
+            this.txtBoxArtistePrenom.Location = new System.Drawing.Point(64, 45);
+            this.txtBoxArtistePrenom.Name = "txtBoxArtistePrenom";
+            this.txtBoxArtistePrenom.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxArtistePrenom.TabIndex = 54;
+            // 
+            // txtBoxArtisteMail
+            // 
+            this.txtBoxArtisteMail.Location = new System.Drawing.Point(254, 6);
+            this.txtBoxArtisteMail.Name = "txtBoxArtisteMail";
+            this.txtBoxArtisteMail.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxArtisteMail.TabIndex = 55;
+            // 
+            // txtBoxArtisteTel
+            // 
+            this.txtBoxArtisteTel.Location = new System.Drawing.Point(254, 45);
+            this.txtBoxArtisteTel.Name = "txtBoxArtisteTel";
+            this.txtBoxArtisteTel.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxArtisteTel.TabIndex = 56;
+            // 
             // frmArtiste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 384);
+            this.Controls.Add(this.txtBoxArtisteTel);
+            this.Controls.Add(this.txtBoxArtisteMail);
+            this.Controls.Add(this.txtBoxArtistePrenom);
+            this.Controls.Add(this.lbl_Artiste_num);
+            this.Controls.Add(this.lbl_Artiste_mail);
+            this.Controls.Add(this.lbl_Artiste_prenom);
             this.Controls.Add(this.lbl_Artiste_Info);
             this.Controls.Add(this.btnArtisteSup);
             this.Controls.Add(this.btnArtisteModif);
@@ -151,5 +211,11 @@
         private System.Windows.Forms.Button btnArtisteModif;
         private System.Windows.Forms.Button btnArtisteSup;
         private System.Windows.Forms.Label lbl_Artiste_Info;
+        private System.Windows.Forms.Label lbl_Artiste_prenom;
+        private System.Windows.Forms.Label lbl_Artiste_mail;
+        private System.Windows.Forms.Label lbl_Artiste_num;
+        private System.Windows.Forms.TextBox txtBoxArtistePrenom;
+        private System.Windows.Forms.TextBox txtBoxArtisteMail;
+        private System.Windows.Forms.TextBox txtBoxArtisteTel;
     }
 }

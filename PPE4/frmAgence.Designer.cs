@@ -46,6 +46,10 @@
             this.btnAgenceModif = new System.Windows.Forms.Button();
             this.dgvAgence = new System.Windows.Forms.DataGridView();
             this.btnAgenceAnnuler = new System.Windows.Forms.Button();
+            this.lbl_Agence_Ville = new System.Windows.Forms.Label();
+            this.lbl_Agence_CP = new System.Windows.Forms.Label();
+            this.txtBoxVille = new System.Windows.Forms.TextBox();
+            this.txtBoxCP = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgence)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +65,7 @@
             // 
             this.btnAgenceCree.BackColor = System.Drawing.Color.YellowGreen;
             this.btnAgenceCree.ForeColor = System.Drawing.Color.White;
-            this.btnAgenceCree.Location = new System.Drawing.Point(537, 4);
+            this.btnAgenceCree.Location = new System.Drawing.Point(774, 4);
             this.btnAgenceCree.Name = "btnAgenceCree";
             this.btnAgenceCree.Size = new System.Drawing.Size(106, 40);
             this.btnAgenceCree.TabIndex = 44;
@@ -169,7 +173,7 @@
             // 
             this.btnAgenceSup.BackColor = System.Drawing.Color.DarkRed;
             this.btnAgenceSup.ForeColor = System.Drawing.Color.White;
-            this.btnAgenceSup.Location = new System.Drawing.Point(673, 50);
+            this.btnAgenceSup.Location = new System.Drawing.Point(910, 50);
             this.btnAgenceSup.Name = "btnAgenceSup";
             this.btnAgenceSup.Size = new System.Drawing.Size(106, 40);
             this.btnAgenceSup.TabIndex = 31;
@@ -181,7 +185,7 @@
             // 
             this.btnAgenceModif.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAgenceModif.ForeColor = System.Drawing.Color.White;
-            this.btnAgenceModif.Location = new System.Drawing.Point(537, 50);
+            this.btnAgenceModif.Location = new System.Drawing.Point(774, 50);
             this.btnAgenceModif.Name = "btnAgenceModif";
             this.btnAgenceModif.Size = new System.Drawing.Size(106, 40);
             this.btnAgenceModif.TabIndex = 30;
@@ -197,7 +201,7 @@
             this.dgvAgence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgence.Location = new System.Drawing.Point(11, 96);
             this.dgvAgence.Name = "dgvAgence";
-            this.dgvAgence.Size = new System.Drawing.Size(792, 354);
+            this.dgvAgence.Size = new System.Drawing.Size(1005, 354);
             this.dgvAgence.TabIndex = 29;
             this.dgvAgence.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgence_RowEnter);
             // 
@@ -205,7 +209,7 @@
             // 
             this.btnAgenceAnnuler.BackColor = System.Drawing.Color.DarkGoldenrod;
             this.btnAgenceAnnuler.ForeColor = System.Drawing.Color.White;
-            this.btnAgenceAnnuler.Location = new System.Drawing.Point(673, 4);
+            this.btnAgenceAnnuler.Location = new System.Drawing.Point(910, 4);
             this.btnAgenceAnnuler.Name = "btnAgenceAnnuler";
             this.btnAgenceAnnuler.Size = new System.Drawing.Size(106, 40);
             this.btnAgenceAnnuler.TabIndex = 46;
@@ -213,11 +217,47 @@
             this.btnAgenceAnnuler.UseVisualStyleBackColor = false;
             this.btnAgenceAnnuler.Click += new System.EventHandler(this.btnAgenceAnnuler_Click);
             // 
+            // lbl_Agence_Ville
+            // 
+            this.lbl_Agence_Ville.AutoSize = true;
+            this.lbl_Agence_Ville.Location = new System.Drawing.Point(545, 14);
+            this.lbl_Agence_Ville.Name = "lbl_Agence_Ville";
+            this.lbl_Agence_Ville.Size = new System.Drawing.Size(29, 13);
+            this.lbl_Agence_Ville.TabIndex = 47;
+            this.lbl_Agence_Ville.Text = "Ville:";
+            // 
+            // lbl_Agence_CP
+            // 
+            this.lbl_Agence_CP.AutoSize = true;
+            this.lbl_Agence_CP.Location = new System.Drawing.Point(545, 53);
+            this.lbl_Agence_CP.Name = "lbl_Agence_CP";
+            this.lbl_Agence_CP.Size = new System.Drawing.Size(67, 13);
+            this.lbl_Agence_CP.TabIndex = 48;
+            this.lbl_Agence_CP.Text = "Code Postal:";
+            // 
+            // txtBoxVille
+            // 
+            this.txtBoxVille.Location = new System.Drawing.Point(618, 11);
+            this.txtBoxVille.Name = "txtBoxVille";
+            this.txtBoxVille.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxVille.TabIndex = 49;
+            // 
+            // txtBoxCP
+            // 
+            this.txtBoxCP.Location = new System.Drawing.Point(618, 50);
+            this.txtBoxCP.Name = "txtBoxCP";
+            this.txtBoxCP.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxCP.TabIndex = 50;
+            // 
             // frmAgence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 462);
+            this.ClientSize = new System.Drawing.Size(1030, 462);
+            this.Controls.Add(this.txtBoxCP);
+            this.Controls.Add(this.txtBoxVille);
+            this.Controls.Add(this.lbl_Agence_CP);
+            this.Controls.Add(this.lbl_Agence_Ville);
             this.Controls.Add(this.btnAgenceAnnuler);
             this.Controls.Add(this.lbl_Agence_Info);
             this.Controls.Add(this.btnAgenceCree);
@@ -265,7 +305,9 @@
         private System.Windows.Forms.Button btnAgenceModif;
         private System.Windows.Forms.DataGridView dgvAgence;
         private System.Windows.Forms.Button btnAgenceAnnuler;
-
-
+        private System.Windows.Forms.Label lbl_Agence_Ville;
+        private System.Windows.Forms.Label lbl_Agence_CP;
+        private System.Windows.Forms.TextBox txtBoxVille;
+        private System.Windows.Forms.TextBox txtBoxCP;
     }
 }

@@ -72,7 +72,7 @@ namespace PPE4
         private void btnAgenceModif_Click(object sender, EventArgs e)
         {
             //L'agence est modifiée avec les données comprisent dans les textboxs et un message de succès apparait, sinon un message d'erreur apparait 
-            if (lien.updateOneAgence(IdAgence, txtBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text))
+            if (lien.updateOneAgence(IdAgence, txtBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text, txtBoxVille.Text, txtBoxCP.Text))
             {
                 reloadDataGridView();
                 lbl_Agence_Info.ForeColor = Color.Green;
@@ -88,7 +88,7 @@ namespace PPE4
         private void btnAgenceCree_Click(object sender, EventArgs e)
         {
             //Si la requete ne renvoie pas d'erreur, l'agence est créée et un message de succèes apparait, sinon un message d'erreur apparait
-            if (lien.createOneAgence(txtBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text))
+            if (lien.createOneAgence(txtBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text, txtBoxVille.Text, txtBoxCP.Text))
             {
                 lbl_Agence_Info.ForeColor = Color.Green;
                 lbl_Agence_Info.Text = "Agence créée avec succès !";
@@ -98,6 +98,8 @@ namespace PPE4
                 txtBoxMail.Text = string.Empty;
                 txtBoxTel.Text = string.Empty;
                 txtBoxAdresse.Text = string.Empty; 
+                txtBoxCP.Text = string.Empty;
+                txtBoxVille.Text = string.Empty;
                 reloadDataGridView();
             }
             else
@@ -122,6 +124,8 @@ namespace PPE4
             txtBoxSite.Text = String.Empty;
             txtBoxSpecialite.Text = String.Empty;
             txtBoxTel.Text = String.Empty;
+            txtBoxCP.Text = string.Empty;
+            txtBoxVille.Text = string.Empty;
         }
 
         private void dgvAgence_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -137,6 +141,8 @@ namespace PPE4
                 txtBoxMail.Text = selectedRow.Cells[4].Value.ToString();
                 txtBoxTel.Text = selectedRow.Cells[5].Value.ToString();
                 txtBoxAdresse.Text = selectedRow.Cells[6].Value.ToString();
+                txtBoxCP.Text = selectedRow.Cells[7].Value.ToString();
+                txtBoxVille.Text = selectedRow.Cells[8].Value.ToString();
                 if (index > 0 || index == 0)
                 {
                     IdAgence = int.Parse(selectedRow.Cells[0].Value.ToString());

@@ -61,6 +61,9 @@ namespace PPE4
                 int index = e.RowIndex;
                 DataGridViewRow selectedRow = dgvArtiste.Rows[index];
                 txtBoxArtisteNom.Text = selectedRow.Cells[1].Value.ToString();
+                txtBoxArtistePrenom.Text = selectedRow.Cells[2].Value.ToString();
+                txtBoxArtisteMail.Text = selectedRow.Cells[3].Value.ToString();
+                txtBoxArtisteTel.Text = selectedRow.Cells[4].Value.ToString();
                 if (index > 0 || index == 0)
                 {
                     IdArtiste = int.Parse(selectedRow.Cells[0].Value.ToString());
@@ -81,16 +84,22 @@ namespace PPE4
         {
             //Annuler permet de rendre toutes les textboxs vide
             txtBoxArtisteNom.Text = String.Empty;
+            txtBoxArtistePrenom.Text = String.Empty;
+            txtBoxArtisteMail.Text = String.Empty;
+            txtBoxArtisteTel.Text = String.Empty;
         }
 
         private void btnArtisteCree_Click(object sender, EventArgs e)
         {
         //Si la requete ne renvoie pas d'erreur, l'artiste est créée et un message de succèes apparait, sinon un message d'erreur apparait
-            if (lien.createOneArtiste(txtBoxArtisteNom.Text))
+            if (lien.createOneArtiste(txtBoxArtisteNom.Text, txtBoxArtistePrenom.Text, txtBoxArtisteMail.Text, txtBoxArtisteTel.Text))
             {
                 lbl_Artiste_Info.ForeColor = Color.Green;
                 lbl_Artiste_Info.Text = "Artiste créée avec succès !";
                 txtBoxArtisteNom.Text = string.Empty;
+                txtBoxArtistePrenom.Text = String.Empty;
+                txtBoxArtisteMail.Text = String.Empty;
+                txtBoxArtisteTel.Text = String.Empty;
                 reloadDataGridView();
             }
             else
@@ -103,7 +112,7 @@ namespace PPE4
         private void btnArtisteModif_Click(object sender, EventArgs e)
         {
         //L'artiste est modifiée avec les données comprisent dans les textboxs et un message de succès apparait, sinon un message d'erreur apparait 
-            if (lien.updateOneArtiste(IdArtiste, txtBoxArtisteNom.Text))
+            if (lien.updateOneArtiste(IdArtiste, txtBoxArtisteNom.Text, txtBoxArtistePrenom.Text, txtBoxArtisteMail.Text, txtBoxArtisteTel.Text))
             {
                 reloadDataGridView();
                 lbl_Artiste_Info.ForeColor = Color.Green;

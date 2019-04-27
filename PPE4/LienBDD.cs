@@ -42,19 +42,23 @@ namespace PPE4
             this.cn.Close();
         }
 
+        #region LORIS
 
+        #region ARTISTES
         //Les Artistes
-        
         //Insert un artiste dans la bdd à partir des donénes du form
-        public bool createOneArtiste(string pNom)
+        public bool createOneArtiste(string pNom, string pPrenom, string pMail, string pNum)
         {
             try
             {
                 int id = NextID("Artiste", "IDARTISTE");
-                string req = "INSERT INTO Artiste(idartiste, nom)";
+                string req = "INSERT INTO Artiste(idartiste, nom, prenom, mail, num)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = pPrenom;
+                this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
+                this.cde.Parameters.Add("@Num", SqlDbType.VarChar).Value = pNum;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
@@ -84,7 +88,7 @@ namespace PPE4
         }
 
         //UPDATE un artiste avec les nouvelles valeurs du formulaire où l'id est le même
-        public bool updateOneArtiste(int id, string pNom)
+        public bool updateOneArtiste(int id, string pNom, string pPrenom, string pMail, string pNum)
         {
             try
             {
@@ -92,6 +96,9 @@ namespace PPE4
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
+                this.cde.Parameters.Add("@Prenom", SqlDbType.VarChar).Value = pPrenom;
+                this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
+                this.cde.Parameters.Add("@Num", SqlDbType.VarChar).Value = pNum;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
@@ -121,18 +128,21 @@ namespace PPE4
 
         //Fin Artistes
 
+        #endregion
+
+        #region AGENCES
         //Début Les Agences
         public DataTable getAllAgences()
         {
             try
             {
-            string req = "SELECT * FROM Agence";
-            this.cde = new SqlCommand(req, cn);
-            da = new SqlDataAdapter();
-            da.SelectCommand = this.cde;
-            dt = new DataTable();
-            da.Fill(dt);
-            return dt;
+                string req = "SELECT * FROM Agence";
+                this.cde = new SqlCommand(req, cn);
+                da = new SqlDataAdapter();
+                da.SelectCommand = this.cde;
+                dt = new DataTable();
+                da.Fill(dt);
+                return dt;
             }
             catch (Exception ex)
             {
@@ -140,12 +150,12 @@ namespace PPE4
             }
         }
 
-        public bool createOneAgence(string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
+        public bool createOneAgence(string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse, string pVille, string pCp)
         {
             try
             {
-                int id = NextID("Agence","IDAGENCE");
-                string req = "INSERT INTO Agence(idagence, specialite, nom, site, mail, tel, adresse) VALUES (@id, @Spe, @Nom, @Site, @Mail, @Tel, @Adresse)";
+                int id = NextID("Agence", "IDAGENCE");
+                string req = "INSERT INTO Agence(idagence, specialite, nom, site, mail, tel, adresse, ville, cp) VALUES (@id, @Spe, @Nom, @Site, @Mail, @Tel, @Adresse, @Ville, @Cp)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 this.cde.Parameters.Add("@Spe", SqlDbType.VarChar).Value = pSpe;
@@ -154,6 +164,8 @@ namespace PPE4
                 this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
                 this.cde.Parameters.Add("@Tel", SqlDbType.VarChar).Value = pTel;
                 this.cde.Parameters.Add("@Adresse", SqlDbType.VarChar).Value = pAdresse;
+                this.cde.Parameters.Add("@Ville", SqlDbType.VarChar).Value = pVille;
+                this.cde.Parameters.Add("@Cp", SqlDbType.VarChar).Value = pCp;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
@@ -161,14 +173,14 @@ namespace PPE4
             {
                 return false;
             }
-            
+
         }
 
-        public bool updateOneAgence(int id, string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse)
+        public bool updateOneAgence(int id, string pSpe, string pNom, string pSite, string pMail, string pTel, string pAdresse, string pVille, string pCp)
         {
             try
             {
-                string req = "UPDATE Agence SET specialite = @Spe, nom = @Nom, site= @Site, mail = @Mail, tel = @Tel, adresse = @Adresse WHERE IDAGENCE = @id";
+                string req = "UPDATE Agence SET specialite = @Spe, nom = @Nom, site= @Site, mail = @Mail, tel = @Tel, adresse = @Adresse, ville = @Ville, cp = @Cp WHERE IDAGENCE = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 this.cde.Parameters.Add("@Spe", SqlDbType.VarChar).Value = pSpe;
@@ -177,6 +189,8 @@ namespace PPE4
                 this.cde.Parameters.Add("@Mail", SqlDbType.VarChar).Value = pMail;
                 this.cde.Parameters.Add("@Tel", SqlDbType.VarChar).Value = pTel;
                 this.cde.Parameters.Add("@Adresse", SqlDbType.VarChar).Value = pAdresse;
+                this.cde.Parameters.Add("@Ville", SqlDbType.VarChar).Value = pVille;
+                this.cde.Parameters.Add("@Cp", SqlDbType.VarChar).Value = pCp;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
@@ -204,6 +218,9 @@ namespace PPE4
         }
 
         //Fin des Agences
+        #endregion
+
+        #endregion
 
         public int NextID(string p_table, string pid)
         {
