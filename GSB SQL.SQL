@@ -168,6 +168,7 @@ go
 create table TYPEMESSAGE
   (
      IDTYPEMESSAGE int  not null  ,
+	 IDEVENEMENT int not null  ,
      CONTENUE varchar(128)  null  
      ,
      constraint PK_TYPEMESSAGE primary key (IDTYPEMESSAGE)
@@ -241,6 +242,14 @@ go
 alter table CATEGORIE 
      add constraint FK_CATEGORIE_TYPEMESSAGE foreign key (IDTYPEMESSAGE) 
                references TYPEMESSAGE (IDTYPEMESSAGE)
+go
+
+
+
+
+alter table TYPEMESSAGE
+	add constraint FK_TYPEMESSAGE_EVENEMENT foreign key (IDEVENEMENT)
+               references EVENEMENT (IDEVENEMENT)
 go
 
 

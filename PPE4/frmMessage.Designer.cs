@@ -40,6 +40,8 @@
             this.gpb_Message_Action = new System.Windows.Forms.GroupBox();
             this.cbb_Message_Evenement_Action = new System.Windows.Forms.ComboBox();
             this.txbHelp = new System.Windows.Forms.TextBox();
+            this.cbb_Message_Categorie_Ajouter = new System.Windows.Forms.ComboBox();
+            this.cbb_Message_Categorie_Action = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).BeginInit();
             this.gpb_Message_Ajouter.SuspendLayout();
             this.gpb_Message_Action.SuspendLayout();
@@ -47,7 +49,7 @@
             // 
             // btn_Message_Supprimer
             // 
-            this.btn_Message_Supprimer.Location = new System.Drawing.Point(164, 217);
+            this.btn_Message_Supprimer.Location = new System.Drawing.Point(164, 238);
             this.btn_Message_Supprimer.Name = "btn_Message_Supprimer";
             this.btn_Message_Supprimer.Size = new System.Drawing.Size(102, 39);
             this.btn_Message_Supprimer.TabIndex = 17;
@@ -57,7 +59,7 @@
             // 
             // btn_Message_Modifier
             // 
-            this.btn_Message_Modifier.Location = new System.Drawing.Point(28, 217);
+            this.btn_Message_Modifier.Location = new System.Drawing.Point(28, 238);
             this.btn_Message_Modifier.Name = "btn_Message_Modifier";
             this.btn_Message_Modifier.Size = new System.Drawing.Size(102, 39);
             this.btn_Message_Modifier.TabIndex = 16;
@@ -67,7 +69,7 @@
             // 
             // btn_Message_Annuler
             // 
-            this.btn_Message_Annuler.Location = new System.Drawing.Point(172, 217);
+            this.btn_Message_Annuler.Location = new System.Drawing.Point(172, 238);
             this.btn_Message_Annuler.Name = "btn_Message_Annuler";
             this.btn_Message_Annuler.Size = new System.Drawing.Size(88, 39);
             this.btn_Message_Annuler.TabIndex = 14;
@@ -77,7 +79,7 @@
             // 
             // btn_Message_Creer
             // 
-            this.btn_Message_Creer.Location = new System.Drawing.Point(25, 217);
+            this.btn_Message_Creer.Location = new System.Drawing.Point(25, 238);
             this.btn_Message_Creer.Name = "btn_Message_Creer";
             this.btn_Message_Creer.Size = new System.Drawing.Size(93, 39);
             this.btn_Message_Creer.TabIndex = 13;
@@ -108,6 +110,7 @@
             // 
             // gpb_Message_Ajouter
             // 
+            this.gpb_Message_Ajouter.Controls.Add(this.cbb_Message_Categorie_Ajouter);
             this.gpb_Message_Ajouter.Controls.Add(this.cbb_Message_Evenement_Ajouter);
             this.gpb_Message_Ajouter.Controls.Add(this.txbMessageCreer);
             this.gpb_Message_Ajouter.Controls.Add(this.btn_Message_Creer);
@@ -138,6 +141,7 @@
             // 
             // gpb_Message_Action
             // 
+            this.gpb_Message_Action.Controls.Add(this.cbb_Message_Categorie_Action);
             this.gpb_Message_Action.Controls.Add(this.cbb_Message_Evenement_Action);
             this.gpb_Message_Action.Controls.Add(this.txbMessageAction);
             this.gpb_Message_Action.Controls.Add(this.btn_Message_Modifier);
@@ -169,6 +173,22 @@
             this.txbHelp.TabIndex = 20;
             this.txbHelp.Text = "En attente d\'actions";
             this.txbHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cbb_Message_Categorie_Ajouter
+            // 
+            this.cbb_Message_Categorie_Ajouter.FormattingEnabled = true;
+            this.cbb_Message_Categorie_Ajouter.Location = new System.Drawing.Point(25, 203);
+            this.cbb_Message_Categorie_Ajouter.Name = "cbb_Message_Categorie_Ajouter";
+            this.cbb_Message_Categorie_Ajouter.Size = new System.Drawing.Size(235, 21);
+            this.cbb_Message_Categorie_Ajouter.TabIndex = 16;
+            // 
+            // cbb_Message_Categorie_Action
+            // 
+            this.cbb_Message_Categorie_Action.FormattingEnabled = true;
+            this.cbb_Message_Categorie_Action.Location = new System.Drawing.Point(28, 203);
+            this.cbb_Message_Categorie_Action.Name = "cbb_Message_Categorie_Action";
+            this.cbb_Message_Categorie_Action.Size = new System.Drawing.Size(238, 21);
+            this.cbb_Message_Categorie_Action.TabIndex = 19;
             // 
             // frmMessage
             // 
@@ -206,6 +226,8 @@
         private System.Windows.Forms.TextBox txbHelp;
         private System.Windows.Forms.ComboBox cbb_Message_Evenement_Ajouter;
         private System.Windows.Forms.ComboBox cbb_Message_Evenement_Action;
+        private System.Windows.Forms.ComboBox cbb_Message_Categorie_Ajouter;
+        private System.Windows.Forms.ComboBox cbb_Message_Categorie_Action;
 
 
 

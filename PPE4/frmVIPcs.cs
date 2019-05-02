@@ -47,7 +47,19 @@ namespace PPE4
         {
             connexion = new LienBDD();
             refreshTable();
+            refreshEvenementCbbAjouter();
         }
+
+
+        // Parser la combobox avec les événements.
+        private void refreshEvenementCbbAjouter()
+        {
+            dt = this.connexion.ConsulterEvenement();
+            this.cbAjouterCategorie.DataSource = dt;
+            this.cbAjouterCategorie.DisplayMember = "theme";
+            this.cbAjouterCategorie.ValueMember = "idevenement";
+        }
+
 
         private void btnCréer_Click(object sender, EventArgs e)
         {
@@ -58,7 +70,7 @@ namespace PPE4
 
             if (connexion.AjouterVIP(idcategorie, nom, adresse, mail))
             {
-                
+                refreshTable();
             }
             else
             {
