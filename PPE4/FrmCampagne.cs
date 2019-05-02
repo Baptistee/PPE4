@@ -44,6 +44,7 @@ namespace PPE4
             this.fCamp_cbResponsable.DisplayMember = "Responsable";
             this.fCamp_cbResponsable.ValueMember = "IDEMPLOYE";
 
+            this.ReinitialiserGroupBox(this.fCamp_GrpBox);
             
         }
 
@@ -111,11 +112,36 @@ namespace PPE4
             string publique = fCamp_tbPublique.Text;
             DateTime datedebut = fCamp_dtDateDebut.Value;
             DateTime datefin = fCamp_dtDateFin.Value;
-            string agence1 = fCamp_cbAgence1.SelectedValue.ToString();
-            string agence2 = fCamp_cbAgence2.SelectedValue.ToString();
-            string responsable = fCamp_cbResponsable.SelectedValue.ToString();
 
-            if (nom == "" || objectif == "" || responsable == "" || publique == "")
+            string responsable;
+            string agence1;
+            string agence2;
+
+            if (fCamp_checkBoxAgence1.Checked == true)
+            {
+                agence1 = fCamp_cbAgence1.SelectedValue.ToString();
+            }
+            else
+            {
+                agence1 = null;
+            }
+
+            if (fCamp_checkBoxAgence2.Checked == true)
+            {
+                agence2 = fCamp_cbAgence2.SelectedValue.ToString();
+            }
+            else
+            {
+                agence2 = null;
+            }
+          
+            responsable = fCamp_cbResponsable.SelectedValue.ToString();
+            
+
+
+
+
+            if (nom == "" || objectif == "" || publique == "")
             {
                 System.Windows.Forms.MessageBox.Show("Veuillez remplir tout les champs !");
             }
@@ -227,6 +253,30 @@ namespace PPE4
                 {
                     System.Windows.Forms.MessageBox.Show("Date de debut superieur à celle de fin !");
                 }
+            }
+        }
+
+        private void fCamp_checkBoxAgence1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (fCamp_checkBoxAgence1.Checked == true)
+            {
+                fCamp_cbAgence1.Enabled = true;
+            }
+            else
+            {
+                fCamp_cbAgence1.Enabled = false;
+            }
+        }
+
+        private void fCamp_checkBoxAgence2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (fCamp_checkBoxAgence2.Checked == true)
+            {
+                fCamp_cbAgence2.Enabled = true;
+            }
+            else
+            {
+                fCamp_cbAgence2.Enabled = false;
             }
         }
 

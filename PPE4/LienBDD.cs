@@ -63,6 +63,11 @@ namespace PPE4
                 int nb = NextID("CAMPAGNE", "IDCAMPAGNE");
 
                 //requete sql
+
+               
+                
+                
+
                 string req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,IDAGENCE,IDAGENCE_ORGANISATEUR_ART,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe, @Agence1 , @Agence2 , @nom, @objectif, @publique , @dateDebut, @dateFin)";
 
 
@@ -194,16 +199,10 @@ namespace PPE4
                 //association des variables a leur valeur
                 this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
                 
-
                 //execution de la requete
                 string result = this.cde.ExecuteScalar().ToString();
-                
-
-                
-                return result;
-
-                
-            
+                   
+                return result;  
         }
 
 
