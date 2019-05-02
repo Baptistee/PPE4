@@ -47,11 +47,15 @@
             // 
             // dgvArtiste
             // 
+            this.dgvArtiste.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvArtiste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArtiste.Location = new System.Drawing.Point(12, 98);
             this.dgvArtiste.Name = "dgvArtiste";
             this.dgvArtiste.Size = new System.Drawing.Size(579, 274);
             this.dgvArtiste.TabIndex = 0;
+            this.dgvArtiste.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArtiste_RowEnter_1);
             this.dgvArtiste.Enter += new System.EventHandler(this.dataGridView1_Enter);
             // 
             // lbl_Artiste_nom
@@ -121,7 +125,7 @@
             // lbl_Artiste_Info
             // 
             this.lbl_Artiste_Info.AutoSize = true;
-            this.lbl_Artiste_Info.Location = new System.Drawing.Point(12, 52);
+            this.lbl_Artiste_Info.Location = new System.Drawing.Point(12, 79);
             this.lbl_Artiste_Info.Name = "lbl_Artiste_Info";
             this.lbl_Artiste_Info.Size = new System.Drawing.Size(0, 13);
             this.lbl_Artiste_Info.TabIndex = 50;
@@ -138,7 +142,7 @@
             // lbl_Artiste_mail
             // 
             this.lbl_Artiste_mail.AutoSize = true;
-            this.lbl_Artiste_mail.Location = new System.Drawing.Point(187, 9);
+            this.lbl_Artiste_mail.Location = new System.Drawing.Point(176, 9);
             this.lbl_Artiste_mail.Name = "lbl_Artiste_mail";
             this.lbl_Artiste_mail.Size = new System.Drawing.Size(29, 13);
             this.lbl_Artiste_mail.TabIndex = 52;
@@ -147,7 +151,7 @@
             // lbl_Artiste_num
             // 
             this.lbl_Artiste_num.AutoSize = true;
-            this.lbl_Artiste_num.Location = new System.Drawing.Point(187, 48);
+            this.lbl_Artiste_num.Location = new System.Drawing.Point(176, 48);
             this.lbl_Artiste_num.Name = "lbl_Artiste_num";
             this.lbl_Artiste_num.Size = new System.Drawing.Size(61, 13);
             this.lbl_Artiste_num.TabIndex = 53;
@@ -162,14 +166,14 @@
             // 
             // txtBoxArtisteMail
             // 
-            this.txtBoxArtisteMail.Location = new System.Drawing.Point(254, 6);
+            this.txtBoxArtisteMail.Location = new System.Drawing.Point(243, 6);
             this.txtBoxArtisteMail.Name = "txtBoxArtisteMail";
             this.txtBoxArtisteMail.Size = new System.Drawing.Size(100, 20);
             this.txtBoxArtisteMail.TabIndex = 55;
             // 
             // txtBoxArtisteTel
             // 
-            this.txtBoxArtisteTel.Location = new System.Drawing.Point(254, 45);
+            this.txtBoxArtisteTel.Location = new System.Drawing.Point(243, 45);
             this.txtBoxArtisteTel.Name = "txtBoxArtisteTel";
             this.txtBoxArtisteTel.Size = new System.Drawing.Size(100, 20);
             this.txtBoxArtisteTel.TabIndex = 56;

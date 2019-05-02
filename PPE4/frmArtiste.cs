@@ -141,6 +141,32 @@ namespace PPE4
             }
         }
 
+        private void dgvArtiste_RowEnter_1(object sender, DataGridViewCellEventArgs e)
+        {
+            //Lorsque l'on clique sur une ligne (que ce soit le header, ou une autre cell)
+            try
+            {
+                int index = e.RowIndex;
+                DataGridViewRow selectedRow = dgvArtiste.Rows[index];
+                txtBoxArtisteNom.Text = selectedRow.Cells[1].Value.ToString();
+                txtBoxArtistePrenom.Text = selectedRow.Cells[2].Value.ToString();
+                txtBoxArtisteMail.Text = selectedRow.Cells[3].Value.ToString();
+                txtBoxArtisteTel.Text = selectedRow.Cells[4].Value.ToString();
+                if (index > 0 || index == 0)
+                {
+                    IdArtiste = int.Parse(selectedRow.Cells[0].Value.ToString());
+                }
+            }
+            catch (Exception)
+            {
+                //Ne rien mettre Si on clique sur la dernière ligne, 
+                //le programme crash sans aucune raison, mais avec le try catch, 
+                //on règle ce problème. Si ca marche (si on clique sur une ligne autre que la dernière) 
+                //on fait les actions sinon, on fait rien, pas besoin de fermer le programme
+
+            }
+        }
+
         }
 
         }

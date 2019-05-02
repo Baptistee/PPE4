@@ -52,7 +52,7 @@ namespace PPE4
             try
             {
                 int id = NextID("Artiste", "IDARTISTE");
-                string req = "INSERT INTO Artiste(idartiste, nom, prenom, mail, num)";
+                string req = "INSERT INTO Artiste(idartiste, nom, prenom, mail, num) VALUES (@id, @Nom, @Prenom, @Mail, @Num)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
@@ -92,7 +92,7 @@ namespace PPE4
         {
             try
             {
-                string req = "UPDATE Artiste SET nom = @Nom WHERE IDAGENCE = @id";
+                string req = "UPDATE Artiste SET nom = @Nom, prenom = @Prenom, mail = @Mail, num= @Num WHERE IDARTISTE = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = id;
                 this.cde.Parameters.Add("@Nom", SqlDbType.VarChar).Value = pNom;
@@ -102,7 +102,7 @@ namespace PPE4
                 this.cde.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
@@ -114,7 +114,7 @@ namespace PPE4
         {
             try
             {
-                string req = "DELETE Artiste WHERE IDARTISTE = @id";
+                string req = "DELETE FROM Artiste WHERE IDARTISTE = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = pid;
                 this.cde.ExecuteNonQuery();
