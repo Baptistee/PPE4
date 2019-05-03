@@ -35,13 +35,15 @@
             this.txbMessageAction = new System.Windows.Forms.TextBox();
             this.dgMessageConsulter = new System.Windows.Forms.DataGridView();
             this.gpb_Message_Ajouter = new System.Windows.Forms.GroupBox();
-            this.cbb_Message_Evenement_Ajouter = new System.Windows.Forms.ComboBox();
+            this.cbb_Message_Categorie_Ajouter = new System.Windows.Forms.ComboBox();
             this.txbMessageCreer = new System.Windows.Forms.TextBox();
             this.gpb_Message_Action = new System.Windows.Forms.GroupBox();
-            this.cbb_Message_Evenement_Action = new System.Windows.Forms.ComboBox();
-            this.txbHelp = new System.Windows.Forms.TextBox();
-            this.cbb_Message_Categorie_Ajouter = new System.Windows.Forms.ComboBox();
             this.cbb_Message_Categorie_Action = new System.Windows.Forms.ComboBox();
+            this.txbHelp = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgMessageConsulter)).BeginInit();
             this.gpb_Message_Ajouter.SuspendLayout();
             this.gpb_Message_Action.SuspendLayout();
@@ -89,7 +91,7 @@
             // 
             // txbMessageAction
             // 
-            this.txbMessageAction.Location = new System.Drawing.Point(28, 36);
+            this.txbMessageAction.Location = new System.Drawing.Point(28, 49);
             this.txbMessageAction.Multiline = true;
             this.txbMessageAction.Name = "txbMessageAction";
             this.txbMessageAction.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -110,8 +112,9 @@
             // 
             // gpb_Message_Ajouter
             // 
+            this.gpb_Message_Ajouter.Controls.Add(this.label2);
+            this.gpb_Message_Ajouter.Controls.Add(this.label1);
             this.gpb_Message_Ajouter.Controls.Add(this.cbb_Message_Categorie_Ajouter);
-            this.gpb_Message_Ajouter.Controls.Add(this.cbb_Message_Evenement_Ajouter);
             this.gpb_Message_Ajouter.Controls.Add(this.txbMessageCreer);
             this.gpb_Message_Ajouter.Controls.Add(this.btn_Message_Creer);
             this.gpb_Message_Ajouter.Controls.Add(this.btn_Message_Annuler);
@@ -122,17 +125,17 @@
             this.gpb_Message_Ajouter.TabStop = false;
             this.gpb_Message_Ajouter.Text = "Créer un type de message";
             // 
-            // cbb_Message_Evenement_Ajouter
+            // cbb_Message_Categorie_Ajouter
             // 
-            this.cbb_Message_Evenement_Ajouter.FormattingEnabled = true;
-            this.cbb_Message_Evenement_Ajouter.Location = new System.Drawing.Point(25, 175);
-            this.cbb_Message_Evenement_Ajouter.Name = "cbb_Message_Evenement_Ajouter";
-            this.cbb_Message_Evenement_Ajouter.Size = new System.Drawing.Size(235, 21);
-            this.cbb_Message_Evenement_Ajouter.TabIndex = 15;
+            this.cbb_Message_Categorie_Ajouter.FormattingEnabled = true;
+            this.cbb_Message_Categorie_Ajouter.Location = new System.Drawing.Point(25, 211);
+            this.cbb_Message_Categorie_Ajouter.Name = "cbb_Message_Categorie_Ajouter";
+            this.cbb_Message_Categorie_Ajouter.Size = new System.Drawing.Size(235, 21);
+            this.cbb_Message_Categorie_Ajouter.TabIndex = 16;
             // 
             // txbMessageCreer
             // 
-            this.txbMessageCreer.Location = new System.Drawing.Point(25, 36);
+            this.txbMessageCreer.Location = new System.Drawing.Point(25, 49);
             this.txbMessageCreer.Multiline = true;
             this.txbMessageCreer.Name = "txbMessageCreer";
             this.txbMessageCreer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -141,8 +144,9 @@
             // 
             // gpb_Message_Action
             // 
+            this.gpb_Message_Action.Controls.Add(this.label4);
+            this.gpb_Message_Action.Controls.Add(this.label3);
             this.gpb_Message_Action.Controls.Add(this.cbb_Message_Categorie_Action);
-            this.gpb_Message_Action.Controls.Add(this.cbb_Message_Evenement_Action);
             this.gpb_Message_Action.Controls.Add(this.txbMessageAction);
             this.gpb_Message_Action.Controls.Add(this.btn_Message_Modifier);
             this.gpb_Message_Action.Controls.Add(this.btn_Message_Supprimer);
@@ -154,13 +158,13 @@
             this.gpb_Message_Action.TabStop = false;
             this.gpb_Message_Action.Text = "Actions sur un type de message";
             // 
-            // cbb_Message_Evenement_Action
+            // cbb_Message_Categorie_Action
             // 
-            this.cbb_Message_Evenement_Action.FormattingEnabled = true;
-            this.cbb_Message_Evenement_Action.Location = new System.Drawing.Point(28, 175);
-            this.cbb_Message_Evenement_Action.Name = "cbb_Message_Evenement_Action";
-            this.cbb_Message_Evenement_Action.Size = new System.Drawing.Size(238, 21);
-            this.cbb_Message_Evenement_Action.TabIndex = 18;
+            this.cbb_Message_Categorie_Action.FormattingEnabled = true;
+            this.cbb_Message_Categorie_Action.Location = new System.Drawing.Point(28, 211);
+            this.cbb_Message_Categorie_Action.Name = "cbb_Message_Categorie_Action";
+            this.cbb_Message_Categorie_Action.Size = new System.Drawing.Size(238, 21);
+            this.cbb_Message_Categorie_Action.TabIndex = 19;
             // 
             // txbHelp
             // 
@@ -174,21 +178,41 @@
             this.txbHelp.Text = "En attente d\'actions";
             this.txbHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // cbb_Message_Categorie_Ajouter
+            // label1
             // 
-            this.cbb_Message_Categorie_Ajouter.FormattingEnabled = true;
-            this.cbb_Message_Categorie_Ajouter.Location = new System.Drawing.Point(25, 203);
-            this.cbb_Message_Categorie_Ajouter.Name = "cbb_Message_Categorie_Ajouter";
-            this.cbb_Message_Categorie_Ajouter.Size = new System.Drawing.Size(235, 21);
-            this.cbb_Message_Categorie_Ajouter.TabIndex = 16;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Entrer un message";
             // 
-            // cbb_Message_Categorie_Action
+            // label2
             // 
-            this.cbb_Message_Categorie_Action.FormattingEnabled = true;
-            this.cbb_Message_Categorie_Action.Location = new System.Drawing.Point(28, 203);
-            this.cbb_Message_Categorie_Action.Name = "cbb_Message_Categorie_Action";
-            this.cbb_Message_Categorie_Action.Size = new System.Drawing.Size(238, 21);
-            this.cbb_Message_Categorie_Action.TabIndex = 19;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 192);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Choisir une catégorie";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(28, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Modifier le message";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(31, 192);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Choisir une catégorie";
             // 
             // frmMessage
             // 
@@ -224,10 +248,12 @@
         private System.Windows.Forms.GroupBox gpb_Message_Action;
         private System.Windows.Forms.TextBox txbMessageCreer;
         private System.Windows.Forms.TextBox txbHelp;
-        private System.Windows.Forms.ComboBox cbb_Message_Evenement_Ajouter;
-        private System.Windows.Forms.ComboBox cbb_Message_Evenement_Action;
         private System.Windows.Forms.ComboBox cbb_Message_Categorie_Ajouter;
         private System.Windows.Forms.ComboBox cbb_Message_Categorie_Action;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
 
 
 

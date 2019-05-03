@@ -60,6 +60,23 @@ namespace PPE4
         }
 
 
+        public int RecupCategorie(int p_id)
+        {
+            try
+            {
+                String req = "SELECT idcategorie FROM categorie WHERE idcategorie = @idcategorie";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@idcategorie", SqlDbType.Int).Value = p_id;
+                return (int)this.cde.ExecuteScalar();
+            }
+
+            catch (Exception)
+            {
+                return -1;
+            }
+        }
+
+
         public int NextID(string p_table, string p_id)
         {
             int nb;
@@ -92,16 +109,36 @@ namespace PPE4
         }
 
 
-        public bool AjouterMessage(int p_idevenement, string p_contenue)
+        public bool AjouterMessage(int p_idcategorie, string p_contenue)
         {
             try
             {
                 int nb = NextID("typemessage", "idtypemessage");
-                string req = "insert into typemessage(idtypemessage, idevenement, contenue) values (@id, @idevenement, @contenue)";
+                string req = "insert into typemessage(idtypemessage, idcategorie, contenue) values (@id, @idcategorie, @contenue)";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
-                this.cde.Parameters.Add("@idevenement", SqlDbType.Int).Value = p_idevenement;
+                this.cde.Parameters.Add("@idcategorie", SqlDbType.Int).Value = p_idcategorie;
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        public bool AjouterCategorie(string p_libelle)
+        {
+            try
+            {
+                int nb = NextID("categorie", "idcategorie");
+                string req = "insert into categorie(idcategorie, libelle) values (@id, @libelle)";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
+                this.cde.Parameters.Add("@libelle", SqlDbType.VarChar).Value = p_libelle;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
@@ -118,6 +155,27 @@ namespace PPE4
             try
             {
                 String req = "SELECT * FROM evenement";
+                dt = new DataTable();
+                this.cde = new SqlCommand(req, cn);
+                da = new SqlDataAdapter();
+                da.SelectCommand = this.cde;
+                dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public DataTable ConsulterCategorie()
+        {
+            try
+            {
+                String req = "SELECT * FROM categorie";
                 dt = new DataTable();
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
@@ -173,14 +231,14 @@ namespace PPE4
         }
 
 
-        public bool ModifierMessage(int p_id, int p_idevenement, string p_contenue)
+        public bool ModifierMessage(int p_id, int p_idcategorie, string p_contenue)
         {
             try
             {
-                string req = "UPDATE typemessage SET contenue = @contenue, idevenement = @idevenement WHERE idtypemessage = @id";
+                string req = "UPDATE typemessage SET contenue = @contenue, idcategorie = @idcategorie WHERE idtypemessage = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
-                this.cde.Parameters.Add("@idevenement", SqlDbType.Int).Value = p_idevenement;
+                this.cde.Parameters.Add("@idcategorie", SqlDbType.Int).Value = p_idcategorie;
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
                 this.cde.ExecuteNonQuery();
                 return true;

@@ -45,22 +45,22 @@ namespace PPE4
 
 
         // Parser la combobox avec les événements.
-        private void refreshEvenementCbbAjouter()
+        private void refreshCategorieCbbAjouter()
         {
-            dt = this.connexion.ConsulterEvenement();
-            this.cbb_Message_Evenement_Ajouter.DataSource = dt;
-            this.cbb_Message_Evenement_Ajouter.DisplayMember = "theme";
-            this.cbb_Message_Evenement_Ajouter.ValueMember = "idevenement";
+            dt = this.connexion.ConsulterCategorie();
+            this.cbb_Message_Categorie_Ajouter.DataSource = dt;
+            this.cbb_Message_Categorie_Ajouter.DisplayMember = "libelle";
+            this.cbb_Message_Categorie_Ajouter.ValueMember = "idcategorie";
         }
 
 
-        private void refreshEvenementCbbAction(int idevenement)
+        private void refreshCategorieCbbAction(int idcategorie)
         {
-            dt = this.connexion.ConsulterEvenement();
-            this.cbb_Message_Evenement_Action.DataSource = dt;
-            this.cbb_Message_Evenement_Action.DisplayMember = "theme";
-            this.cbb_Message_Evenement_Action.ValueMember = "idevenement";
-            this.cbb_Message_Evenement_Action.SelectedValue = idevenement;
+            dt = this.connexion.ConsulterCategorie();
+            this.cbb_Message_Categorie_Action.DataSource = dt;
+            this.cbb_Message_Categorie_Action.DisplayMember = "libelle";
+            this.cbb_Message_Categorie_Action.ValueMember = "idcategorie";
+            this.cbb_Message_Categorie_Action.SelectedValue = idcategorie;
         }
 
 
@@ -68,7 +68,7 @@ namespace PPE4
         {
             connexion = new LienBDD();
             refreshTable();
-            refreshEvenementCbbAjouter();
+            refreshCategorieCbbAjouter();
         }
 
 
@@ -81,10 +81,10 @@ namespace PPE4
 
         private void btn_Message_Creer_Click(object sender, EventArgs e)
         {
-            int idevenement = connexion.RecupEvenement(Int32.Parse(cbb_Message_Evenement_Ajouter.SelectedValue.ToString()));
+            int idcategorie = connexion.RecupCategorie(Int32.Parse(cbb_Message_Categorie_Ajouter.SelectedValue.ToString()));
             string contenue = txbMessageCreer.Text;
 
-            if (connexion.AjouterMessage(idevenement, contenue)) // Exécuter la requête ajouter message.
+            if (connexion.AjouterMessage(idcategorie, contenue)) // Exécuter la requête ajouter message.
             {
                 txbHelp.Text = "Message ajouté avec succés!";
                 refreshTable();
@@ -112,6 +112,8 @@ namespace PPE4
             {
                 txbHelp.Text = "Échec de la suppréssion du message";
             }
+            gpb_Message_Ajouter.Enabled = true;
+            gpb_Message_Action.Enabled = false;
         }
 
 
@@ -122,21 +124,21 @@ namespace PPE4
             selectedRow[0] = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[0].Value.ToString());
             txbMessageAction.Text = dgMessageConsulter.Rows[e.RowIndex].Cells[2].Value.ToString();
             selectedRow[1] = Convert.ToInt32(dgMessageConsulter.Rows[e.RowIndex].Cells[1].Value.ToString());
-            refreshEvenementCbbAction(selectedRow[1]);
+            refreshCategorieCbbAction(selectedRow[1]);
         }
 
 
         private void btn_Message_Modifier_Click(object sender, EventArgs e)
         {
 
-            int idevenement = Int32.Parse(cbb_Message_Evenement_Action.SelectedValue.ToString());
+            int idcategorie = Int32.Parse(cbb_Message_Categorie_Action.SelectedValue.ToString());
 
-            if (connexion.ModifierMessage(selectedRow[0], idevenement, txbMessageAction.Text))
+            if (connexion.ModifierMessage(selectedRow[0], idcategorie, txbMessageAction.Text))
             {
                 txbHelp.Text = "Message modifié avec succés!";
                 refreshTable();
                 txbMessageAction.ResetText();
-                cbb_Message_Evenement_Action.ResetText();
+                cbb_Message_Categorie_Action.ResetText();
             }
             else
             {

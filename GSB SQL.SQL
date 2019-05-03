@@ -80,8 +80,7 @@ go
 create table CATEGORIE
   (
      IDCATEGORIE int  not null  ,
-     IDTYPEMESSAGE int  not null  ,
-     LIBELLE varchar(30)  null  
+     LIBELLE varchar(30)  null
      ,
      constraint PK_CATEGORIE primary key (IDCATEGORIE)
   ) 
@@ -167,12 +166,12 @@ go
 
 create table TYPEMESSAGE
   (
-     IDTYPEMESSAGE int  not null  ,
-	 IDEVENEMENT int not null  ,
+     IDTYPEMESSAGE int not null  ,
+	 IDCATEGORIE int not null  ,
      CONTENUE varchar(128)  null  
      ,
      constraint PK_TYPEMESSAGE primary key (IDTYPEMESSAGE)
-  ) 
+  )
 go
 
 
@@ -239,23 +238,15 @@ go
 
 
 
-alter table CATEGORIE 
-     add constraint FK_CATEGORIE_TYPEMESSAGE foreign key (IDTYPEMESSAGE) 
-               references TYPEMESSAGE (IDTYPEMESSAGE)
-go
-
-
-
-
 alter table TYPEMESSAGE
-	add constraint FK_TYPEMESSAGE_EVENEMENT foreign key (IDEVENEMENT)
-               references EVENEMENT (IDEVENEMENT)
+	add constraint FK_TYPEMESSAGE_CATEGORIE foreign key (IDCATEGORIE)
+				references CATEGORIE (IDCATEGORIE)
 go
 
 
 
 
-alter table CAMPAGNE 
+alter table CAMPAGNE
      add constraint FK_CAMPAGNE_EMPLOYE foreign key (IDEMPLOYE) 
                references EMPLOYE (IDEMPLOYE)
 go

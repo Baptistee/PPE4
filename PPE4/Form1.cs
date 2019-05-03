@@ -33,5 +33,11 @@ namespace PPE4
             frmVIP formVIP = new frmVIP();
             formVIP.ShowDialog();
         }
+
+        private void catégorieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCategorie formCategorie = new frmCategorie();
+            formCategorie.ShowDialog();
+        }
     }
 }
