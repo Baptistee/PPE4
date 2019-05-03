@@ -222,12 +222,19 @@ namespace PPE4
 
         #endregion
 
-        public int NextID(string p_table, string pid)
+        public int NextID(string p_table, string p_id)
         {
-            string req = "SELECT MAX(" + pid + ")+1 FROM " + p_table;
+            int nb;
+            string req = "SELECT MAX(" + p_id + ")+1 FROM " + p_table;
             this.cde = new SqlCommand(req, cn);
-            int nb = (int) this.cde.ExecuteScalar();
-            return nb;
+            if (this.cde.ExecuteScalar().ToString() == "")
+            {
+                return nb = 1;
+            }
+            else
+            {
+                return nb = (int)this.cde.ExecuteScalar();
+            }
         }
 
         // Baptiste
