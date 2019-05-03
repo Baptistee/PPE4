@@ -29,6 +29,7 @@ namespace PPE4
                 dt = lien.getAllAgences();
                 this.dgvAgence.DataSource = dt;
                 this.dgvAgence.DataMember = dt.TableName;
+                this.dgvAgence.Columns[0].Visible = false;
                 this.dgvAgence.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -45,6 +46,7 @@ namespace PPE4
                 dt = lien.getAllAgences();
                 this.dgvAgence.DataSource = dt;
                 this.dgvAgence.DataMember = dt.TableName;
+                this.dgvAgence.Columns[0].Visible = false;
                 this.dgvAgence.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -72,7 +74,7 @@ namespace PPE4
         private void btnAgenceModif_Click(object sender, EventArgs e)
         {
             //L'agence est modifiée avec les données comprisent dans les textboxs et un message de succès apparait, sinon un message d'erreur apparait 
-            if (lien.updateOneAgence(IdAgence, txtBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text, txtBoxVille.Text, txtBoxCP.Text))
+            if (lien.updateOneAgence(IdAgence, cmBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text, txtBoxVille.Text, txtBoxCP.Text))
             {
                 reloadDataGridView();
                 lbl_Agence_Info.ForeColor = Color.Green;
@@ -88,11 +90,11 @@ namespace PPE4
         private void btnAgenceCree_Click(object sender, EventArgs e)
         {
             //Si la requete ne renvoie pas d'erreur, l'agence est créée et un message de succèes apparait, sinon un message d'erreur apparait
-            if (lien.createOneAgence(txtBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text, txtBoxVille.Text, txtBoxCP.Text))
+            if (lien.createOneAgence(cmBoxSpecialite.Text, txtBoxNom.Text, txtBoxSite.Text, txtBoxMail.Text, txtBoxTel.Text, txtBoxAdresse.Text, txtBoxVille.Text, txtBoxCP.Text))
             {
                 lbl_Agence_Info.ForeColor = Color.Green;
                 lbl_Agence_Info.Text = "Agence créée avec succès !";
-                txtBoxSpecialite.Text = string.Empty;
+                cmBoxSpecialite.Text = string.Empty;
                 txtBoxNom.Text = string.Empty;
                 txtBoxSite.Text = string.Empty;
                 txtBoxMail.Text = string.Empty;
@@ -122,7 +124,7 @@ namespace PPE4
             txtBoxMail.Text = String.Empty;
             txtBoxNom.Text = String.Empty;
             txtBoxSite.Text = String.Empty;
-            txtBoxSpecialite.Text = String.Empty;
+            cmBoxSpecialite.Text = String.Empty;
             txtBoxTel.Text = String.Empty;
             txtBoxCP.Text = string.Empty;
             txtBoxVille.Text = string.Empty;
@@ -135,14 +137,14 @@ namespace PPE4
             {
                 int index = e.RowIndex;
                 DataGridViewRow selectedRow = dgvAgence.Rows[index];
-                txtBoxSpecialite.Text = selectedRow.Cells[1].Value.ToString();
+                cmBoxSpecialite.Text = selectedRow.Cells[1].Value.ToString();
                 txtBoxNom.Text = selectedRow.Cells[2].Value.ToString();
                 txtBoxSite.Text = selectedRow.Cells[3].Value.ToString();
                 txtBoxMail.Text = selectedRow.Cells[4].Value.ToString();
                 txtBoxTel.Text = selectedRow.Cells[5].Value.ToString();
                 txtBoxAdresse.Text = selectedRow.Cells[6].Value.ToString();
-                txtBoxCP.Text = selectedRow.Cells[7].Value.ToString();
-                txtBoxVille.Text = selectedRow.Cells[8].Value.ToString();
+                txtBoxVille.Text = selectedRow.Cells[7].Value.ToString();
+                txtBoxCP.Text = selectedRow.Cells[8].Value.ToString();
                 if (index > 0 || index == 0)
                 {
                     IdAgence = int.Parse(selectedRow.Cells[0].Value.ToString());
@@ -157,6 +159,11 @@ namespace PPE4
                 
             }
             
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
 

@@ -29,6 +29,7 @@ namespace PPE4
                 dt = lien.getAllArtistes();
                 this.dgvArtiste.DataSource = dt;
                 this.dgvArtiste.DataMember = dt.TableName;
+                this.dgvArtiste.Columns[0].Visible = false;
                 this.dgvArtiste.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -45,6 +46,7 @@ namespace PPE4
                 dt = lien.getAllArtistes();
                 this.dgvArtiste.DataSource = dt;
                 this.dgvArtiste.DataMember = dt.TableName;
+                this.dgvArtiste.Columns[0].Visible = false;
                 this.dgvArtiste.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -165,6 +167,17 @@ namespace PPE4
                 //on fait les actions sinon, on fait rien, pas besoin de fermer le programme
 
             }
+        }
+
+        private void btnArtisteDetails_Click(object sender, EventArgs e)
+        {
+            frmDetailsArtiste formDetailsArtiste = new frmDetailsArtiste();
+            formDetailsArtiste.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
         }

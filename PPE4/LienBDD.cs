@@ -102,7 +102,7 @@ namespace PPE4
                 this.cde.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -126,6 +126,24 @@ namespace PPE4
             }
         }
 
+        public DataTable getDetailsOneArtiste(int pIdArtiste)
+        {
+            try
+            {
+                string req = "SELECT * FROM Inviter WHERE id = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = pIdArtiste;
+                da = new SqlDataAdapter();
+                da.SelectCommand = this.cde;
+                dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         //Fin Artistes
 
         #endregion
