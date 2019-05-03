@@ -64,20 +64,51 @@ namespace PPE4
 
                 //requete sql
 
-               
+
+                string req = "";
+
+                if (p_agence1 != null && p_agence2 != null)
+                {
+                    req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,IDAGENCE,IDAGENCE_ORGANISATEUR_ART,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe, @Agence1 , @Agence2 , @nom, @objectif, @publique , @dateDebut, @dateFin)";
+
+                    this.cde = new SqlCommand(req, cn);
+
+                    this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
+                    this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
+                }
+                else if (p_agence1 == null && p_agence2 != null)
+                {
+                    req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,IDAGENCE_ORGANISATEUR_ART,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe , @Agence2 , @nom, @objectif, @publique , @dateDebut, @dateFin)";
+                    
+                    this.cde = new SqlCommand(req, cn);
+
+                    this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
+                }
+                else if (p_agence1 != null && p_agence2 == null)
+                {
+                    req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,IDAGENCE,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe, @Agence1 , @nom, @objectif, @publique , @dateDebut, @dateFin)";
+
+                    this.cde = new SqlCommand(req, cn);
+
+                    this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
+                }
+                else
+                {
+                    req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe , @nom, @objectif, @publique , @dateDebut, @dateFin)";
+
+                    this.cde = new SqlCommand(req, cn);
+
+                }
                 
+
                 
 
-                string req = "INSERT INTO CAMPAGNE (IDCAMPAGNE, IDEMPLOYE,IDAGENCE,IDAGENCE_ORGANISATEUR_ART,INTITULE,OBJECTIF,PUBLIQUE,DATEDEBUT,DATEFIN) VALUES (@id, @Employe, @Agence1 , @Agence2 , @nom, @objectif, @publique , @dateDebut, @dateFin)";
 
-
-
-                this.cde = new SqlCommand(req, cn);
+                
                 //association des variables a leur valeur
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = nb;
                 this.cde.Parameters.Add("@Employe", SqlDbType.Int).Value = int.Parse(p_responsable);
-                this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
-                this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
+
                 this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
                 this.cde.Parameters.Add("@objectif", SqlDbType.VarChar).Value = p_objectif;
                 this.cde.Parameters.Add("@publique", SqlDbType.VarChar).Value = p_publique;
@@ -98,7 +129,7 @@ namespace PPE4
 
         public DataTable GetCampagne()
         {
-            string req = "Select CAMP.IDCAMPAGNE , CAMP.INTITULE , CAMP.OBJECTIF , CAMP.PUBLIQUE , AG1.NOM Agence_Communication , AG2.NOM Agence_Artistique , CAMP.DATEDEBUT , CAMP.DATEFIN , EMP.NOM + ' ' +  EMP.PRENOM as Responsable FROM CAMPAGNE CAMP  inner join AGENCE AG1 on AG1.IDAGENCE = CAMP.IDAGENCE    inner join AGENCE AG2 on AG2.IDAGENCE = CAMP.IDAGENCE_ORGANISATEUR_ART	inner join EMPLOYE EMP on EMP.IDEMPLOYE = CAMP.IDEMPLOYE";
+            string req = "Select CAMP.IDCAMPAGNE , CAMP.INTITULE , CAMP.OBJECTIF , CAMP.PUBLIQUE , AG1.NOM Agence_Communication , AG2.NOM Agence_Artistique , CAMP.DATEDEBUT , CAMP.DATEFIN , EMP.NOM + ' ' +  EMP.PRENOM as Responsable FROM CAMPAGNE CAMP  left join AGENCE AG1 on AG1.IDAGENCE = CAMP.IDAGENCE    left join AGENCE AG2 on AG2.IDAGENCE = CAMP.IDAGENCE_ORGANISATEUR_ART	inner join EMPLOYE EMP on EMP.IDEMPLOYE = CAMP.IDEMPLOYE";
             this.cde = new SqlCommand(req, cn);
             da = new SqlDataAdapter();
             da.SelectCommand = this.cde;
@@ -163,14 +194,49 @@ namespace PPE4
             try
             {
                 //requete sql
-                string req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 , IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+
+                string req = "";
+
+                if (p_agence1 != null && p_agence2 != null)
+                {
+                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 , IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+
+                    this.cde = new SqlCommand(req, cn);
+
+                    this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
+                    this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
+                }
+                else if (p_agence1 == null && p_agence2 != null)
+                {
+                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe,, IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+                    this.cde = new SqlCommand(req, cn);
+
+                    this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
+                }
+                else if (p_agence1 != null && p_agence2 == null)
+                {
+                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 ,, INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+                    
+                    this.cde = new SqlCommand(req, cn);
+
+                    this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
+                }
+                else
+                {
+                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe,,, INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+
+                    this.cde = new SqlCommand(req, cn);
+
+                }
+
+                 //req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 , IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
 
 
-                this.cde = new SqlCommand(req, cn);
+                
                 //association des variables a leur valeur
                 this.cde.Parameters.Add("@Employe", SqlDbType.Int).Value = int.Parse(p_responsable);
-                this.cde.Parameters.Add("@Agence1", SqlDbType.Int).Value = int.Parse(p_agence1);
-                this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
+                
+                
                 this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
                 this.cde.Parameters.Add("@objectif", SqlDbType.VarChar).Value = p_objectif;
                 this.cde.Parameters.Add("@publique", SqlDbType.VarChar).Value = p_publique;

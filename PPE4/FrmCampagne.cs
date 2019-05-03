@@ -136,8 +136,6 @@ namespace PPE4
             }
           
             responsable = fCamp_cbResponsable.SelectedValue.ToString();
-            
-
 
 
 
@@ -195,15 +193,18 @@ namespace PPE4
                 fCamp_dtDateDebut.Value = DateTime.Parse(fCamp_DgCampagne.Rows[e.RowIndex].Cells[6].Value.ToString());
                 fCamp_dtDateFin.Value = DateTime.Parse(fCamp_DgCampagne.Rows[e.RowIndex].Cells[7].Value.ToString());
 
+                fCamp_cbResponsable.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[8].Value.ToString();
+
+                
+
                 fCamp_cbAgence2.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString();
                 fCamp_cbAgence1.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString();
-                fCamp_cbResponsable.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[8].Value.ToString();
+                
                                 
                 fCamp_cbAgence1.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString());
                 fCamp_cbAgence2.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString());
-                
 
-                
+
             }
             catch (Exception)
             {
@@ -224,10 +225,29 @@ namespace PPE4
             string publique = fCamp_tbPublique.Text;
             DateTime datedebut = fCamp_dtDateDebut.Value;
             DateTime datefin = fCamp_dtDateFin.Value;
-            string agence1 = fCamp_cbAgence1.SelectedValue.ToString();
-            string agence2 = fCamp_cbAgence2.SelectedValue.ToString();
             string responsable = fCamp_cbResponsable.SelectedValue.ToString();
             int id = selectedRow;
+
+            string agence1;
+            string agence2;
+
+            if (fCamp_checkBoxAgence1.Checked == true)
+            {
+                agence1 = fCamp_cbAgence1.SelectedValue.ToString();
+            }
+            else
+            {
+                agence1 = null;
+            }
+
+            if (fCamp_checkBoxAgence2.Checked == true)
+            {
+                agence2 = fCamp_cbAgence2.SelectedValue.ToString();
+            }
+            else
+            {
+                agence2 = null;
+            }
 
             if (nom == "" || objectif == "" || responsable == "" || publique == "")
             {
