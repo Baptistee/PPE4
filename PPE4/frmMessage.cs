@@ -74,14 +74,13 @@ namespace PPE4
 
         private void btn_Creer_Annuler_Click(object sender, EventArgs e)
         {
-            txbMessageAction.ResetText();
             txbMessageCreer.ResetText();
         }
 
 
         private void btn_Message_Creer_Click(object sender, EventArgs e)
         {
-            int idcategorie = connexion.RecupCategorie(Int32.Parse(cbb_Message_Categorie_Ajouter.SelectedValue.ToString()));
+            int idcategorie = Int32.Parse(cbb_Message_Categorie_Ajouter.SelectedValue.ToString());
             string contenue = txbMessageCreer.Text;
 
             if (connexion.AjouterMessage(idcategorie, contenue)) // Exécuter la requête ajouter message.

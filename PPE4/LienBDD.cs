@@ -315,7 +315,7 @@ namespace PPE4
         {
             try
             {
-                String req = "SELECT * FROM vip";
+                String req = "SELECT * FROM vip, categorie WHERE vip.idcategorie = categorie.idcategorie ";
                 dt = new DataTable();
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();

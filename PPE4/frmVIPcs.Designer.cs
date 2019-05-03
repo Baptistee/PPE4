@@ -36,13 +36,13 @@
             this.txbAjouterNom = new System.Windows.Forms.TextBox();
             this.txbAjouterAdresse = new System.Windows.Forms.TextBox();
             this.txbAjouterMail = new System.Windows.Forms.TextBox();
-            this.grbCreerVIP = new System.Windows.Forms.GroupBox();
+            this.grbVIPCreer = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgVIP = new System.Windows.Forms.DataGridView();
-            this.grbModifierVIP = new System.Windows.Forms.GroupBox();
+            this.grbVIPAction = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,9 +51,10 @@
             this.txbModifierAdresse = new System.Windows.Forms.TextBox();
             this.txbModifierMail = new System.Windows.Forms.TextBox();
             this.cbModifierCategorie = new System.Windows.Forms.ComboBox();
-            this.grbCreerVIP.SuspendLayout();
+            this.txbHelp = new System.Windows.Forms.TextBox();
+            this.grbVIPCreer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).BeginInit();
-            this.grbModifierVIP.SuspendLayout();
+            this.grbVIPAction.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCréer
@@ -74,6 +75,7 @@
             this.btnCreerAnnuler.TabIndex = 1;
             this.btnCreerAnnuler.Text = "Annuler";
             this.btnCreerAnnuler.UseVisualStyleBackColor = true;
+            this.btnCreerAnnuler.Click += new System.EventHandler(this.btnCreerAnnuler_Click);
             // 
             // btnModifier
             // 
@@ -95,6 +97,7 @@
             // 
             // cbAjouterCategorie
             // 
+            this.cbAjouterCategorie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAjouterCategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbAjouterCategorie.FormattingEnabled = true;
             this.cbAjouterCategorie.ItemHeight = 13;
@@ -126,24 +129,24 @@
             this.txbAjouterMail.Size = new System.Drawing.Size(164, 20);
             this.txbAjouterMail.TabIndex = 7;
             // 
-            // grbCreerVIP
+            // grbVIPCreer
             // 
-            this.grbCreerVIP.Controls.Add(this.label4);
-            this.grbCreerVIP.Controls.Add(this.label3);
-            this.grbCreerVIP.Controls.Add(this.label2);
-            this.grbCreerVIP.Controls.Add(this.label1);
-            this.grbCreerVIP.Controls.Add(this.txbAjouterNom);
-            this.grbCreerVIP.Controls.Add(this.txbAjouterAdresse);
-            this.grbCreerVIP.Controls.Add(this.txbAjouterMail);
-            this.grbCreerVIP.Controls.Add(this.cbAjouterCategorie);
-            this.grbCreerVIP.Controls.Add(this.btnCréer);
-            this.grbCreerVIP.Controls.Add(this.btnCreerAnnuler);
-            this.grbCreerVIP.Location = new System.Drawing.Point(12, 12);
-            this.grbCreerVIP.Name = "grbCreerVIP";
-            this.grbCreerVIP.Size = new System.Drawing.Size(674, 201);
-            this.grbCreerVIP.TabIndex = 8;
-            this.grbCreerVIP.TabStop = false;
-            this.grbCreerVIP.Text = "Ajouter un VIP";
+            this.grbVIPCreer.Controls.Add(this.label4);
+            this.grbVIPCreer.Controls.Add(this.label3);
+            this.grbVIPCreer.Controls.Add(this.label2);
+            this.grbVIPCreer.Controls.Add(this.label1);
+            this.grbVIPCreer.Controls.Add(this.txbAjouterNom);
+            this.grbVIPCreer.Controls.Add(this.txbAjouterAdresse);
+            this.grbVIPCreer.Controls.Add(this.txbAjouterMail);
+            this.grbVIPCreer.Controls.Add(this.cbAjouterCategorie);
+            this.grbVIPCreer.Controls.Add(this.btnCréer);
+            this.grbVIPCreer.Controls.Add(this.btnCreerAnnuler);
+            this.grbVIPCreer.Location = new System.Drawing.Point(12, 12);
+            this.grbVIPCreer.Name = "grbVIPCreer";
+            this.grbVIPCreer.Size = new System.Drawing.Size(674, 201);
+            this.grbVIPCreer.TabIndex = 8;
+            this.grbVIPCreer.TabStop = false;
+            this.grbVIPCreer.Text = "Ajouter un VIP";
             // 
             // label4
             // 
@@ -189,24 +192,24 @@
             this.dgVIP.Size = new System.Drawing.Size(674, 264);
             this.dgVIP.TabIndex = 9;
             // 
-            // grbModifierVIP
+            // grbVIPAction
             // 
-            this.grbModifierVIP.Controls.Add(this.label5);
-            this.grbModifierVIP.Controls.Add(this.label6);
-            this.grbModifierVIP.Controls.Add(this.label7);
-            this.grbModifierVIP.Controls.Add(this.label8);
-            this.grbModifierVIP.Controls.Add(this.txbModifierNom);
-            this.grbModifierVIP.Controls.Add(this.txbModifierAdresse);
-            this.grbModifierVIP.Controls.Add(this.txbModifierMail);
-            this.grbModifierVIP.Controls.Add(this.cbModifierCategorie);
-            this.grbModifierVIP.Controls.Add(this.btnModifier);
-            this.grbModifierVIP.Controls.Add(this.btnSupprimer);
-            this.grbModifierVIP.Location = new System.Drawing.Point(12, 219);
-            this.grbModifierVIP.Name = "grbModifierVIP";
-            this.grbModifierVIP.Size = new System.Drawing.Size(674, 215);
-            this.grbModifierVIP.TabIndex = 10;
-            this.grbModifierVIP.TabStop = false;
-            this.grbModifierVIP.Text = "Modifier le VIP";
+            this.grbVIPAction.Controls.Add(this.label5);
+            this.grbVIPAction.Controls.Add(this.label6);
+            this.grbVIPAction.Controls.Add(this.label7);
+            this.grbVIPAction.Controls.Add(this.label8);
+            this.grbVIPAction.Controls.Add(this.txbModifierNom);
+            this.grbVIPAction.Controls.Add(this.txbModifierAdresse);
+            this.grbVIPAction.Controls.Add(this.txbModifierMail);
+            this.grbVIPAction.Controls.Add(this.cbModifierCategorie);
+            this.grbVIPAction.Controls.Add(this.btnModifier);
+            this.grbVIPAction.Controls.Add(this.btnSupprimer);
+            this.grbVIPAction.Location = new System.Drawing.Point(12, 219);
+            this.grbVIPAction.Name = "grbVIPAction";
+            this.grbVIPAction.Size = new System.Drawing.Size(674, 215);
+            this.grbVIPAction.TabIndex = 10;
+            this.grbVIPAction.TabStop = false;
+            this.grbVIPAction.Text = "Action sur le VIP";
             // 
             // label5
             // 
@@ -267,29 +270,44 @@
             // 
             // cbModifierCategorie
             // 
+            this.cbModifierCategorie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbModifierCategorie.FormattingEnabled = true;
             this.cbModifierCategorie.Location = new System.Drawing.Point(64, 37);
             this.cbModifierCategorie.Name = "cbModifierCategorie";
             this.cbModifierCategorie.Size = new System.Drawing.Size(164, 21);
             this.cbModifierCategorie.TabIndex = 8;
             // 
+            // txbHelp
+            // 
+            this.txbHelp.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txbHelp.Enabled = false;
+            this.txbHelp.Location = new System.Drawing.Point(12, 710);
+            this.txbHelp.Name = "txbHelp";
+            this.txbHelp.ReadOnly = true;
+            this.txbHelp.Size = new System.Drawing.Size(163, 20);
+            this.txbHelp.TabIndex = 21;
+            this.txbHelp.Text = "En attente d\'actions";
+            this.txbHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // frmVIP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 716);
-            this.Controls.Add(this.grbModifierVIP);
+            this.ClientSize = new System.Drawing.Size(698, 737);
+            this.Controls.Add(this.txbHelp);
+            this.Controls.Add(this.grbVIPAction);
             this.Controls.Add(this.dgVIP);
-            this.Controls.Add(this.grbCreerVIP);
+            this.Controls.Add(this.grbVIPCreer);
             this.Name = "frmVIP";
             this.Text = "VIP";
             this.Load += new System.EventHandler(this.frmVIP_Load);
-            this.grbCreerVIP.ResumeLayout(false);
-            this.grbCreerVIP.PerformLayout();
+            this.grbVIPCreer.ResumeLayout(false);
+            this.grbVIPCreer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgVIP)).EndInit();
-            this.grbModifierVIP.ResumeLayout(false);
-            this.grbModifierVIP.PerformLayout();
+            this.grbVIPAction.ResumeLayout(false);
+            this.grbVIPAction.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -303,9 +321,9 @@
         private System.Windows.Forms.TextBox txbAjouterNom;
         private System.Windows.Forms.TextBox txbAjouterAdresse;
         private System.Windows.Forms.TextBox txbAjouterMail;
-        private System.Windows.Forms.GroupBox grbCreerVIP;
+        private System.Windows.Forms.GroupBox grbVIPCreer;
         private System.Windows.Forms.DataGridView dgVIP;
-        private System.Windows.Forms.GroupBox grbModifierVIP;
+        private System.Windows.Forms.GroupBox grbVIPAction;
         private System.Windows.Forms.TextBox txbModifierNom;
         private System.Windows.Forms.TextBox txbModifierAdresse;
         private System.Windows.Forms.TextBox txbModifierMail;
@@ -318,5 +336,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txbHelp;
     }
 }

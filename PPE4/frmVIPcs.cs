@@ -16,7 +16,7 @@ namespace PPE4
         // Members
         internal LienBDD connexion;
         private DataTable dt = new DataTable();
-        private int selectedRow = 0;
+        private int[] selectedRow = new int[4];
 
 
         // Methods
@@ -34,6 +34,9 @@ namespace PPE4
                 dt = connexion.ConsulterVIP();
                 this.dgVIP.DataSource = dt;
                 this.dgVIP.DataMember = dt.TableName;
+                this.dgVIP.Columns[0].Visible = false;
+                this.dgVIP.Columns[1].Visible = false;
+                this.dgVIP.Columns[5].Visible = false;
                 this.dgVIP.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -47,35 +50,44 @@ namespace PPE4
         {
             connexion = new LienBDD();
             refreshTable();
-            refreshEvenementCbbAjouter();
+            refreshCategorieCbbAjouter();
         }
 
 
         // Parser la combobox avec les événements.
-        private void refreshEvenementCbbAjouter()
+        private void refreshCategorieCbbAjouter()
         {
-            dt = this.connexion.ConsulterEvenement();
+            dt = this.connexion.ConsulterCategorie();
             this.cbAjouterCategorie.DataSource = dt;
-            this.cbAjouterCategorie.DisplayMember = "theme";
-            this.cbAjouterCategorie.ValueMember = "idevenement";
+            this.cbAjouterCategorie.DisplayMember = "libelle";
+            this.cbAjouterCategorie.ValueMember = "idcategorie";
         }
 
 
         private void btnCréer_Click(object sender, EventArgs e)
         {
-            int idcategorie = Int32.Parse(cbAjouterCategorie.Text);
+            int idcategorie = Int32.Parse(cbAjouterCategorie.SelectedValue.ToString());
             string nom = txbAjouterNom.Text;
             string adresse = txbAjouterAdresse.Text;
-            string mail = txbAjouterMail.Text;
+            string email = txbAjouterMail.Text;
 
-            if (connexion.AjouterVIP(idcategorie, nom, adresse, mail))
+            if (connexion.AjouterVIP(idcategorie, nom, adresse, email))
             {
+                txbHelp.Text = "VIP ajouté avec succés!";
                 refreshTable();
+                grbVIPCreer.ResetText();
             }
             else
             {
-
+                txbHelp.Text = "VIP non ajouté";
             }
+        }
+
+        private void btnCreerAnnuler_Click(object sender, EventArgs e)
+        {
+            txbAjouterNom.ResetText();
+            txbAjouterAdresse.ResetText();
+            txbAjouterMail.ResetText();
         }
     }
 }

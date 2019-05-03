@@ -127,6 +127,7 @@
             // 
             // cbb_Message_Categorie_Ajouter
             // 
+            this.cbb_Message_Categorie_Ajouter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_Message_Categorie_Ajouter.FormattingEnabled = true;
             this.cbb_Message_Categorie_Ajouter.Location = new System.Drawing.Point(25, 211);
             this.cbb_Message_Categorie_Ajouter.Name = "cbb_Message_Categorie_Ajouter";
@@ -160,6 +161,7 @@
             // 
             // cbb_Message_Categorie_Action
             // 
+            this.cbb_Message_Categorie_Action.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_Message_Categorie_Action.FormattingEnabled = true;
             this.cbb_Message_Categorie_Action.Location = new System.Drawing.Point(28, 211);
             this.cbb_Message_Categorie_Action.Name = "cbb_Message_Categorie_Action";
