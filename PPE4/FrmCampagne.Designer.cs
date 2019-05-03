@@ -30,6 +30,8 @@
         {
             this.fCamp_DgCampagne = new System.Windows.Forms.DataGridView();
             this.fCamp_GrpBox = new System.Windows.Forms.GroupBox();
+            this.fCamp_checkBoxAgence2 = new System.Windows.Forms.CheckBox();
+            this.fCamp_checkBoxAgence1 = new System.Windows.Forms.CheckBox();
             this.fCamp_BtSupprimer = new System.Windows.Forms.Button();
             this.fCamp_BtModifier = new System.Windows.Forms.Button();
             this.fCamp_TpSet_lblReponse = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.fCamp_checkBoxAgence1 = new System.Windows.Forms.CheckBox();
-            this.fCamp_checkBoxAgence2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.fCamp_DgCampagne)).BeginInit();
             this.fCamp_GrpBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -68,7 +68,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fCamp_DgCampagne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.fCamp_DgCampagne.Location = new System.Drawing.Point(12, 202);
+            this.fCamp_DgCampagne.MultiSelect = false;
             this.fCamp_DgCampagne.Name = "fCamp_DgCampagne";
+            this.fCamp_DgCampagne.ReadOnly = true;
             this.fCamp_DgCampagne.Size = new System.Drawing.Size(1066, 335);
             this.fCamp_DgCampagne.TabIndex = 40;
             this.fCamp_DgCampagne.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.fCamp_DgCampagne_RowHeaderMouseClick);
@@ -101,6 +103,28 @@
             this.fCamp_GrpBox.Size = new System.Drawing.Size(622, 196);
             this.fCamp_GrpBox.TabIndex = 41;
             this.fCamp_GrpBox.TabStop = false;
+            // 
+            // fCamp_checkBoxAgence2
+            // 
+            this.fCamp_checkBoxAgence2.AutoSize = true;
+            this.fCamp_checkBoxAgence2.Location = new System.Drawing.Point(364, 54);
+            this.fCamp_checkBoxAgence2.Name = "fCamp_checkBoxAgence2";
+            this.fCamp_checkBoxAgence2.Size = new System.Drawing.Size(114, 17);
+            this.fCamp_checkBoxAgence2.TabIndex = 66;
+            this.fCamp_checkBoxAgence2.Text = "Agence artistique :";
+            this.fCamp_checkBoxAgence2.UseVisualStyleBackColor = true;
+            this.fCamp_checkBoxAgence2.CheckedChanged += new System.EventHandler(this.fCamp_checkBoxAgence2_CheckedChanged);
+            // 
+            // fCamp_checkBoxAgence1
+            // 
+            this.fCamp_checkBoxAgence1.AutoSize = true;
+            this.fCamp_checkBoxAgence1.Location = new System.Drawing.Point(321, 20);
+            this.fCamp_checkBoxAgence1.Name = "fCamp_checkBoxAgence1";
+            this.fCamp_checkBoxAgence1.Size = new System.Drawing.Size(158, 17);
+            this.fCamp_checkBoxAgence1.TabIndex = 65;
+            this.fCamp_checkBoxAgence1.Text = "Agence de communication :";
+            this.fCamp_checkBoxAgence1.UseVisualStyleBackColor = true;
+            this.fCamp_checkBoxAgence1.CheckedChanged += new System.EventHandler(this.fCamp_checkBoxAgence1_CheckedChanged);
             // 
             // fCamp_BtSupprimer
             // 
@@ -303,28 +327,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
-            // 
-            // fCamp_checkBoxAgence1
-            // 
-            this.fCamp_checkBoxAgence1.AutoSize = true;
-            this.fCamp_checkBoxAgence1.Location = new System.Drawing.Point(321, 20);
-            this.fCamp_checkBoxAgence1.Name = "fCamp_checkBoxAgence1";
-            this.fCamp_checkBoxAgence1.Size = new System.Drawing.Size(158, 17);
-            this.fCamp_checkBoxAgence1.TabIndex = 65;
-            this.fCamp_checkBoxAgence1.Text = "Agence de communication :";
-            this.fCamp_checkBoxAgence1.UseVisualStyleBackColor = true;
-            this.fCamp_checkBoxAgence1.CheckedChanged += new System.EventHandler(this.fCamp_checkBoxAgence1_CheckedChanged);
-            // 
-            // fCamp_checkBoxAgence2
-            // 
-            this.fCamp_checkBoxAgence2.AutoSize = true;
-            this.fCamp_checkBoxAgence2.Location = new System.Drawing.Point(364, 54);
-            this.fCamp_checkBoxAgence2.Name = "fCamp_checkBoxAgence2";
-            this.fCamp_checkBoxAgence2.Size = new System.Drawing.Size(114, 17);
-            this.fCamp_checkBoxAgence2.TabIndex = 66;
-            this.fCamp_checkBoxAgence2.Text = "Agence artistique :";
-            this.fCamp_checkBoxAgence2.UseVisualStyleBackColor = true;
-            this.fCamp_checkBoxAgence2.CheckedChanged += new System.EventHandler(this.fCamp_checkBoxAgence2_CheckedChanged);
             // 
             // FrmCampagne
             // 

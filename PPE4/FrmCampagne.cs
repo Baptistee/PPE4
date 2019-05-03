@@ -92,6 +92,12 @@ namespace PPE4
 
                     dateTime.ResetText();
                 }
+                if (ctrl is CheckBox)
+                {
+                    CheckBox checkbox = (CheckBox)ctrl;
+
+                    checkbox.Checked = false;
+                }
             }
         }
 
@@ -195,15 +201,36 @@ namespace PPE4
 
                 fCamp_cbResponsable.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[8].Value.ToString();
 
-                
+                fCamp_checkBoxAgence1.Checked = true;
+                string agence1 = fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-                fCamp_cbAgence2.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString();
-                fCamp_cbAgence1.Text = fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString();
-                
-                                
-                fCamp_cbAgence1.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString());
-                fCamp_cbAgence2.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString());
+                if (agence1 != "")
+                {
+                    fCamp_cbAgence1.Text = agence1;
+                    fCamp_cbAgence1.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[4].Value.ToString());                   
+                }
+                else
+                {
+                    fCamp_checkBoxAgence1.Checked = false;
+                }
 
+
+                fCamp_checkBoxAgence2.Checked = true;
+                string agence2 = fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                if (agence2 != "")
+                {
+                    fCamp_cbAgence2.Text = agence2;
+                    fCamp_cbAgence2.ValueMember = this.connexion.GetAgenceId(fCamp_DgCampagne.Rows[e.RowIndex].Cells[5].Value.ToString());
+
+                }
+                else
+                {
+                    fCamp_checkBoxAgence2.Checked = false;
+                }
+                
+                
+                
 
             }
             catch (Exception)

@@ -208,14 +208,14 @@ namespace PPE4
                 }
                 else if (p_agence1 == null && p_agence2 != null)
                 {
-                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe,, IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = null, IDAGENCE_ORGANISATEUR_ART = @Agence2 , INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
                     this.cde = new SqlCommand(req, cn);
 
                     this.cde.Parameters.Add("@Agence2", SqlDbType.Int).Value = int.Parse(p_agence2);
                 }
                 else if (p_agence1 != null && p_agence2 == null)
                 {
-                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 ,, INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe, IDAGENCE = @Agence1 ,IDAGENCE_ORGANISATEUR_ART = null, INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
                     
                     this.cde = new SqlCommand(req, cn);
 
@@ -223,7 +223,7 @@ namespace PPE4
                 }
                 else
                 {
-                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe,,, INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
+                    req = "UPDATE CAMPAGNE SET IDEMPLOYE = @Employe,IDAGENCE = null,IDAGENCE_ORGANISATEUR_ART = null, INTITULE = @nom, OBJECTIF = @objectif, PUBLIQUE = @publique , DATEDEBUT = @dateDebut, DATEFIN = @dateFin WHERE IDCAMPAGNE = @id";
 
                     this.cde = new SqlCommand(req, cn);
 
