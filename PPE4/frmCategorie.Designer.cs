@@ -87,6 +87,7 @@
             this.btn_Categorie_Modifier.TabIndex = 16;
             this.btn_Categorie_Modifier.Text = "Modifier";
             this.btn_Categorie_Modifier.UseVisualStyleBackColor = true;
+            this.btn_Categorie_Modifier.Click += new System.EventHandler(this.btn_Categorie_Modifier_Click);
             // 
             // btn_Categorie_Supprimer
             // 
@@ -96,6 +97,7 @@
             this.btn_Categorie_Supprimer.TabIndex = 17;
             this.btn_Categorie_Supprimer.Text = "Supprimer";
             this.btn_Categorie_Supprimer.UseVisualStyleBackColor = true;
+            this.btn_Categorie_Supprimer.Click += new System.EventHandler(this.btn_Categorie_Supprimer_Click);
             // 
             // gpb_Categorie_Ajouter
             // 

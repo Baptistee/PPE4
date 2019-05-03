@@ -56,14 +56,14 @@ namespace PPE4
 
             if (connexion.AjouterCategorie(libelle))
             {
-                txbHelp.Text = "Message ajouté avec succés!";
+                txbHelp.Text = "Catégorie ajouté avec succés!";
                 refreshTable();
                 txbCategorieCreer.ResetText();
             }
 
             else
             {
-                txbHelp.Text = "Message non ajouté";
+                txbHelp.Text = "Catégorie non ajouté";
             }
         }
 
@@ -74,7 +74,41 @@ namespace PPE4
             gpb_Categorie_Action.Enabled = true;
             selectedRow[0] = Convert.ToInt32(dgCategorieConsulter.Rows[e.RowIndex].Cells[0].Value.ToString());
             txbCategorieAction.Text = dgCategorieConsulter.Rows[e.RowIndex].Cells[1].Value.ToString();
-            selectedRow[1] = Convert.ToInt32(dgCategorieConsulter.Rows[e.RowIndex].Cells[1].Value.ToString());
+        }
+
+
+        private void btn_Categorie_Supprimer_Click(object sender, EventArgs e)
+        {
+            if (connexion.SupprimerCategorie(selectedRow[0]))
+            {
+                txbHelp.Text = "Catégorie supprimé avec succés!";
+                refreshTable();
+                txbCategorieAction.ResetText();
+
+            }
+            else
+            {
+                txbHelp.Text = "Échec de la suppréssion de la catégorie";
+            }
+            gpb_Categorie_Ajouter.Enabled = true;
+            gpb_Categorie_Action.Enabled = false;
+        }
+
+
+        private void btn_Categorie_Modifier_Click(object sender, EventArgs e)
+        {
+            if (connexion.ModifierCategorie(selectedRow[0], txbCategorieAction.Text))
+            {
+                txbHelp.Text = "Catégorie modifiée avec succés!";
+                refreshTable();
+                txbCategorieAction.ResetText();
+            }
+            else
+            {
+                txbHelp.Text = "Échec de la modification de la catégorie";
+            }
+            gpb_Categorie_Ajouter.Enabled = true;
+            gpb_Categorie_Action.Enabled = false;
         }
     }
 }

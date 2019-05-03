@@ -231,6 +231,24 @@ namespace PPE4
         }
 
 
+        public bool SupprimerCategorie(int p_id)
+        {
+            try
+            {
+                string req = "DELETE categorie WHERE idcategorie = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
         public bool ModifierMessage(int p_id, int p_idcategorie, string p_contenue)
         {
             try
@@ -240,6 +258,25 @@ namespace PPE4
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
                 this.cde.Parameters.Add("@idcategorie", SqlDbType.Int).Value = p_idcategorie;
                 this.cde.Parameters.Add("@contenue", SqlDbType.VarChar).Value = p_contenue;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        public bool ModifierCategorie(int p_id, string p_libelle)
+        {
+            try
+            {
+                string req = "UPDATE categorie SET libelle = @libelle WHERE idcategorie = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.Parameters.Add("@libelle", SqlDbType.VarChar).Value = p_libelle;
                 this.cde.ExecuteNonQuery();
                 return true;
             }
