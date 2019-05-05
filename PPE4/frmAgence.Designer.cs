@@ -256,6 +256,7 @@
             this.pnlBarre.Name = "pnlBarre";
             this.pnlBarre.Size = new System.Drawing.Size(969, 41);
             this.pnlBarre.TabIndex = 51;
+            this.pnlBarre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlBarre_MouseDown);
             // 
             // lblTitre
             // 

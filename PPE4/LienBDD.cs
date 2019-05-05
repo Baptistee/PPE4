@@ -73,7 +73,7 @@ namespace PPE4
         {
             try
             {
-                string req = "SELECT * FROM Artiste";
+                string req = "SELECT * FROM Artiste ORDER BY Nom";
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
                 da.SelectCommand = this.cde;
@@ -130,7 +130,7 @@ namespace PPE4
         {
             try
             {
-                string req = "SELECT * FROM Inviter WHERE id = @id";
+                string req = "SELECT inviter.idevenement, idartiste, cachet, ville, theme, datedebut, datefin FROM Inviter INNER JOIN Evenement ON Inviter.IdEvenement = Evenement.IdEvenement WHERE IDARTISTE = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = pIdArtiste;
                 da = new SqlDataAdapter();

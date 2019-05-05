@@ -44,9 +44,9 @@
             this.txtBoxArtisteTel = new System.Windows.Forms.TextBox();
             this.btnArtisteDetails = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtiste)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +59,7 @@
             this.dgvArtiste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArtiste.Location = new System.Drawing.Point(12, 144);
             this.dgvArtiste.Name = "dgvArtiste";
-            this.dgvArtiste.Size = new System.Drawing.Size(579, 322);
+            this.dgvArtiste.Size = new System.Drawing.Size(687, 322);
             this.dgvArtiste.TabIndex = 0;
             this.dgvArtiste.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArtiste_RowEnter_1);
             this.dgvArtiste.Enter += new System.EventHandler(this.dataGridView1_Enter);
@@ -186,12 +186,14 @@
             // 
             // btnArtisteDetails
             // 
-            this.btnArtisteDetails.Location = new System.Drawing.Point(268, 115);
+            this.btnArtisteDetails.BackColor = System.Drawing.Color.BlueViolet;
+            this.btnArtisteDetails.ForeColor = System.Drawing.Color.White;
+            this.btnArtisteDetails.Location = new System.Drawing.Point(597, 78);
             this.btnArtisteDetails.Name = "btnArtisteDetails";
-            this.btnArtisteDetails.Size = new System.Drawing.Size(75, 23);
+            this.btnArtisteDetails.Size = new System.Drawing.Size(106, 40);
             this.btnArtisteDetails.TabIndex = 57;
             this.btnArtisteDetails.Text = "Détails";
-            this.btnArtisteDetails.UseVisualStyleBackColor = true;
+            this.btnArtisteDetails.UseVisualStyleBackColor = false;
             this.btnArtisteDetails.Click += new System.EventHandler(this.btnArtisteDetails_Click);
             // 
             // panel1
@@ -203,32 +205,9 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(603, 37);
+            this.panel1.Size = new System.Drawing.Size(711, 37);
             this.panel1.TabIndex = 58;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(441, 43);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(558, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(45, 37);
-            this.button2.TabIndex = 59;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // label1
             // 
@@ -241,11 +220,35 @@
             this.label1.TabIndex = 60;
             this.label1.Text = "Artiste";
             // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Georgia", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(666, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(45, 37);
+            this.button2.TabIndex = 59;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(441, 43);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmArtiste
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 478);
+            this.ClientSize = new System.Drawing.Size(711, 478);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnArtisteDetails);
             this.Controls.Add(this.txtBoxArtisteTel);

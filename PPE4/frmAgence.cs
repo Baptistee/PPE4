@@ -16,6 +16,14 @@ namespace PPE4
         int IdAgence;
         DataTable dt;
 
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         public frmAgence()
         {
             InitializeComponent();
@@ -166,7 +174,11 @@ namespace PPE4
             this.Hide();
         }
 
-
+        private void pnlBarre_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
     }
 }
  
