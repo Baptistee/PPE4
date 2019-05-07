@@ -22,7 +22,7 @@ create table ARTISTE
      IDARTISTE int  not null  ,
      NOM varchar(50)  null  ,
      COURANT varchar(50)  null  ,
-     SITE varchar(10)  null
+     SITE varchar(50)  null
      ,
      constraint PK_ARTISTE primary key (IDARTISTE)
   )
