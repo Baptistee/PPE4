@@ -21,9 +21,8 @@ create table ARTISTE
   (
      IDARTISTE int  not null  ,
      NOM varchar(50)  null  ,
-     PRENOM varchar(50)  null  ,
-     MAIL varchar(50)  null  ,
-     NUM varchar(10)  null
+     COURANT varchar(50)  null  ,
+     SITE varchar(10)  null
      ,
      constraint PK_ARTISTE primary key (IDARTISTE)
   )
