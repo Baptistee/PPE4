@@ -63,11 +63,11 @@
     <Compile Include="frmMessage.Designer.cs">
       <DependentUpon>frmMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVIPcs.cs">
+    <Compile Include="frmVIP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVIPcs.Designer.cs">
-      <DependentUpon>frmVIPcs.cs</DependentUpon>
+    <Compile Include="frmVIP.Designer.cs">
+      <DependentUpon>frmVIP.cs</DependentUpon>
     </Compile>
     <Compile Include="LienBDD.cs" />
     <Compile Include="Program.cs" />
@@ -81,8 +81,8 @@
     <EmbeddedResource Include="frmMessage.resx">
       <DependentUpon>frmMessage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVIPcs.resx">
-      <DependentUpon>frmVIPcs.cs</DependentUpon>
+    <EmbeddedResource Include="frmVIP.resx">
+      <DependentUpon>frmVIP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

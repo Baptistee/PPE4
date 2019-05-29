@@ -35,6 +35,7 @@ namespace PPE4
                 this.dgMessageConsulter.DataMember = dt.TableName;
                 this.dgMessageConsulter.Columns[0].Visible = false;
                 this.dgMessageConsulter.Columns[1].Visible = false;
+                this.dgMessageConsulter.Columns[3].Visible = false;
                 this.dgMessageConsulter.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)

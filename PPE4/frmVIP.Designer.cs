@@ -85,6 +85,7 @@
             this.btnModifier.TabIndex = 2;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.BtnModifier_Click);
             // 
             // btnSupprimer
             // 
@@ -94,6 +95,7 @@
             this.btnSupprimer.TabIndex = 3;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.BtnSupprimer_Click);
             // 
             // cbAjouterCategorie
             // 
@@ -191,6 +193,7 @@
             this.dgVIP.Name = "dgVIP";
             this.dgVIP.Size = new System.Drawing.Size(674, 264);
             this.dgVIP.TabIndex = 9;
+            this.dgVIP.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgVIP_RowHeaderMouseClick);
             // 
             // grbVIPAction
             // 
@@ -204,6 +207,7 @@
             this.grbVIPAction.Controls.Add(this.cbModifierCategorie);
             this.grbVIPAction.Controls.Add(this.btnModifier);
             this.grbVIPAction.Controls.Add(this.btnSupprimer);
+            this.grbVIPAction.Enabled = false;
             this.grbVIPAction.Location = new System.Drawing.Point(12, 219);
             this.grbVIPAction.Name = "grbVIPAction";
             this.grbVIPAction.Size = new System.Drawing.Size(674, 215);

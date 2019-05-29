@@ -176,7 +176,6 @@ namespace PPE4
             try
             {
                 String req = "SELECT * FROM categorie";
-                dt = new DataTable();
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
                 da.SelectCommand = this.cde;
@@ -196,8 +195,7 @@ namespace PPE4
         {
             try
             {
-                String req = "SELECT * FROM typemessage";
-                dt = new DataTable();
+                String req = "SELECT * FROM typemessage, categorie WHERE typemessage.idcategorie = categorie.idcategorie";
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
                 da.SelectCommand = this.cde;
@@ -236,6 +234,24 @@ namespace PPE4
             try
             {
                 string req = "DELETE categorie WHERE idcategorie = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        public bool SupprimerVIP(int p_id)
+        {
+            try
+            {
+                string req = "DELETE vip WHERE idvip = @id";
                 this.cde = new SqlCommand(req, cn);
                 this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
                 this.cde.ExecuteNonQuery();
@@ -288,6 +304,28 @@ namespace PPE4
         }
 
 
+        public bool ModifierVIP(int p_id, int p_idcategorie, string p_nom, string p_adresse, string p_email)
+        {
+            try
+            {
+                string req = "UPDATE vip SET nom = @nom, idcategorie = @idcategorie, adresse = @adresse, email = @email WHERE idvip = @id";
+                this.cde = new SqlCommand(req, cn);
+                this.cde.Parameters.Add("@id", SqlDbType.Int).Value = p_id;
+                this.cde.Parameters.Add("@idcategorie", SqlDbType.Int).Value = p_idcategorie;
+                this.cde.Parameters.Add("@nom", SqlDbType.VarChar).Value = p_nom;
+                this.cde.Parameters.Add("@adresse", SqlDbType.VarChar).Value = p_adresse;
+                this.cde.Parameters.Add("@email", SqlDbType.VarChar).Value = p_email;
+                this.cde.ExecuteNonQuery();
+                return true;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
         public bool AjouterVIP(int p_idtypemessage, string p_nom, string p_adresse, string p_mail)
         {
             try
@@ -316,7 +354,6 @@ namespace PPE4
             try
             {
                 String req = "SELECT * FROM vip, categorie WHERE vip.idcategorie = categorie.idcategorie ";
-                dt = new DataTable();
                 this.cde = new SqlCommand(req, cn);
                 da = new SqlDataAdapter();
                 da.SelectCommand = this.cde;
