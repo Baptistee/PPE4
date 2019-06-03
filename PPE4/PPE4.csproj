@@ -57,6 +57,12 @@
     <Compile Include="FrmCampagne.Designer.cs">
       <DependentUpon>FrmCampagne.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmStatistiques.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStatistiques.Designer.cs">
+      <DependentUpon>FrmStatistiques.cs</DependentUpon>
+    </Compile>
     <Compile Include="LienBDD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCampagne.resx">
       <DependentUpon>FrmCampagne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStatistiques.resx">
+      <DependentUpon>FrmStatistiques.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

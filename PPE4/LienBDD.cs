@@ -271,6 +271,37 @@ namespace PPE4
                 return result;  
         }
 
+        public DataTable GetAnneCampagne()
+        {
+            //requete sql 
+            string req = "SELECT year(CAMPAGNE.DATEDEBUT) as Annee FROM CAMPAGNE group by YEAR(CAMPAGNE.DATEDEBUT)";
+
+            this.cde = new SqlCommand(req, cn);
+            da = new SqlDataAdapter();
+            da.SelectCommand = this.cde;
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
+
+        public DataTable GetNbrEvenmentParCampagnePourUneAnnee(int p_annee)
+        {
+            //requete sql 
+            string req = "SELECT COUNT(EVENEMENT.IDEVENEMENT) as NombreEvenement, CAMPAGNE.INTITULE FROM CAMPAGNE INNER JOIN EVENEMENT on CAMPAGNE.IDCAMPAGNE = EVENEMENT.IDCAMPAGNE where YEAR(CAMPAGNE.DATEDEBUT) = @annee Group by CAMPAGNE.IDCAMPAGNE, CAMPAGNE.INTITULE";
+
+            this.cde = new SqlCommand(req, cn);
+            //association des variables a leur valeur
+            this.cde.Parameters.Add("@annee", SqlDbType.Int).Value = p_annee;
+
+            //execution de la requete
+            da = new SqlDataAdapter();
+            da.SelectCommand = this.cde;
+            dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+
+        }
+
 
     }
 }

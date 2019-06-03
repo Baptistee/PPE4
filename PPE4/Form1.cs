@@ -32,5 +32,11 @@ namespace PPE4
             FrmCampagne formCampagne = new FrmCampagne();
             formCampagne.ShowDialog();
         }
+
+        private void satistiquesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmStatistiques formStatistique = new FrmStatistiques();
+            formStatistique.ShowDialog();
+        }
     }
 }
